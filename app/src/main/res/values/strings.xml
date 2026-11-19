@@ -1,3 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AuraEnglish</string>
+
+    <!-- Admin - Quản lý bộ đề & Cửa hàng -->
+    <string name="admin_exam_shop_title">Quản lý bộ đề &amp; Cửa hàng</string>
+    <string name="admin_create_exam_set">+ Tạo bộ đề</string>
+    <string name="admin_search_exam_hint">Tìm kiếm đề thi TOEIC, gói đề cửa hàng...</string>
+    <string name="admin_filter_all">Tất cả (80)</string>
+    <string name="admin_filter_shop">Cửa hàng (Trả phí)</string>
+    <string name="admin_filter_free">Đề miễn phí</string>
+
+    <string name="admin_nav_stats">Thống kê</string>
+    <string name="admin_nav_courses">Khóa học</string>
+    <string name="admin_nav_exams">Bộ đề</string>
+    <string name="admin_nav_students">Học viên</string>
+
+    <string name="admin_action_manage_exams">Quản lý %1$d đề</string>
+    <string name="admin_action_manage_questions">Quản lý câu hỏi</string>
+    <string name="admin_action_edit_price">Sửa giá / TT</string>
+    <string name="admin_action_stop_selling">Ngừng bán</string>
+    <string name="admin_action_questions_explain">Câu hỏi &amp; Giải thích</string>
+    <string name="admin_action_edit">Chỉnh sửa</string>
+    <string name="admin_action_delete">Xóa đề</string>
+    <string name="admin_badge_free">Miễn phí</string>
+    <string name="admin_status_selling">Đang bán trên Cửa hàng • Doanh thu: %1$s</string>
+    <string name="admin_status_attempts">Lượt làm bài: %1$s • Điểm TB: %2$s</string>
+
+    <!-- Popup -->
+    <string name="popup_create_exam_title">Tạo bộ đề mới</string>
+    <string name="popup_edit_price_title">Sửa giá / thông tin</string>
+    <string name="popup_edit_exam_title">Chỉnh sửa bộ đề</string>
+    <string name="popup_stop_selling_title">Ngừng bán bộ đề?</string>
+    <string name="popup_delete_title">Xóa bộ đề?</string>
+    <string name="popup_stop_selling_message">Bộ đề \"%1$s\" sẽ bị ẩn khỏi Cửa hàng. Học viên đã mua vẫn giữ quyền truy cập.</string>
+    <string name="popup_delete_message">Bạn chắc chắn muốn xóa \"%1$s\"? Thao tác này không thể hoàn tác.</string>
+
+    <string name="label_exam_name">Tên bộ đề</string>
+    <string name="label_exam_type">Loại bộ đề</string>
+    <string name="label_exam_desc">Mô tả ngắn</string>
+    <string name="label_price">Giá bán (VNĐ)</string>
+    <string name="label_exam_count">Số đề / câu hỏi</string>
+    <string name="hint_exam_name">Ví dụ: Bộ đề TOEIC - Nâng cao</string>
+    <string name="hint_exam_desc">Mô tả nội dung, kỹ năng luyện tập...</string>
+    <string name="hint_price">199000</string>
+    <string name="hint_exam_count">60</string>
+
+    <string name="type_paid_shop">Cửa hàng (Trả phí)</string>
+    <string name="type_free">Đề miễn phí</string>
+
+    <string name="action_cancel">Hủy</string>
+    <string name="action_save">Lưu</string>
+    <string name="action_create">Tạo bộ đề</string>
+    <string name="action_confirm_stop">Ngừng bán</string>
+    <string name="action_confirm_delete">Xóa bộ đề</string>
+    <string name="action_close">Đóng</string>
 </resources>
