@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottomNav"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/practice_bottom_nav_height"
+    android:background="@drawable/bg_practice_bottom_nav"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingTop="6dp"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:id="@+id/navHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/practice_nav_home"
+        android:textColor="@color/practice_nav_inactive"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/navLibrary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/practice_nav_library"
+        android:textColor="@color/practice_nav_inactive"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/navPractice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/practice_nav_practice"
+        android:textColor="@color/practice_primary"
+        android:textSize="11sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/navRank"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/practice_nav_rank"
+        android:textColor="@color/practice_nav_inactive"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/navSettings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/practice_nav_settings"
+        android:textColor="@color/practice_nav_inactive"
+        android:textSize="11sp" />
+</LinearLayout>
