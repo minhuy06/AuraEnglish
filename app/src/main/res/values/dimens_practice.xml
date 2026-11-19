@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="practice_screen_padding">16dp</dimen>
+    <dimen name="practice_card_radius">16dp</dimen>
+    <dimen name="practice_chip_radius">20dp</dimen>
+    <dimen name="practice_btn_radius">14dp</dimen>
+    <dimen name="practice_index_size">44dp</dimen>
+    <dimen name="practice_q_nav_size">36dp</dimen>
+    <dimen name="practice_bottom_nav_height">64dp</dimen>
+    <dimen name="practice_card_gap">12dp</dimen>
+</resources>

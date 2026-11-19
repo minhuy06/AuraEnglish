@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Learner palette: Luyện đề TOEIC (Figma) -->
+    <color name="practice_bg">#FFF0F4FF</color>
+    <color name="practice_surface">#FFFFFFFF</color>
+    <color name="practice_primary">#FF173B8F</color>
+    <color name="practice_primary_dark">#FF0F2F6E</color>
+    <color name="practice_primary_soft">#FFDBEAFE</color>
+    <color name="practice_primary_mid">#FF3B6FD9</color>
+
+    <color name="practice_text_primary">#FF0F172A</color>
+    <color name="practice_text_secondary">#FF64748B</color>
+    <color name="practice_text_muted">#FF94A3B8</color>
+
+    <color name="practice_chip_inactive">#FFE8EEF9</color>
+    <color name="practice_chip_progress">#FFE0E7FF</color>
+    <color name="practice_chip_progress_text">#FF4338CA</color>
+    <color name="practice_chip_done">#FFDCFCE7</color>
+    <color name="practice_chip_done_text">#FF15803D</color>
+
+    <color name="practice_tag_bg">#FFF3E8FF</color>
+    <color name="practice_tag_text">#FF9333EA</color>
+    <color name="practice_flag">#FFFBBF24</color>
+    <color name="practice_flag_banner">#FFFEF3C7</color>
+    <color name="practice_pending_bg">#FFFFEDD5</color>
+    <color name="practice_pending_text">#FFEA580C</color>
+
+    <color name="practice_correct_bg">#FFDCFCE7</color>
+    <color name="practice_correct">#FF16A34A</color>
+    <color name="practice_wrong_bg">#FFFEE2E2</color>
+    <color name="practice_wrong">#FFDC2626</color>
+
+    <color name="practice_nav_inactive">#FF94A3B8</color>
+    <color name="practice_progress_track">#FFE2E8F0</color>
+    <color name="practice_menu_bg">#FF334155</color>
+
+    <color name="practice_part1">#FF3B82F6</color>
+    <color name="practice_part2">#FF8B5CF6</color>
+    <color name="practice_part3">#FF22C55E</color>
+    <color name="practice_part4">#FFF97316</color>
+    <color name="practice_part5">#FF64748B</color>
+    <color name="practice_part6">#FF84CC16</color>
+    <color name="practice_part7">#FFEC4899</color>
+
+    <color name="practice_listening">#FF2563EB</color>
+    <color name="practice_reading">#FF7C3AED</color>
+</resources>

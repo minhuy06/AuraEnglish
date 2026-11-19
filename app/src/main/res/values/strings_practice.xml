@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="practice_title">Luyện đề TOEIC</string>
+    <string name="practice_filter_all">Tất cả</string>
+    <string name="practice_filter_todo">Chưa làm</string>
+    <string name="practice_filter_doing">Đang làm</string>
+    <string name="practice_filter_done">Hoàn thành</string>
+    <string name="practice_exam_meta">200 câu - 120 phút Listening + Reading</string>
+    <string name="practice_status_todo">Chưa làm</string>
+    <string name="practice_status_doing">Đang làm - %1$d/200 câu</string>
+    <string name="practice_status_done">Hoàn thành - %1$d điểm</string>
+    <string name="practice_exam_title">ĐỀ THI THỬ %1$s</string>
+    <string name="practice_exam_detail_title">Đề thi %1$s</string>
+
+    <string name="practice_nav_home">Trang chủ</string>
+    <string name="practice_nav_library">Thư viện</string>
+    <string name="practice_nav_practice">Luyện tập</string>
+    <string name="practice_nav_rank">Xếp hạng</string>
+    <string name="practice_nav_settings">Cài đặt</string>
+
+    <string name="practice_mock_label">Thi thử như thật</string>
+    <string name="practice_continue">Tiếp tục</string>
+    <string name="practice_start">Bắt đầu</string>
+    <string name="practice_finish_exam">Hoàn thành bài thi</string>
+    <string name="practice_by_part">Luyện theo Part</string>
+
+    <string name="practice_part1">Part 1: Mô tả hình ảnh</string>
+    <string name="practice_part2">Part 2: Hỏi - đáp</string>
+    <string name="practice_part3">Part 3: Đoạn hội thoại</string>
+    <string name="practice_part4">Part 4: Bài nói ngắn</string>
+    <string name="practice_part5">Part 5: Hoàn thành câu</string>
+    <string name="practice_part6">Part 6: Hoàn thành đoạn văn</string>
+    <string name="practice_part7">Part 7: Đọc hiểu</string>
+    <string name="practice_part_progress">%1$d/%2$d câu</string>
+
+    <string name="practice_part5_subtitle">Part 5: Hoàn thành câu</string>
+    <string name="practice_question_progress">Câu %1$d / %2$d</string>
+    <string name="practice_answered_count">Đã làm %1$d câu</string>
+    <string name="practice_next_question">Câu tiếp theo</string>
+    <string name="practice_flagged_banner">Đã đánh dấu %1$d câu để xem lại</string>
+    <string name="practice_view">Xem</string>
+    <string name="practice_copy">Sao chép</string>
+    <string name="practice_add_word">Thêm từ mới</string>
+    <string name="practice_tag_grammar_verb">Ngữ pháp - Động từ</string>
+    <string name="practice_tag_grammar_word">Ngữ pháp - Từ loại</string>
+    <string name="practice_tag_vocab_prep">Từ vựng - giới từ</string>
+
+    <string name="practice_bookmarked_title">Câu đã đánh dấu</string>
+    <string name="practice_filter_flagged_all">Tất cả %1$d</string>
+    <string name="practice_filter_flagged_todo">Chưa làm %1$d</string>
+    <string name="practice_filter_flagged_done">Đã làm %1$d</string>
+    <string name="practice_selected_answer">Đã chọn: %1$s</string>
+
+    <string name="practice_result_title">Kết quả thi</string>
+    <string name="practice_result_good">Khá tốt!</string>
+    <string name="practice_result_correct_total">Đúng %1$d/%2$d câu</string>
+    <string name="practice_result_time">Thời gian: %1$s</string>
+    <string name="practice_listening">Listening</string>
+    <string name="practice_reading">Reading</string>
+    <string name="practice_stat_correct">Đúng</string>
+    <string name="practice_stat_wrong">Sai</string>
+    <string name="practice_stat_skip">Bỏ qua</string>
+    <string name="practice_result_by_part">Kết quả theo Part</string>
+    <string name="practice_retry">Làm lại</string>
+    <string name="practice_view_answers">Xem đáp án &amp; giải thích</string>
+
+    <string name="practice_answer_title">Đáp án &amp; giải thích</string>
+    <string name="practice_wrong_label">Làm sai</string>
+    <string name="practice_correct_label">Đáp án đúng</string>
+    <string name="practice_your_choice">Bạn chọn</string>
+    <string name="practice_explanation">Giải thích</string>
+</resources>
