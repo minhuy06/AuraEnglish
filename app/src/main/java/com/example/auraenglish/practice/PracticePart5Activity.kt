@@ -2,8 +2,7 @@ package com.example.auraenglish.practice
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Gravity
-import android.widget.TextView
+import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,11 +12,13 @@ import androidx.core.view.isVisible
 import com.example.auraenglish.R
 import com.example.auraenglish.databinding.ActivityPracticePart5Binding
 import com.example.auraenglish.databinding.ItemPracticeOptionBinding
+import com.example.auraenglish.databinding.ItemPracticeQuestionNavBinding
 
 class PracticePart5Activity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticePart5Binding
-    private var selected = 0
+    private lateinit var exam: PracticeExam
+    private var currentNumber = 12
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,22 +32,28 @@ class PracticePart5Activity : AppCompatActivity() {
             insets
         }
 
-        binding.tvExamTitle.text = getString(R.string.practice_exam_detail_title, "01")
-        binding.tvQuestionProgress.text = getString(R.string.practice_question_progress, 12, 30)
-        binding.tvAnsweredCount.text = getString(R.string.practice_answered_count, 11)
-        binding.tvTimer.text = "12:45"
-        binding.tvFlagBanner.text = getString(R.string.practice_flagged_banner, 3)
-        binding.tvQuestion.text = "The marketing team will ______ the new product to our clients next Monday."
+        val examId = intent.getStringExtra(PracticeSampleData.EXTRA_EXAM_ID)
+            ?: PracticeSampleData.currentExamId
+        exam = PracticeSampleData.examById(examId)
+        currentNumber = intent.getIntExtra(PracticeSampleData.EXTRA_QUESTION_NUMBER, 12)
 
-        setupQuestionNav()
-        bindOption(binding.optionA, "A", "present", true)
-        bindOption(binding.optionB, "B", "presents", false)
-        bindOption(binding.optionC, "C", "presenting", false)
-        bindOption(binding.optionD, "D", "presented", false)
+        binding.tvExamTitle.text = getString(R.string.practice_exam_detail_title, exam.index)
+        binding.tvTimer.text = "12:45"
+        binding.progressBar.max = PracticeSampleData.part5Questions.size
+        binding.progressBar.progressDrawable = getDrawable(R.drawable.bg_practice_progress_bar)
 
         binding.btnClose.setOnClickListener { finish() }
         binding.btnViewFlagged.setOnClickListener {
-            startActivity(Intent(this, PracticeBookmarkedActivity::class.java))
+            startActivity(
+                Intent(this, PracticeBookmarkedActivity::class.java)
+                    .putExtra(PracticeSampleData.EXTRA_EXAM_ID, exam.id)
+            )
+        }
+        binding.btnBookmark.setOnClickListener {
+            val flagged = PracticeSampleData.toggleFlag(currentNumber)
+            binding.btnBookmark.alpha = if (flagged) 1f else 0.4f
+            refreshFlagBanner()
+            renderQuestionNav()
         }
         binding.tvQuestion.setOnLongClickListener {
             binding.wordMenu.isVisible = !binding.wordMenu.isVisible
@@ -60,65 +67,112 @@ class PracticePart5Activity : AppCompatActivity() {
             binding.wordMenu.isVisible = false
             Toast.makeText(this, R.string.practice_copy, Toast.LENGTH_SHORT).show()
         }
-        binding.btnNext.setOnClickListener {
-            startActivity(Intent(this, PracticeResultActivity::class.java))
-        }
+        binding.btnPrev.setOnClickListener { moveQuestion(-1) }
+        binding.btnNext.setOnClickListener { moveQuestion(1) }
+
+        showQuestion(currentNumber)
     }
 
-    private fun setupQuestionNav() {
-        val numbers = listOf(9, 10, 11, 12, 13, 14, 15)
-        val flagged = setOf(11, 12, 14)
-        numbers.forEach { num ->
-            val tv = TextView(this).apply {
-                layoutParams = android.widget.LinearLayout.LayoutParams(dp(36), dp(36)).also {
-                    it.marginEnd = dp(8)
+    private fun moveQuestion(delta: Int) {
+        val numbers = PracticeSampleData.part5Questions.map { it.number }
+        val index = numbers.indexOf(currentNumber)
+        val next = numbers.getOrNull(index + delta)
+        if (next == null) {
+            if (delta > 0) {
+                startActivity(
+                    Intent(this, PracticeResultActivity::class.java)
+                        .putExtra(PracticeSampleData.EXTRA_EXAM_ID, exam.id)
+                )
+            }
+            return
+        }
+        showQuestion(next)
+    }
+
+    private fun showQuestion(number: Int) {
+        val question = PracticeSampleData.questionByNumber(number) ?: return
+        currentNumber = number
+        binding.wordMenu.isVisible = false
+
+        val list = PracticeSampleData.part5Questions
+        val pos = list.indexOfFirst { it.number == number }.coerceAtLeast(0)
+        binding.tvQuestionProgress.text = getString(R.string.practice_question_progress, pos + 1, list.size)
+        binding.tvAnsweredCount.text = getString(
+            R.string.practice_answered_count,
+            list.count { it.isAnswered }
+        )
+        binding.progressBar.progress = list.count { it.isAnswered }
+        binding.tvTag.text = question.tag
+        binding.tvQuestion.text = question.stem
+        binding.btnBookmark.alpha = if (question.flagged) 1f else 0.4f
+
+        bindOption(binding.optionA, 0, "A", question.options[0], question)
+        bindOption(binding.optionB, 1, "B", question.options[1], question)
+        bindOption(binding.optionC, 2, "C", question.options[2], question)
+        bindOption(binding.optionD, 3, "D", question.options[3], question)
+
+        refreshFlagBanner()
+        renderQuestionNav()
+    }
+
+    private fun refreshFlagBanner() {
+        val count = PracticeSampleData.part5Questions.count { it.flagged }
+        binding.flagBanner.isVisible = count > 0
+        binding.tvFlagBanner.text = getString(R.string.practice_flagged_banner, count)
+    }
+
+    private fun renderQuestionNav() {
+        binding.questionNav.removeAllViews()
+        PracticeSampleData.part5Questions.forEach { q ->
+            val item = ItemPracticeQuestionNavBinding.inflate(
+                LayoutInflater.from(this), binding.questionNav, false
+            )
+            item.tvNumber.text = q.number.toString()
+            when {
+                q.number == currentNumber -> {
+                    item.tvNumber.setBackgroundResource(R.drawable.bg_practice_q_current)
+                    item.tvNumber.setTextColor(getColor(R.color.white))
                 }
-                gravity = Gravity.CENTER
-                text = num.toString()
-                textSize = 13f
-                setTypeface(typeface, android.graphics.Typeface.BOLD)
-                when {
-                    num == 12 -> {
-                        setBackgroundResource(R.drawable.bg_practice_q_current)
-                        setTextColor(getColor(R.color.white))
-                    }
-                    num < 12 -> {
-                        setBackgroundResource(R.drawable.bg_practice_q_done)
-                        setTextColor(getColor(R.color.practice_primary))
-                    }
-                    else -> {
-                        setBackgroundResource(R.drawable.bg_practice_q_todo)
-                        setTextColor(getColor(R.color.practice_text_secondary))
-                    }
+                q.isAnswered -> {
+                    item.tvNumber.setBackgroundResource(R.drawable.bg_practice_q_done)
+                    item.tvNumber.setTextColor(getColor(R.color.practice_primary))
                 }
-                if (num in flagged) {
-                    compoundDrawablePadding = 0
+                else -> {
+                    item.tvNumber.setBackgroundResource(R.drawable.bg_practice_q_todo)
+                    item.tvNumber.setTextColor(getColor(R.color.practice_text_secondary))
                 }
             }
-            binding.questionNav.addView(tv)
+            item.flagDot.isVisible = q.flagged
+            item.root.isClickable = true
+            item.root.setOnClickListener { showQuestion(q.number) }
+            binding.questionNav.addView(item.root)
         }
     }
 
-    private fun bindOption(item: ItemPracticeOptionBinding, letter: String, text: String, isSelected: Boolean) {
+    private fun bindOption(
+        item: ItemPracticeOptionBinding,
+        index: Int,
+        letter: String,
+        text: String,
+        question: PracticeQuestion
+    ) {
         item.tvLetter.text = letter
         item.tvOption.text = text
-        if (isSelected) {
-            selected = letter[0] - 'A'
-            item.root.setBackgroundResource(R.drawable.bg_practice_option_selected)
-            item.tvLetter.setBackgroundResource(R.drawable.bg_practice_letter_selected)
-            item.tvLetter.setTextColor(getColor(R.color.white))
-        }
+        val selected = question.userAnswerIndex == index
+        item.root.setBackgroundResource(
+            if (selected) R.drawable.bg_practice_option_selected else R.drawable.bg_practice_option
+        )
+        item.tvLetter.setBackgroundResource(
+            if (selected) R.drawable.bg_practice_letter_selected else R.drawable.bg_practice_letter_default
+        )
+        item.tvLetter.setTextColor(
+            getColor(if (selected) R.color.white else R.color.practice_text_secondary)
+        )
+        item.ivCheck.isVisible = selected
+        item.tvOptionLabel.isVisible = false
         item.root.setOnClickListener {
-            listOf(binding.optionA, binding.optionB, binding.optionC, binding.optionD).forEach {
-                it.root.setBackgroundResource(R.drawable.bg_practice_option)
-                it.tvLetter.setBackgroundResource(R.drawable.bg_practice_letter_default)
-                it.tvLetter.setTextColor(getColor(R.color.practice_text_secondary))
-            }
-            item.root.setBackgroundResource(R.drawable.bg_practice_option_selected)
-            item.tvLetter.setBackgroundResource(R.drawable.bg_practice_letter_selected)
-            item.tvLetter.setTextColor(getColor(R.color.white))
+            PracticeSampleData.setAnswer(question.number, index)
+            showQuestion(currentNumber)
         }
     }
-
-    private fun dp(value: Int): Int = (value * resources.displayMetrics.density).toInt()
 }

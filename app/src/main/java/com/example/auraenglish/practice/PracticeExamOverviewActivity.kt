@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +16,7 @@ import com.example.auraenglish.databinding.ItemPracticePartBinding
 class PracticeExamOverviewActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticeExamOverviewBinding
+    private lateinit var exam: PracticeExam
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,51 +30,78 @@ class PracticeExamOverviewActivity : AppCompatActivity() {
             insets
         }
 
-        val examTitle = getString(R.string.practice_exam_detail_title, "01")
-        binding.tvExamTitle.text = examTitle
-        binding.tvHeroTitle.text = examTitle
-        bindPart(binding.part1, "1", getString(R.string.practice_part1), 6, 6, R.color.practice_part1)
-        bindPart(binding.part2, "2", getString(R.string.practice_part2), 18, 25, R.color.practice_part2)
-        bindPart(binding.part3, "3", getString(R.string.practice_part3), 12, 39, R.color.practice_part3)
-        bindPart(binding.part4, "4", getString(R.string.practice_part4), 0, 30, R.color.practice_part4)
-        bindPart(binding.part5, "5", getString(R.string.practice_part5), 11, 30, R.color.practice_part5) {
-            startActivity(Intent(this, PracticePart5Activity::class.java))
+        val examId = intent.getStringExtra(PracticeSampleData.EXTRA_EXAM_ID)
+            ?: PracticeSampleData.currentExamId
+        exam = PracticeSampleData.examById(examId)
+        PracticeSampleData.currentExamId = exam.id
+
+        val title = getString(R.string.practice_exam_detail_title, exam.index)
+        binding.tvExamTitle.text = title
+        binding.tvHeroTitle.text = title
+
+        val partBindings = listOf(
+            binding.part1, binding.part2, binding.part3, binding.part4,
+            binding.part5, binding.part6, binding.part7
+        )
+        exam.parts.forEachIndexed { index, part ->
+            bindPart(partBindings[index], part)
         }
-        bindPart(binding.part6, "6", getString(R.string.practice_part6), 0, 15, R.color.practice_part6)
-        bindPart(binding.part7, "7", getString(R.string.practice_part7), 5, 54, R.color.practice_part7)
+
+        binding.btnContinue.text = if (exam.status == ExamStatus.TODO) {
+            getString(R.string.practice_start)
+        } else {
+            getString(R.string.practice_continue)
+        }
 
         binding.btnBack.setOnClickListener { finish() }
-        binding.btnContinue.setOnClickListener {
-            startActivity(Intent(this, PracticePart5Activity::class.java))
+        binding.btnSearch.setOnClickListener {
+            Toast.makeText(this, "Tìm kiếm trong đề", Toast.LENGTH_SHORT).show()
         }
+        binding.btnContinue.setOnClickListener { openPart(5) }
         binding.btnFinishExam.setOnClickListener {
-            startActivity(Intent(this, PracticeResultActivity::class.java))
+            startActivity(
+                Intent(this, PracticeResultActivity::class.java)
+                    .putExtra(PracticeSampleData.EXTRA_EXAM_ID, exam.id)
+            )
         }
     }
 
-    private fun bindPart(
-        item: ItemPracticePartBinding,
-        index: String,
-        title: String,
-        done: Int,
-        total: Int,
-        colorRes: Int,
-        onClick: (() -> Unit)? = null
-    ) {
-        item.tvPartIndex.text = index
-        item.tvPartTitle.text = title
-        item.tvPartProgress.text = getString(R.string.practice_part_progress, done, total)
+    private fun bindPart(item: ItemPracticePartBinding, part: PracticePart) {
+        item.tvPartIndex.text = part.number.toString()
+        item.tvPartTitle.text = part.title
+        item.tvPartProgress.text = getString(R.string.practice_part_progress, part.done, part.total)
+        val colorId = resources.getIdentifier(part.colorResName, "color", packageName)
         val bg = GradientDrawable().apply {
             shape = GradientDrawable.RECTANGLE
             cornerRadius = 12f * resources.displayMetrics.density
-            setColor(getColor(colorRes))
+            setColor(getColor(if (colorId != 0) colorId else R.color.practice_primary))
         }
         item.tvPartIndex.background = bg
         item.progressFill.post {
-            val width = ((item.progressFill.parent as View).width * done / total.toFloat()).toInt()
-            item.progressFill.layoutParams = item.progressFill.layoutParams.apply { this.width = width.coerceAtLeast(0) }
+            val parentWidth = (item.progressFill.parent as View).width
+            val width = (parentWidth * part.done / part.total.coerceAtLeast(1).toFloat()).toInt()
+            item.progressFill.layoutParams = item.progressFill.layoutParams.apply {
+                this.width = width.coerceAtLeast(0)
+            }
             item.progressFill.requestLayout()
         }
-        item.root.setOnClickListener { onClick?.invoke() }
+        item.root.isClickable = true
+        item.root.isFocusable = true
+        item.root.setOnClickListener {
+            if (part.number == 5) {
+                openPart(5)
+            } else {
+                Toast.makeText(this, "${part.title} (UI Part 5 demo)", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun openPart(partNumber: Int) {
+        startActivity(
+            Intent(this, PracticePart5Activity::class.java)
+                .putExtra(PracticeSampleData.EXTRA_EXAM_ID, exam.id)
+                .putExtra(PracticeSampleData.EXTRA_PART_NUMBER, partNumber)
+                .putExtra(PracticeSampleData.EXTRA_QUESTION_NUMBER, 12)
+        )
     }
 }

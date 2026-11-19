@@ -66,25 +66,25 @@
                 android:id="@+id/chipAll"
                 android:layout_width="wrap_content"
                 android:layout_height="34dp"
-                android:background="@drawable/bg_practice_chip_inactive"
+                android:background="@drawable/bg_practice_chip_active"
                 android:gravity="center"
                 android:paddingHorizontal="14dp"
                 android:text="@string/practice_filter_all"
-                android:textColor="@color/practice_text_secondary"
-                android:textSize="13sp" />
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/chipTodo"
                 android:layout_width="wrap_content"
                 android:layout_height="34dp"
                 android:layout_marginStart="8dp"
-                android:background="@drawable/bg_practice_chip_active"
+                android:background="@drawable/bg_practice_chip_inactive"
                 android:gravity="center"
                 android:paddingHorizontal="14dp"
                 android:text="@string/practice_filter_todo"
-                android:textColor="@color/white"
-                android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textColor="@color/practice_text_secondary"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/chipDoing"
@@ -128,20 +128,7 @@
             android:id="@+id/examList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include
-                android:id="@+id/itemExam1"
-                layout="@layout/item_practice_exam" />
-
-            <include
-                android:id="@+id/itemExam2"
-                layout="@layout/item_practice_exam" />
-
-            <include
-                android:id="@+id/itemExam3"
-                layout="@layout/item_practice_exam" />
-        </LinearLayout>
+            android:orientation="vertical" />
     </androidx.core.widget.NestedScrollView>
 
     <include

@@ -15,6 +15,7 @@ import com.example.auraenglish.databinding.ItemPracticePartBinding
 class PracticeResultActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticeResultBinding
+    private lateinit var exam: PracticeExam
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,53 +29,67 @@ class PracticeResultActivity : AppCompatActivity() {
             insets
         }
 
-        binding.tvScore.text = "685"
-        binding.tvCorrectTotal.text = getString(R.string.practice_result_correct_total, 148, 200)
-        binding.tvTime.text = getString(R.string.practice_result_time, "108:32")
-        binding.tvListening.text = "340 / 495"
-        binding.tvReading.text = "345 / 495"
-        binding.tvStatCorrect.text = "${getString(R.string.practice_stat_correct)}\n148"
-        binding.tvStatWrong.text = "${getString(R.string.practice_stat_wrong)}\n42"
-        binding.tvStatSkip.text = "${getString(R.string.practice_stat_skip)}\n10"
+        val examId = intent.getStringExtra(PracticeSampleData.EXTRA_EXAM_ID)
+            ?: PracticeSampleData.currentExamId
+        exam = PracticeSampleData.examById(examId)
+        val result = PracticeSampleData.result
 
-        bindPart(binding.resultPart1, "1", getString(R.string.practice_part1), 5, 6, R.color.practice_part1)
-        bindPart(binding.resultPart2, "2", getString(R.string.practice_part2), 21, 25, R.color.practice_part2)
-        bindPart(binding.resultPart3, "3", getString(R.string.practice_part3), 28, 39, R.color.practice_part3)
-        bindPart(binding.resultPart4, "4", getString(R.string.practice_part4), 22, 30, R.color.practice_part4)
-        bindPart(binding.resultPart5, "5", getString(R.string.practice_part5), 24, 30, R.color.practice_part5)
-        bindPart(binding.resultPart6, "6", getString(R.string.practice_part6), 11, 16, R.color.practice_part6)
-        bindPart(binding.resultPart7, "7", getString(R.string.practice_part7), 37, 54, R.color.practice_part7)
+        binding.tvScore.text = result.score.toString()
+        binding.tvCorrectTotal.text = getString(
+            R.string.practice_result_correct_total, result.correct, result.total
+        )
+        binding.tvTime.text = getString(R.string.practice_result_time, result.timeText)
+        binding.tvListening.text = "${result.listening} / 495"
+        binding.tvReading.text = "${result.reading} / 495"
+        binding.tvStatCorrect.text = "${getString(R.string.practice_stat_correct)}\n${result.correct}"
+        binding.tvStatWrong.text = "${getString(R.string.practice_stat_wrong)}\n${result.wrong}"
+        binding.tvStatSkip.text = "${getString(R.string.practice_stat_skip)}\n${result.skipped}"
 
-        binding.btnClose.setOnClickListener { finish() }
+        val partBindings = listOf(
+            binding.resultPart1, binding.resultPart2, binding.resultPart3, binding.resultPart4,
+            binding.resultPart5, binding.resultPart6, binding.resultPart7
+        )
+        exam.parts.forEachIndexed { index, part ->
+            val (done, total) = result.partResults.getOrElse(index) { part.done to part.total }
+            bindPart(partBindings[index], part, done, total)
+        }
+
+        binding.btnClose.setOnClickListener {
+            startActivity(
+                Intent(this, PracticeExamListActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            )
+            finish()
+        }
         binding.btnRetry.setOnClickListener {
-            startActivity(Intent(this, PracticeExamOverviewActivity::class.java))
+            startActivity(
+                Intent(this, PracticeExamOverviewActivity::class.java)
+                    .putExtra(PracticeSampleData.EXTRA_EXAM_ID, exam.id)
+            )
             finish()
         }
         binding.btnViewAnswers.setOnClickListener {
-            startActivity(Intent(this, PracticeAnswerReviewActivity::class.java))
+            startActivity(
+                Intent(this, PracticeAnswerReviewActivity::class.java)
+                    .putExtra(PracticeSampleData.EXTRA_EXAM_ID, exam.id)
+                    .putExtra(PracticeSampleData.EXTRA_QUESTION_NUMBER, 11)
+            )
         }
     }
 
-    private fun bindPart(
-        item: ItemPracticePartBinding,
-        index: String,
-        title: String,
-        done: Int,
-        total: Int,
-        colorRes: Int
-    ) {
-        item.tvPartIndex.text = index
-        item.tvPartTitle.text = title
+    private fun bindPart(item: ItemPracticePartBinding, part: PracticePart, done: Int, total: Int) {
+        item.tvPartIndex.text = part.number.toString()
+        item.tvPartTitle.text = part.title
         item.tvPartProgress.text = getString(R.string.practice_part_progress, done, total)
-        val bg = GradientDrawable().apply {
+        val colorId = resources.getIdentifier(part.colorResName, "color", packageName)
+        item.tvPartIndex.background = GradientDrawable().apply {
             shape = GradientDrawable.RECTANGLE
             cornerRadius = 12f * resources.displayMetrics.density
-            setColor(getColor(colorRes))
+            setColor(getColor(if (colorId != 0) colorId else R.color.practice_primary))
         }
-        item.tvPartIndex.background = bg
         item.progressFill.post {
             val parentWidth = (item.progressFill.parent as View).width
-            val width = (parentWidth * done / total.toFloat()).toInt()
+            val width = (parentWidth * done / total.coerceAtLeast(1).toFloat()).toInt()
             item.progressFill.layoutParams = item.progressFill.layoutParams.apply {
                 this.width = width.coerceAtLeast(0)
             }
