@@ -61,6 +61,22 @@ class PracticeResultActivity : AppCompatActivity() {
             )
             finish()
         }
+        binding.btnShare.setOnClickListener {
+            val text = getString(
+                R.string.practice_share_result,
+                PracticeSampleData.result.score,
+                exam.title
+            )
+            startActivity(
+                Intent.createChooser(
+                    Intent(Intent.ACTION_SEND).apply {
+                        type = "text/plain"
+                        putExtra(Intent.EXTRA_TEXT, text)
+                    },
+                    "Chia sẻ kết quả"
+                )
+            )
+        }
         binding.btnRetry.setOnClickListener {
             startActivity(
                 Intent(this, PracticeExamOverviewActivity::class.java)

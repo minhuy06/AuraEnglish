@@ -17,6 +17,7 @@ class PracticeExamListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticeExamListBinding
     private var currentFilter = ExamStatus.ALL
+    private var searchQuery = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,18 +32,38 @@ class PracticeExamListActivity : AppCompatActivity() {
         }
 
         setupFilters()
-        setupBottomNav()
+        PracticeNavHelper.bind(this, binding.bottomNavInclude, PracticeTab.PRACTICE)
         renderList()
 
-        binding.btnBack.setOnClickListener { finish() }
-        binding.btnSearch.setOnClickListener {
-            Toast.makeText(this, "Tìm kiếm (dữ liệu mẫu)", Toast.LENGTH_SHORT).show()
+        binding.btnBack.setOnClickListener {
+            Toast.makeText(this, "Đây là màn Luyện đề (demo)", Toast.LENGTH_SHORT).show()
         }
+        binding.btnSearch.setOnClickListener { openSearch() }
     }
 
     override fun onResume() {
         super.onResume()
         renderList()
+    }
+
+    private fun openSearch() {
+        PracticeSearchHelper.show(
+            activity = this,
+            initialQuery = searchQuery,
+            hint = "Ví dụ: 01, TOEIC, đề thi thử…",
+            onApply = { query ->
+                searchQuery = query
+                renderList()
+                if (query.isNotBlank()) {
+                    Toast.makeText(this, "Đã lọc theo \"$query\"", Toast.LENGTH_SHORT).show()
+                }
+            },
+            onClear = {
+                searchQuery = ""
+                renderList()
+                Toast.makeText(this, "Đã xóa bộ lọc tìm kiếm", Toast.LENGTH_SHORT).show()
+            }
+        )
     }
 
     private fun setupFilters() {
@@ -52,7 +73,6 @@ class PracticeExamListActivity : AppCompatActivity() {
             binding.chipDoing to ExamStatus.DOING,
             binding.chipDone to ExamStatus.DONE
         )
-        // Mặc định Figma hay để "Chưa làm" active — dùng Tất cả cho dễ xem
         selectChip(binding.chipAll, map.keys.toList())
         map.forEach { (chip, status) ->
             chip.setOnClickListener {
@@ -76,10 +96,18 @@ class PracticeExamListActivity : AppCompatActivity() {
 
     private fun renderList() {
         binding.examList.removeAllViews()
-        val data = PracticeSampleData.filteredExams(currentFilter)
+        val data = PracticeSampleData.filteredExams(currentFilter).filter { exam ->
+            if (searchQuery.isBlank()) true
+            else {
+                val q = searchQuery.lowercase()
+                exam.title.lowercase().contains(q) ||
+                    exam.index.contains(q) ||
+                    exam.meta.lowercase().contains(q)
+            }
+        }
         if (data.isEmpty()) {
             val empty = TextView(this).apply {
-                text = "Không có đề thi phù hợp bộ lọc"
+                text = getString(R.string.practice_search_empty)
                 setTextColor(getColor(R.color.practice_text_secondary))
                 textSize = 14f
                 setPadding(8, 48, 8, 8)
@@ -116,8 +144,6 @@ class PracticeExamListActivity : AppCompatActivity() {
             }
             ExamStatus.ALL -> Unit
         }
-        item.root.isClickable = true
-        item.root.isFocusable = true
         item.root.setOnClickListener {
             PracticeSampleData.currentExamId = exam.id
             startActivity(
@@ -125,16 +151,5 @@ class PracticeExamListActivity : AppCompatActivity() {
                     .putExtra(PracticeSampleData.EXTRA_EXAM_ID, exam.id)
             )
         }
-    }
-
-    private fun setupBottomNav() {
-        val toast = { label: String ->
-            Toast.makeText(this, "$label (UI mẫu)", Toast.LENGTH_SHORT).show()
-        }
-        binding.bottomNavInclude.navHome.setOnClickListener { toast(getString(R.string.practice_nav_home)) }
-        binding.bottomNavInclude.navLibrary.setOnClickListener { toast(getString(R.string.practice_nav_library)) }
-        binding.bottomNavInclude.navPractice.setOnClickListener { /* đang ở đây */ }
-        binding.bottomNavInclude.navRank.setOnClickListener { toast(getString(R.string.practice_nav_rank)) }
-        binding.bottomNavInclude.navSettings.setOnClickListener { toast(getString(R.string.practice_nav_settings)) }
     }
 }

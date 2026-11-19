@@ -61,11 +61,16 @@ class PracticePart5Activity : AppCompatActivity() {
         }
         binding.btnAddWord.setOnClickListener {
             binding.wordMenu.isVisible = false
-            Toast.makeText(this, R.string.practice_add_word, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.practice_word_added, Toast.LENGTH_SHORT).show()
         }
         binding.btnCopy.setOnClickListener {
             binding.wordMenu.isVisible = false
-            Toast.makeText(this, R.string.practice_copy, Toast.LENGTH_SHORT).show()
+            val q = PracticeSampleData.questionByNumber(currentNumber)
+            val clipboard = getSystemService(CLIPBOARD_SERVICE) as android.content.ClipboardManager
+            clipboard.setPrimaryClip(
+                android.content.ClipData.newPlainText("question", q?.stem.orEmpty())
+            )
+            Toast.makeText(this, R.string.practice_copied, Toast.LENGTH_SHORT).show()
         }
         binding.btnPrev.setOnClickListener { moveQuestion(-1) }
         binding.btnNext.setOnClickListener { moveQuestion(1) }

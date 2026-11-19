@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/practice_bg"
+    tools:context=".practice.PracticeDemoTabActivity">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/action_close"
+            android:src="@drawable/ic_practice_back" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/practice_text_primary"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:text="Trang chủ" />
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/bg_practice_card"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@null"
+            tools:src="@drawable/ic_nav_home" />
+
+        <TextView
+            android:id="@+id/tvHeadline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:textColor="@color/practice_text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="Trang chủ" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:lineSpacingExtra="3dp"
+            android:textColor="@color/practice_text_secondary"
+            android:textSize="13sp"
+            tools:text="Màn demo chức năng tab." />
+
+        <TextView
+            android:id="@+id/btnPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/bg_practice_primary_btn"
+            android:gravity="center"
+            android:text="@string/practice_back_to_practice"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/bottomNavInclude"
+        layout="@layout/include_practice_bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/practice_bottom_nav_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

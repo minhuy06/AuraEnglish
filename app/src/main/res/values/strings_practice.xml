@@ -69,4 +69,19 @@
     <string name="practice_correct_label">Đáp án đúng</string>
     <string name="practice_your_choice">Bạn chọn</string>
     <string name="practice_explanation">Giải thích</string>
+
+    <string name="practice_search_title">Tìm kiếm</string>
+    <string name="practice_search_hint">Nhập từ khóa…</string>
+    <string name="practice_search_demo_hint">Demo: lọc theo tên đề / nội dung câu hỏi trong dữ liệu mẫu.</string>
+    <string name="practice_search_clear">Xóa lọc</string>
+    <string name="practice_search_apply">Tìm</string>
+    <string name="practice_search_empty">Không tìm thấy kết quả phù hợp.</string>
+    <string name="practice_back_to_practice">Về Luyện tập</string>
+    <string name="practice_share_result">Chia sẻ kết quả: %1$d/990 • %2$s</string>
+    <string name="practice_copied">Đã sao chép câu hỏi</string>
+    <string name="practice_word_added">Đã thêm từ vào sổ từ vựng (demo)</string>
+    <string name="practice_demo_home_desc">Đây là demo tab Trang chủ. Sau này sẽ hiện lộ trình học, streak và gợi ý bài tập.</string>
+    <string name="practice_demo_library_desc">Đây là demo tab Thư viện. Sau này sẽ hiện khóa học, flashcard và tài liệu đã lưu.</string>
+    <string name="practice_demo_rank_desc">Đây là demo tab Xếp hạng. Sau này sẽ hiện bảng xếp hạng điểm TOEIC theo tuần/tháng.</string>
+    <string name="practice_demo_settings_desc">Đây là demo tab Cài đặt. Sau này sẽ hiện hồ sơ, thông báo và tùy chọn học tập.</string>
 </resources>

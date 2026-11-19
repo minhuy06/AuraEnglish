@@ -53,9 +53,33 @@ class PracticeExamOverviewActivity : AppCompatActivity() {
             getString(R.string.practice_continue)
         }
 
+        binding.btnContinue.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_practice_play, 0, 0, 0)
+        binding.btnContinue.compoundDrawablePadding = (8 * resources.displayMetrics.density).toInt()
+
         binding.btnBack.setOnClickListener { finish() }
         binding.btnSearch.setOnClickListener {
-            Toast.makeText(this, "Tìm kiếm trong đề", Toast.LENGTH_SHORT).show()
+            PracticeSearchHelper.show(
+                activity = this,
+                hint = "Ví dụ: Part 5, đọc hiểu…",
+                onApply = { query ->
+                    val matched = exam.parts.filter {
+                        it.title.contains(query, ignoreCase = true) ||
+                            it.number.toString() == query.trim()
+                    }
+                    if (query.isBlank()) {
+                        Toast.makeText(this, "Hiển thị tất cả Part", Toast.LENGTH_SHORT).show()
+                    } else if (matched.isEmpty()) {
+                        Toast.makeText(this, R.string.practice_search_empty, Toast.LENGTH_SHORT).show()
+                    } else {
+                        val names = matched.joinToString { "Part ${it.number}" }
+                        Toast.makeText(this, "Tìm thấy: $names", Toast.LENGTH_LONG).show()
+                        matched.firstOrNull { it.number == 5 }?.let { openPart(5) }
+                    }
+                },
+                onClear = {
+                    Toast.makeText(this, "Đã xóa tìm kiếm Part", Toast.LENGTH_SHORT).show()
+                }
+            )
         }
         binding.btnContinue.setOnClickListener { openPart(5) }
         binding.btnFinishExam.setOnClickListener {

@@ -3,8 +3,8 @@ package com.example.auraenglish.practice
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,6 +17,7 @@ class PracticeBookmarkedActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticeBookmarkedBinding
     private var filter = ExamStatus.ALL
+    private var searchQuery = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +34,22 @@ class PracticeBookmarkedActivity : AppCompatActivity() {
         setupFilters()
         renderList()
         binding.btnBack.setOnClickListener { finish() }
-        binding.btnSearch.setOnClickListener { /* no-op sample */ }
+        binding.btnSearch.setOnClickListener {
+            PracticeSearchHelper.show(
+                activity = this,
+                initialQuery = searchQuery,
+                hint = "Ví dụ: policy, động từ…",
+                onApply = { query ->
+                    searchQuery = query
+                    renderList()
+                },
+                onClear = {
+                    searchQuery = ""
+                    renderList()
+                    Toast.makeText(this, "Đã xóa tìm kiếm", Toast.LENGTH_SHORT).show()
+                }
+            )
+        }
     }
 
     override fun onResume() {
@@ -82,11 +98,20 @@ class PracticeBookmarkedActivity : AppCompatActivity() {
     }
 
     private fun renderList() {
+        updateChipLabels()
         binding.listContainer.removeAllViews()
-        val data = PracticeSampleData.flaggedQuestions(filter)
+        val data = PracticeSampleData.flaggedQuestions(filter).filter { q ->
+            if (searchQuery.isBlank()) true
+            else {
+                val s = searchQuery.lowercase()
+                q.stem.lowercase().contains(s) ||
+                    q.tag.lowercase().contains(s) ||
+                    q.number.toString() == searchQuery.trim()
+            }
+        }
         if (data.isEmpty()) {
             val empty = TextView(this).apply {
-                text = "Chưa có câu đánh dấu"
+                text = getString(R.string.practice_search_empty)
                 setTextColor(getColor(R.color.practice_text_secondary))
                 textSize = 14f
                 setPadding(8, 40, 8, 8)
@@ -111,7 +136,6 @@ class PracticeBookmarkedActivity : AppCompatActivity() {
                 item.tvStatus.setBackgroundResource(R.drawable.bg_practice_status_todo)
                 item.tvStatus.setTextColor(getColor(R.color.practice_pending_text))
             }
-            item.root.isClickable = true
             item.root.setOnClickListener {
                 val examId = intent.getStringExtra(PracticeSampleData.EXTRA_EXAM_ID)
                     ?: PracticeSampleData.currentExamId
