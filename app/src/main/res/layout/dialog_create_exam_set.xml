@@ -60,7 +60,6 @@
             android:layout_weight="1"
             android:background="@drawable/bg_admin_type_option"
             android:gravity="center"
-            android:selected="true"
             android:text="@string/type_paid_shop"
             android:textColor="@color/admin_primary"
             android:textSize="12sp"
