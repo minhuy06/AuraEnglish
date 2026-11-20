@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="listen_bg">#FFF0F4FF</color>
+    <color name="listen_surface">#FFFFFFFF</color>
+    <color name="listen_primary">#FFEA580C</color>
+    <color name="listen_primary_dark">#FFC2410C</color>
+    <color name="listen_primary_soft">#FFFFEDD5</color>
+    <color name="listen_text">#FF0F172A</color>
+    <color name="listen_text_secondary">#FF475569</color>
+    <color name="listen_blank">#FF64748B</color>
+    <color name="listen_correct">#FF16A34A</color>
+    <color name="listen_wrong">#FFDC2626</color>
+    <color name="listen_seek">#FFFB923C</color>
+</resources>

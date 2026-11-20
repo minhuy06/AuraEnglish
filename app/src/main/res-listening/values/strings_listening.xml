@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="listen_title">Luyện nghe</string>
+    <string name="listen_meta">10 câu · Dictation</string>
+    <string name="listen_status_todo">Chưa làm</string>
+    <string name="listen_status_doing">Đang làm - %1$d/10 câu</string>
+    <string name="listen_status_done">Hoàn thành - %1$d/10 đúng</string>
+    <string name="listen_question_progress">Câu %1$d / %2$d</string>
+    <string name="listen_play">Phát</string>
+    <string name="listen_pause">Tạm dừng</string>
+    <string name="listen_answer_hint">Nghe và gõ lại cả câu…</string>
+    <string name="listen_blank_label">Gợi ý độ dài từ</string>
+    <string name="listen_submit">Nộp câu này</string>
+    <string name="listen_resubmit">Nộp lại</string>
+    <string name="listen_prev">Câu trước</string>
+    <string name="listen_next">Câu sau</string>
+    <string name="listen_time_fmt">%1$s / %2$s</string>
+    <string name="listen_empty_answer">Hãy nhập đáp án trước khi nộp</string>
+    <string name="listen_result_label">Kết quả từng từ</string>
+    <string name="dash_filter_listen">Luyện nghe</string>
+</resources>
