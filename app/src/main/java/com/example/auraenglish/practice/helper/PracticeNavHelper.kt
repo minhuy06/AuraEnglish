@@ -13,6 +13,7 @@ import com.example.auraenglish.dashboard.ui.DashboardHomeActivity
 import com.example.auraenglish.practice.ui.PracticeDemoTabActivity
 import com.example.auraenglish.profile.ui.ProfileSettingsActivity
 import com.example.auraenglish.ranking.ui.RankingActivity
+import com.example.auraenglish.vocab.ui.CustomTopicListActivity
 
 // Tab bottom nav (chung practice + ranking)
 enum class PracticeTab { HOME, LIBRARY, PRACTICE, RANK, SETTINGS }
@@ -60,13 +61,13 @@ object PracticeNavHelper {
                 )
                 if (activity !is DashboardHomeActivity) activity.finish()
             }
-            // Thư viện để trống (placeholder)
+            // Thư viện → Chủ đề tự tạo
             PracticeTab.LIBRARY -> {
                 activity.startActivity(
-                    Intent(activity, PracticeDemoTabActivity::class.java)
-                        .putExtra(EXTRA_TAB, PracticeTab.LIBRARY.name)
+                    Intent(activity, CustomTopicListActivity::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 )
-                activity.finish()
+                if (activity !is CustomTopicListActivity) activity.finish()
             }
             // Danh mục khóa học nằm ở tab Luyện tập
             PracticeTab.PRACTICE -> {

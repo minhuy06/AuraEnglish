@@ -53,6 +53,18 @@
             android:exported="false" />
 
         <activity
+            android:name=".vocab.ui.CustomTopicListActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".vocab.ui.CustomTopicDetailActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".vocab.ui.FlashcardStudyActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".admin.ui.AdminExamShopActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
