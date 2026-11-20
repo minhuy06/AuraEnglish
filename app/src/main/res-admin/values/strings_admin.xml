@@ -112,4 +112,27 @@
     <string name="admin_stats_positive_change_fmt">Tăng %1$s so với kỳ trước</string>
     <string name="admin_stats_negative_change_fmt">Giảm %1$s so với kỳ trước</string>
     <string name="admin_stats_stable_change">Ổn định so với kỳ trước</string>
+
+    <!-- Admin: Quản lý học viên -->
+    <string name="admin_students_title">Quản lý học viên</string>
+    <string name="admin_students_subtitle">Theo dõi tiến độ và trạng thái tài khoản</string>
+    <string name="admin_students_summary_fmt">%1$d học viên • %2$d cần hỗ trợ</string>
+    <string name="admin_students_search_hint">Tìm theo tên, email hoặc khóa học...</string>
+    <string name="admin_students_filter_all_fmt">Tất cả (%1$d)</string>
+    <string name="admin_students_filter_active_fmt">Hoạt động (%1$d)</string>
+    <string name="admin_students_filter_risk_fmt">Cần hỗ trợ (%1$d)</string>
+    <string name="admin_students_filter_suspended_fmt">Tạm khóa (%1$d)</string>
+    <string name="admin_students_empty">Không tìm thấy học viên phù hợp</string>
+    <string name="admin_student_status_active">Đang học</string>
+    <string name="admin_student_status_at_risk">Cần hỗ trợ</string>
+    <string name="admin_student_status_suspended">Tạm khóa</string>
+    <string name="admin_student_course_fmt">Khóa học: %1$s</string>
+    <string name="admin_student_progress_label">Tiến độ khóa học</string>
+    <string name="admin_student_progress_fmt">%1$d%%</string>
+    <string name="admin_student_learning_meta_fmt">%1$d/%2$d bài • Chuỗi %3$d ngày</string>
+    <string name="admin_student_last_active_fmt">Hoạt động: %1$s</string>
+    <string name="admin_student_action_profile">Xem hồ sơ</string>
+    <string name="admin_student_action_suspend">Tạm khóa</string>
+    <string name="admin_student_action_reactivate">Mở khóa</string>
+    <string name="admin_student_avatar_description">Ảnh đại diện của %1$s</string>
 </resources>

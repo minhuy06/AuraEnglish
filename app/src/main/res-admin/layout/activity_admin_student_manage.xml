@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootAdminStudentManage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/admin_bg"
+    tools:context=".admin.ui.AdminStudentManageActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerAdminStudents"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_admin_header"
+        android:paddingHorizontal="@dimen/admin_screen_padding"
+        android:paddingTop="14dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvAdminStudentsTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:text="@string/admin_students_title"
+            android:textColor="@color/admin_text_primary"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/tvStudentsSummary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvAdminStudentsSubtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="10dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/be_vietnam_pro_regular"
+            android:maxLines="1"
+            android:text="@string/admin_students_subtitle"
+            android:textColor="@color/admin_text_secondary"
+            android:textSize="11.5sp"
+            app:layout_constraintEnd_toStartOf="@id/tvStudentsSummary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAdminStudentsTitle" />
+
+        <TextView
+            android:id="@+id/tvStudentsSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_admin_students_summary"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:textColor="@color/admin_cyan"
+            android:textSize="9.5sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvAdminStudentsSubtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvAdminStudentsTitle"
+            tools:text="8 học viên" />
+
+        <LinearLayout
+            android:id="@+id/searchStudentContainer"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/bg_admin_search"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAdminStudentsSubtitle">
+
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:contentDescription="@string/admin_students_search_hint"
+                android:src="@drawable/ic_admin_search" />
+
+            <EditText
+                android:id="@+id/edtSearchStudent"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:fontFamily="@font/be_vietnam_pro_regular"
+                android:hint="@string/admin_students_search_hint"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/admin_text_primary"
+                android:textColorHint="@color/admin_text_placeholder"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/scrollStudentFilters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchStudentContainer">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/chipStudentAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_admin_chip_active"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:paddingHorizontal="14dp"
+                    android:textColor="@color/white"
+                    android:textSize="11.5sp"
+                    tools:text="Tất cả (8)" />
+
+                <TextView
+                    android:id="@+id/chipStudentActive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_admin_chip_inactive"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:gravity="center"
+                    android:paddingHorizontal="14dp"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="11.5sp"
+                    tools:text="Hoạt động (5)" />
+
+                <TextView
+                    android:id="@+id/chipStudentRisk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_admin_chip_inactive"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:gravity="center"
+                    android:paddingHorizontal="14dp"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="11.5sp"
+                    tools:text="Cần hỗ trợ (2)" />
+
+                <TextView
+                    android:id="@+id/chipStudentSuspended"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_admin_chip_inactive"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:gravity="center"
+                    android:paddingHorizontal="14dp"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="11.5sp"
+                    tools:text="Tạm khóa (1)" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAdminStudents"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="14dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@id/includeAdminBottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerAdminStudents" />
+
+    <TextView
+        android:id="@+id/tvEmptyAdminStudents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/be_vietnam_pro_medium"
+        android:text="@string/admin_students_empty"
+        android:textColor="@color/admin_text_placeholder"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/includeAdminBottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerAdminStudents" />
+
+    <include
+        android:id="@+id/includeAdminBottomNav"
+        layout="@layout/include_admin_bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/admin_bottom_nav_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
