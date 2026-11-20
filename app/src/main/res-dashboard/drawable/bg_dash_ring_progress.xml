@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape
+            android:innerRadiusRatio="2.6"
+            android:shape="ring"
+            android:thicknessRatio="12"
+            android:useLevel="false">
+            <solid android:color="@color/dash_progress_track" />
+        </shape>
+    </item>
+    <item>
+        <shape
+            android:innerRadiusRatio="2.6"
+            android:shape="ring"
+            android:thicknessRatio="12"
+            android:useLevel="true">
+            <solid android:color="@color/dash_primary_mid" />
+        </shape>
+    </item>
+</layer-list>

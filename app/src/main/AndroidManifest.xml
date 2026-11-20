@@ -13,7 +13,7 @@
         android:theme="@style/Theme.AuraEnglish">
 
         <activity
-            android:name=".practice.ui.PracticeExamListActivity"
+            android:name=".dashboard.ui.DashboardHomeActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -22,6 +22,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".dashboard.ui.DashboardCategoryActivity" android:exported="false" />
+        <activity android:name=".dashboard.ui.DashboardStoreActivity" android:exported="false" />
+
+        <activity
+            android:name=".practice.ui.PracticeExamListActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".practice.ui.PracticeExamOverviewActivity" android:exported="false" />
         <activity android:name=".practice.ui.PracticePart5Activity" android:exported="false" />
         <activity android:name=".practice.ui.PracticeBookmarkedActivity" android:exported="false" />
