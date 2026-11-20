@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootGrammarQuiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grammar_bg"
+    android:padding="@dimen/grammar_screen_padding">
+
+    <!-- Header -->
+    <ImageButton
+        android:id="@+id/btnBackGrammarQuiz"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/grammar_back_desc"
+        android:src="@drawable/ic_practice_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/grammar_text_primary" />
+
+    <TextView
+        android:id="@+id/tvQuizTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:gravity="center"
+        android:text="@string/grammar_title"
+        android:textColor="@color/grammar_text_primary"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnBackGrammarQuiz" />
+
+    <TextView
+        android:id="@+id/tvQuizSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/be_vietnam_pro_medium"
+        android:textColor="@color/grammar_text_secondary"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvQuizTitle" />
+
+    <!-- Nội dung câu hỏi + 4 đáp án -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollQuizContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btnNextOrSubmit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvQuizSubtitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Card câu hỏi -->
+            <LinearLayout
+                android:id="@+id/cardQuestionPrompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_grammar_card"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:id="@+id/tvQuestionLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:textColor="@color/grammar_primary_cyan"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvQuestionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="@color/grammar_text_primary"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Đáp án A -->
+            <LinearLayout
+                android:id="@+id/optionA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_grammar_option_default"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvOptionALetter"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_grammar_circle_default"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:text="A"
+                    android:textColor="@color/grammar_text_primary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvOptionAText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:textColor="@color/grammar_text_primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Đáp án B -->
+            <LinearLayout
+                android:id="@+id/optionB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_grammar_option_default"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvOptionBLetter"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_grammar_circle_default"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:text="B"
+                    android:textColor="@color/grammar_text_primary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvOptionBText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:textColor="@color/grammar_text_primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Đáp án C -->
+            <LinearLayout
+                android:id="@+id/optionC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_grammar_option_default"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvOptionCLetter"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_grammar_circle_default"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:text="C"
+                    android:textColor="@color/grammar_text_primary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvOptionCText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:textColor="@color/grammar_text_primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Đáp án D -->
+            <LinearLayout
+                android:id="@+id/optionD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_grammar_option_default"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvOptionDLetter"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_grammar_circle_default"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:text="D"
+                    android:textColor="@color/grammar_text_primary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvOptionDText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:textColor="@color/grammar_text_primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Nút Tiếp theo / Nộp bài -->
+    <TextView
+        android:id="@+id/btnNextOrSubmit"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/grammar_btn_height"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_grammar_btn_primary"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="@string/grammar_btn_next"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/btnPrevQuestion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Nút Xem lại câu trước -->
+    <TextView
+        android:id="@+id/btnPrevQuestion"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/grammar_btn_height"
+        android:background="@drawable/bg_grammar_btn_secondary"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/be_vietnam_pro_semibold"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="@string/grammar_btn_prev"
+        android:textColor="@color/grammar_text_primary"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
