@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_practice_screen"
+    tools:context=".practice.ui.PracticeExamOverviewActivity">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/practice_screen_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="@dimen/practice_header_icon"
+            android:layout_height="@dimen/practice_header_icon"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/action_close"
+            android:src="@drawable/ic_practice_back" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/btnSearch"
+            android:layout_width="@dimen/practice_header_icon"
+            android:layout_height="@dimen/practice_header_icon"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/practice_title"
+            android:src="@drawable/ic_practice_search" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/practice_screen_padding"
+        android:paddingBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvExamTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/practice_text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                tools:text="Đề thi 01" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_practice_hero"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/practice_mock_label"
+                    android:textColor="@color/practice_on_primary_soft"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvHeroTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="Đề thi 01" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/practice_exam_meta"
+                    android:textColor="@color/practice_on_primary_muted"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/btnContinue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/bg_practice_card"
+                    android:gravity="center"
+                    android:paddingHorizontal="18dp"
+                    android:text="@string/practice_continue"
+                    android:textColor="@color/practice_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_practice_card"
+                android:elevation="1dp"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <include
+                    android:id="@+id/part1"
+                    layout="@layout/item_practice_part" />
+
+                <include
+                    android:id="@+id/part2"
+                    layout="@layout/item_practice_part" />
+
+                <include
+                    android:id="@+id/part3"
+                    layout="@layout/item_practice_part" />
+
+                <include
+                    android:id="@+id/part4"
+                    layout="@layout/item_practice_part" />
+
+                <include
+                    android:id="@+id/part5"
+                    layout="@layout/item_practice_part" />
+
+                <include
+                    android:id="@+id/part6"
+                    layout="@layout/item_practice_part" />
+
+                <include
+                    android:id="@+id/part7"
+                    layout="@layout/item_practice_part" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout
+        android:id="@+id/footer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/practice_surface"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/btnFinishExam"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_practice_outline_btn"
+            android:gravity="center"
+            android:text="@string/practice_finish_exam"
+            android:textColor="@color/practice_primary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

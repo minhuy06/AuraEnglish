@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_practice_screen"
+    tools:context=".ranking.ui.RankingActivity">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/practice_screen_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:letterSpacing="0.01"
+            android:text="@string/rank_title"
+            android:textColor="@color/practice_text_primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnCart"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/rank_cart"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_rank_cart" />
+
+        <ImageButton
+            android:id="@+id/btnBell"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/rank_notifications"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_rank_bell" />
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/filterScroll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/practice_screen_padding"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/chipDay"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_practice_chip_inactive"
+                android:gravity="center"
+                android:minWidth="76dp"
+                android:paddingHorizontal="16dp"
+                android:text="@string/rank_day"
+                android:textColor="@color/practice_primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/chipWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_practice_chip_active"
+                android:elevation="2dp"
+                android:gravity="center"
+                android:minWidth="76dp"
+                android:paddingHorizontal="16dp"
+                android:text="@string/rank_week"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/chipMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_practice_chip_inactive"
+                android:gravity="center"
+                android:minWidth="76dp"
+                android:paddingHorizontal="16dp"
+                android:text="@string/rank_month"
+                android:textColor="@color/practice_primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/chipYear"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_practice_chip_inactive"
+                android:gravity="center"
+                android:minWidth="76dp"
+                android:paddingHorizontal="16dp"
+                android:text="@string/rank_year"
+                android:textColor="@color/practice_primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/podiumRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/practice_screen_padding"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterScroll">
+
+                <!-- Rank 2 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/avatar2"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_rank_avatar_ring_silver"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:textColor="@color/practice_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:text="MA" />
+
+                    <TextView
+                        android:id="@+id/name2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/practice_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        tools:text="Minh Anh" />
+
+                    <TextView
+                        android:id="@+id/xp2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/bg_rank_xp_pill"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="2dp"
+                        android:textColor="@color/rank_xp"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        tools:text="2.180 XP" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="118dp"
+                        android:layout_marginHorizontal="6dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_rank_podium_2"
+                        android:elevation="3dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="2"
+                            android:textColor="@color/white"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <!-- Rank 1 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center_horizontal"
+                            android:contentDescription="@null"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_rank_crown" />
+
+                        <TextView
+                            android:id="@+id/avatar1"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_marginTop="26dp"
+                            android:background="@drawable/bg_rank_avatar_ring_gold"
+                            android:elevation="6dp"
+                            android:gravity="center"
+                            android:textColor="@color/practice_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            tools:text="TL" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/name1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/practice_text_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        tools:text="Tuấn Long" />
+
+                    <TextView
+                        android:id="@+id/xp1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/bg_rank_xp_pill"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="2dp"
+                        android:textColor="@color/rank_xp"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        tools:text="2.950 XP" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="148dp"
+                        android:layout_marginHorizontal="4dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_rank_podium_1"
+                        android:elevation="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="1"
+                            android:textColor="@color/white"
+                            android:textSize="34sp"
+                            android:textStyle="bold" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <!-- Rank 3 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/avatar3"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_rank_avatar_ring_bronze"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:textColor="@color/practice_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:text="QB" />
+
+                    <TextView
+                        android:id="@+id/name3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/practice_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        tools:text="Quốc Bảo" />
+
+                    <TextView
+                        android:id="@+id/xp3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/bg_rank_xp_pill"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="2dp"
+                        android:textColor="@color/rank_xp"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        tools:text="2.000 XP" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="96dp"
+                        android:layout_marginHorizontal="6dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_rank_podium_3"
+                        android:elevation="3dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="3"
+                            android:textColor="@color/white"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
+                    </FrameLayout>
+                </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/rankListCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/practice_screen_padding"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_rank_list_card"
+        android:clipChildren="true"
+        android:clipToOutline="true"
+        android:elevation="3dp"
+        android:outlineProvider="background"
+        app:layout_constraintBottom_toTopOf="@id/stickyRank"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/podiumRow">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rankList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            android:overScrollMode="never"
+            android:paddingHorizontal="12dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/stickyRank"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/practice_screen_padding"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_rank_sticky"
+        android:elevation="10dp"
+        android:gravity="center_vertical"
+        android:minHeight="56dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="12dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavInclude"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvStickyRank"
+            android:layout_width="28dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="6" />
+
+        <TextView
+            android:id="@+id/tvStickyAvatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_rank_avatar_circle"
+            android:gravity="center"
+            android:textColor="@color/rank_sticky"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:text="DH" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvStickyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="Duy Hưng" />
+
+            <TextView
+                android:id="@+id/tvStickyGap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/rank_on_primary_muted"
+                android:textSize="11sp"
+                tools:text="Còn 100 XP để lên hạng 5" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvStickyXp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            tools:text="1.920 XP" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/bottomNavInclude"
+        layout="@layout/include_practice_bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/practice_bottom_nav_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/auth_header_height"
+    android:background="@drawable/bg_auth_header"
+    android:clipChildren="false"
+    android:paddingHorizontal="@dimen/auth_screen_padding">
+
+    <View
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:background="@drawable/bg_auth_circle"
+        android:translationX="34dp"
+        android:translationY="-38dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="22dp"
+        android:background="@drawable/bg_auth_dot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnAuthBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="-12dp"
+        android:layout_marginTop="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/auth_back_description"
+        android:padding="12dp"
+        android:src="@drawable/ic_auth_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAuthLogo"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/bg_auth_logo_yellow"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:gravity="center"
+        android:textColor="@color/auth_primary_dark"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnAuthBack"
+        tools:text="A" />
+
+    <TextView
+        android:id="@+id/tvAuthHeaderTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:textColor="@color/white"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAuthLogo"
+        tools:text="Chào mừng trở lại" />
+
+    <TextView
+        android:id="@+id/tvAuthHeaderSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/be_vietnam_pro_regular"
+        android:maxLines="2"
+        android:textColor="@color/auth_text_on_primary_muted"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAuthHeaderTitle"
+        tools:text="Đăng nhập để tiếp tục hành trình học tập của bạn." />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

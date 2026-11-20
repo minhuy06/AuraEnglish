@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AuraEnglish">
+
+        <activity
+            android:name=".auth.ui.WelcomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".auth.ui.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".auth.ui.RegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".auth.ui.VerifyEmailActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".auth.ui.ForgotPasswordActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".auth.ui.ResetCodeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".auth.ui.NewPasswordActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".auth.ui.ResetSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dashboard.ui.DashboardHomeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity android:name=".dashboard.ui.DashboardCategoryActivity" android:exported="false" />
+        <activity android:name=".dashboard.ui.DashboardStoreActivity" android:exported="false" />
+
+        <activity
+            android:name=".practice.ui.PracticeExamListActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".practice.ui.PracticeExamOverviewActivity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticePart5Activity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticeBookmarkedActivity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticeResultActivity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticeAnswerReviewActivity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticeDemoTabActivity" android:exported="false" />
+        <activity android:name=".ranking.ui.RankingActivity" android:exported="false" />
+
+        <activity
+            android:name=".profile.ui.ProfileSettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".profile.ui.EditProfileActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".profile.ui.ChangePasswordActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".profile.ui.GoalReminderActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".vocab.ui.CustomTopicListActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".vocab.ui.CustomTopicDetailActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".vocab.ui.FlashcardStudyActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".grammar.ui.GrammarQuizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".grammar.ui.GrammarReviewActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".listening.ui.ListeningExamListActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".listening.ui.ListeningQuestionActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".admin.ui.AdminExamShopActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".admin.ui.AdminCourseManageActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".room.ui.RoomHubActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".room.ui.RoomLobbyActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".room.ui.RoomExamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".room.ui.RoomRankingActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+    </application>
+
+</manifest>

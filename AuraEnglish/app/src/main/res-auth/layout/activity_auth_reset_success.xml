@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootAuthResetSuccess"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/auth_background"
+    android:paddingHorizontal="@dimen/auth_screen_padding">
+
+    <ImageView
+        android:id="@+id/imgResetSuccess"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:background="@drawable/bg_auth_success_circle"
+        android:contentDescription="@string/auth_success_icon_description"
+        android:padding="22dp"
+        android:src="@drawable/ic_auth_check"
+        app:layout_constraintBottom_toTopOf="@id/tvResetSuccessTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvResetSuccessTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:text="@string/auth_success_title"
+        android:textColor="@color/auth_text_primary"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/tvResetSuccessSubtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvResetSuccessSubtitle"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/be_vietnam_pro_regular"
+        android:gravity="center"
+        android:text="@string/auth_success_subtitle"
+        android:textColor="@color/auth_text_secondary"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@id/btnLoginNow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvResetSuccessTitle" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLoginNow"
+        style="@style/Widget.AuraEnglish.AuthPrimaryButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/auth_button_height"
+        android:layout_marginBottom="22dp"
+        android:text="@string/auth_login_now"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

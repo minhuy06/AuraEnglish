@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_profile_card"
+    android:padding="20dp">
+
+    <ImageButton
+        android:id="@+id/btnCloseLogoutDialog"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/profile_btn_cancel"
+        android:src="@drawable/ic_practice_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/profile_text_muted" />
+
+    <TextView
+        android:id="@+id/tvLogoutAlertBadge"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_profile_badge_danger_circle"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:gravity="center"
+        android:text="!"
+        android:textColor="@color/profile_danger_text"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLogoutDialogTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:gravity="center"
+        android:text="@string/profile_logout_dialog_title"
+        android:textColor="@color/profile_text_primary"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLogoutAlertBadge" />
+
+    <TextView
+        android:id="@+id/tvLogoutDialogMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/be_vietnam_pro_regular"
+        android:gravity="center"
+        android:lineSpacingExtra="2dp"
+        android:text="@string/profile_logout_dialog_msg"
+        android:textColor="@color/profile_text_secondary"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLogoutDialogTitle" />
+
+    <!-- Nút Ở lại (Outlined xanh) -->
+    <TextView
+        android:id="@+id/btnStayLoggedIn"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_profile_btn_outlined"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="@string/profile_logout_btn_stay"
+        android:textColor="@color/profile_primary_royal"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLogoutDialogMessage" />
+
+    <!-- Nút Đăng xuất (Solid đỏ) -->
+    <TextView
+        android:id="@+id/btnConfirmLogout"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_profile_btn_danger"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="@string/profile_logout_btn_confirm"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnStayLoggedIn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

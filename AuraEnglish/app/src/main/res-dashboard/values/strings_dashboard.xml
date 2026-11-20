@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dash_greeting_name">Duy Hưng</string>
+    <string name="dash_daily_goal">Mục tiêu hằng ngày</string>
+    <string name="dash_daily_progress">Hoàn thành 4/5 bài học hôm nay</string>
+    <string name="dash_daily_percent">80%</string>
+    <string name="dash_streak">Chuỗi 7 ngày liên tiếp!</string>
+    <string name="dash_week_title">Lộ trình tuần này</string>
+    <string name="dash_week_mon">T2</string>
+    <string name="dash_week_tue">T3</string>
+    <string name="dash_week_wed">T4</string>
+    <string name="dash_week_thu">T5</string>
+    <string name="dash_week_fri">T6</string>
+    <string name="dash_week_sat">T7</string>
+    <string name="dash_week_sun">CN</string>
+    <string name="dash_hero_title">Hôm nay học gì?</string>
+    <string name="dash_hero_suggest">Gợi ý: tiếp tục Đề thi thử 03 · còn ~93 phút</string>
+    <string name="dash_hero_cta">Bắt đầu ngay</string>
+    <string name="dash_continue_title">Tiếp tục học</string>
+    <string name="dash_continue_course">Từ vựng và Ngữ pháp</string>
+    <string name="dash_continue_meta">Đang học 13 phút 10 giây</string>
+    <string name="dash_skills_title">Luyện tập kỹ năng</string>
+    <string name="dash_skill_progress_vocab">42%</string>
+    <string name="dash_skill_progress_grammar">78%</string>
+    <string name="dash_skill_progress_exam">35%</string>
+    <string name="dash_skill_progress_listen">18%</string>
+    <string name="dash_empty_title">Chưa có kết quả</string>
+    <string name="dash_empty_tip">Thử từ khóa khác, hoặc mở tab Luyện đề để làm thử đề TOEIC.</string>
+    <string name="dash_empty_library_tip">Mẹo: khi làm đề, bôi đen từ khó rồi thêm vào Thư viện để ôn sau.</string>
+    <string name="dash_skill_vocab">Từ vựng</string>
+    <string name="dash_skill_vocab_meta">120 từ mới</string>
+    <string name="dash_skill_grammar">Ngữ pháp</string>
+    <string name="dash_skill_grammar_meta">Cấp độ A1-A2</string>
+    <string name="dash_skill_exam">Luyện Đề</string>
+    <string name="dash_skill_exam_meta">Giải quyết bài tập</string>
+    <string name="dash_skill_listen">Luyện nghe</string>
+    <string name="dash_skill_listen_meta">Podcast mới</string>
+    <string name="dash_cart">Cửa hàng</string>
+    <string name="dash_notifications">Thông báo</string>
+
+    <string name="dash_category_title">Danh mục khóa học</string>
+    <string name="dash_search_courses">Tìm kiếm bài học, chủ đề…</string>
+    <string name="dash_search_all">Tìm khóa học hoặc đề thi…</string>
+    <string name="dash_section_exams">Luyện đề</string>
+    <string name="dash_filter_all">Tất cả</string>
+    <string name="dash_filter_vocab">Từ vựng</string>
+    <string name="dash_filter_grammar">Ngữ pháp</string>
+    <string name="dash_filter_exam">Luyện đề</string>
+    <string name="dash_progress_fmt">Đang học %1$d/%2$d bài</string>
+    <string name="dash_done_fmt">Đã làm %1$d/%2$d bài</string>
+    <string name="dash_meta_topics">%1$d chủ đề • %2$d bài học</string>
+    <string name="dash_meta_questions">%1$d câu hỏi</string>
+
+    <string name="dash_store_title">Cửa hàng</string>
+    <string name="dash_search_store">Tìm kiếm đề thi, bộ đề…</string>
+    <string name="dash_store_all">Tất cả</string>
+    <string name="dash_store_owned">Đã mua</string>
+    <string name="dash_store_not_owned">Chưa mua</string>
+    <string name="dash_buy">Mua</string>
+    <string name="dash_practice_cta">Vào luyện</string>
+    <string name="dash_price_fmt">%1$sđ</string>
+</resources>

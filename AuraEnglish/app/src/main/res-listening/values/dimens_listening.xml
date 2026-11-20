@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="listen_card_gap">12dp</dimen>
+    <dimen name="listen_index_size">44dp</dimen>
+    <dimen name="listen_radius">14dp</dimen>
+</resources>

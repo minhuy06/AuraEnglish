@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="vocab_bg">#EFF4FF</color>
+    <color name="vocab_surface">#FFFFFF</color>
+    <color name="vocab_primary">#1B3B8B</color>
+    <color name="vocab_primary_royal">#2563EB</color>
+    <color name="vocab_primary_cyan">#0284C7</color>
+    <color name="vocab_primary_soft">#E8F0FE</color>
+    <color name="vocab_primary_border">#BFDBFE</color>
+
+    <color name="vocab_text_primary">#0F172A</color>
+    <color name="vocab_text_secondary">#64748B</color>
+    <color name="vocab_text_muted">#94A3B8</color>
+    <color name="vocab_border">#E2E8F0</color>
+    <color name="vocab_progress_track">#DCE7FA</color>
+    <color name="vocab_illustration_bg">#F1F5FF</color>
+
+    <color name="vocab_learned_bg">#DCFCE7</color>
+    <color name="vocab_learned_border">#BBF7D0</color>
+    <color name="vocab_learned_text">#16A34A</color>
+
+    <color name="vocab_unlearned_bg">#FEE2E2</color>
+    <color name="vocab_unlearned_border">#FECACA</color>
+    <color name="vocab_unlearned_text">#EF4444</color>
+</resources>

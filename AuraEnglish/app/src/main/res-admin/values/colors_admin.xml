@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Admin palette: Quản lý bộ đề & Cửa hàng -->
+    <color name="admin_bg">#FFF8FAFC</color>
+    <color name="admin_surface">#FFFFFFFF</color>
+    <color name="admin_border">#FFE2E8F0</color>
+    <color name="admin_border_muted">#FFCBD5E1</color>
+
+    <color name="admin_text_primary">#FF0F172A</color>
+    <color name="admin_text_secondary">#FF64748B</color>
+    <color name="admin_text_muted">#FF475569</color>
+    <color name="admin_text_placeholder">#FF94A3B8</color>
+    <color name="admin_text_action">#FF334155</color>
+
+    <color name="admin_primary">#FF1D4ED8</color>
+    <color name="admin_primary_soft">#FFEFF6FF</color>
+    <color name="admin_primary_border">#FFBFDBFE</color>
+    <color name="admin_primary_index_bg">#FFDBEAFE</color>
+
+    <color name="admin_price_bg">#FFFEF3C7</color>
+    <color name="admin_price_text">#FFD97706</color>
+
+    <color name="admin_success">#FF16A34A</color>
+    <color name="admin_success_soft">#FFDCFCE7</color>
+
+    <color name="admin_danger">#FFDC2626</color>
+    <color name="admin_danger_soft">#FFFEF2F2</color>
+    <color name="admin_danger_border">#FFFECACA</color>
+
+    <color name="admin_nav_inactive">#FF94A3B8</color>
+    <color name="admin_overlay">#990F172A</color>
+</resources>

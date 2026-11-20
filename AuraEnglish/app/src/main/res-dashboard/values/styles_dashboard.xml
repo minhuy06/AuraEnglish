@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.AuraEnglish.DashDisplay" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:fontFamily">@font/dash_display</item>
+        <item name="fontFamily">@font/dash_display</item>
+        <item name="android:textColor">@color/dash_text</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.AuraEnglish.DashTitle" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">@font/dash_display</item>
+        <item name="fontFamily">@font/dash_display</item>
+        <item name="android:textColor">@color/dash_text</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.AuraEnglish.DashBody" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@font/dash_body</item>
+        <item name="fontFamily">@font/dash_body</item>
+        <item name="android:textColor">@color/dash_text_muted</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+
+    <style name="TextAppearance.AuraEnglish.DashLabel" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:fontFamily">@font/dash_body</item>
+        <item name="fontFamily">@font/dash_body</item>
+        <item name="android:textColor">@color/dash_text</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

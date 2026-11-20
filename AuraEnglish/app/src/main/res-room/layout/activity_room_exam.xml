@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootRoomExam"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/room_bg"
+    android:padding="@dimen/room_screen_padding">
+
+    <!-- Header: Back + Mã phòng • Chủ đề + Timer -->
+    <ImageButton
+        android:id="@+id/btnExitRoomExam"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/room_back_desc"
+        android:src="@drawable/ic_practice_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/room_text_primary" />
+
+    <TextView
+        android:id="@+id/tvRoomExamHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:textColor="@color/room_text_primary"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@id/tvRoomExamTimer"
+        app:layout_constraintStart_toEndOf="@id/btnExitRoomExam"
+        app:layout_constraintTop_toTopOf="@id/btnExitRoomExam" />
+
+    <TextView
+        android:id="@+id/tvRoomExamLiveStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:fontFamily="@font/be_vietnam_pro_regular"
+        android:textColor="@color/room_text_secondary"
+        android:textSize="11.5sp"
+        app:layout_constraintEnd_toStartOf="@id/tvRoomExamTimer"
+        app:layout_constraintStart_toEndOf="@id/btnExitRoomExam"
+        app:layout_constraintTop_toBottomOf="@id/tvRoomExamHeader" />
+
+    <TextView
+        android:id="@+id/tvRoomExamTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:background="@drawable/bg_grammar_timer_pill"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:gravity="center"
+        android:paddingHorizontal="10dp"
+        android:textColor="@color/room_primary_royal"
+        android:textSize="12.5sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvRoomExamLiveStatus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvRoomExamHeader" />
+
+    <!-- Progress Bar + Bộ đếm câu -->
+    <ProgressBar
+        android:id="@+id/pbRoomExam"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="7dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="10dp"
+        android:max="100"
+        android:progress="20"
+        android:progressDrawable="@drawable/progress_vocab_horizontal"
+        app:layout_constraintEnd_toStartOf="@id/tvRoomExamCounter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRoomExamLiveStatus" />
+
+    <TextView
+        android:id="@+id/tvRoomExamCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:textColor="@color/room_primary_royal"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/pbRoomExam"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/pbRoomExam" />
+
+    <!-- Câu hỏi & 4 Đáp án -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollRoomExam"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="14dp"
+        app:layout_constraintBottom_toTopOf="@id/btnRoomNextOrSubmit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pbRoomExam">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_room_card"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:id="@+id/tvRoomQuestionLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:textColor="@color/room_primary_royal"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvRoomQuestionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:lineSpacingExtra="4dp"
+                    android:textColor="@color/room_text_primary"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/roomOptA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_grammar_option_default"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvRoomOptALetter"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_grammar_circle_default"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:text="A"
+                    android:textColor="@color/room_text_primary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvRoomOptAText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:textColor="@color/room_text_primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/roomOptB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_grammar_option_default"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvRoomOptBLetter"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_grammar_circle_default"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:text="B"
+                    android:textColor="@color/room_text_primary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvRoomOptBText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:textColor="@color/room_text_primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/roomOptC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_grammar_option_default"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvRoomOptCLetter"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_grammar_circle_default"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:text="C"
+                    android:textColor="@color/room_text_primary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvRoomOptCText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:textColor="@color/room_text_primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/roomOptD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_grammar_option_default"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvRoomOptDLetter"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_grammar_circle_default"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:text="D"
+                    android:textColor="@color/room_text_primary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvRoomOptDText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:textColor="@color/room_text_primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- 2 Nút điều hướng -->
+    <TextView
+        android:id="@+id/btnRoomNextOrSubmit"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/room_btn_height"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_room_btn_primary"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="@string/grammar_btn_next"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/btnRoomPrevQuestion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/btnRoomPrevQuestion"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:background="@drawable/bg_grammar_btn_secondary"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/be_vietnam_pro_semibold"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="@string/grammar_btn_prev"
+        android:textColor="@color/room_text_primary"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
