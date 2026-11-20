@@ -44,6 +44,7 @@ android {
                 "src/main/res-grammar",
                 "src/main/res-listening",
                 "src/main/res-room",
+                "src/main/res-auth",
             )
         }
     }
