@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="goal_bg_dark">#FF1B2559</color>
+    <color name="goal_bg_dark_card">#FF243272</color>
+    <color name="goal_bg_light">#FFF5F6FA</color>
+    <color name="goal_surface">#FFFFFFFF</color>
+    <color name="goal_primary">#FF2F67D5</color>
+    <color name="goal_primary_dark">#FF21479B</color>
+    <color name="goal_accent_yellow">#FFFFC928</color>
+    <color name="goal_accent_yellow_soft">#33FFC928</color>
+    <color name="goal_text_white">#FFFFFFFF</color>
+    <color name="goal_text_white_muted">#B3FFFFFF</color>
+    <color name="goal_text_primary">#FF14213D</color>
+    <color name="goal_text_secondary">#FF71809B</color>
+    <color name="goal_option_blue">#FF2F67D5</color>
+    <color name="goal_option_green">#FF22C55E</color>
+    <color name="goal_option_orange">#FFFFA726</color>
+    <color name="goal_option_pink">#FFEF5350</color>
+    <color name="goal_option_selected_bg">#1A2F67D5</color>
+    <color name="goal_option_default_bg">#0D1B2559</color>
+    <color name="goal_quiz_selected_bg">#FFFFC928</color>
+    <color name="goal_quiz_option_bg">#FFF1F3F9</color>
+    <color name="goal_correct_green">#FF22C55E</color>
+    <color name="goal_correct_green_soft">#1A22C55E</color>
+    <color name="goal_warning_orange">#FFFFA726</color>
+    <color name="goal_warning_orange_soft">#1AFFA726</color>
+    <color name="goal_error_red">#FFEF5350</color>
+    <color name="goal_score_circle_bg">#FF2F67D5</color>
+    <color name="goal_divider">#FFE5E7EB</color>
+    <color name="goal_progress_track">#33FFFFFF</color>
+    <color name="goal_progress_fill">#FFFFC928</color>
+    <color name="goal_stat_skip">#FF9CA3AF</color>
+</resources>

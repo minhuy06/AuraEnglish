@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Goal Selection -->
+    <string name="goal_step_format">Bước %1$d/3</string>
+    <string name="goal_setup_label">THIẾT LẬP MỤC TIÊU</string>
+    <string name="goal_select_title">Mục tiêu học tập của bạn\nlà gì?</string>
+    <string name="goal_select_subtitle">Chọn để chúng tôi thiết kế lộ trình phù hợp nhất</string>
+    <string name="goal_option_daily">Giao tiếp hàng ngày</string>
+    <string name="goal_option_daily_desc">Tự tin nói tiếng Anh trong cuộc sống hàng ngày</string>
+    <string name="goal_option_toeic">Công việc / TOEIC</string>
+    <string name="goal_option_toeic_desc">Nâng cao kỹ năng tiếng Anh cho công việc</string>
+    <string name="goal_option_ielts">Du học / IELTS</string>
+    <string name="goal_option_ielts_desc">Chuẩn bị cho kỳ thi IELTS và du học</string>
+    <string name="goal_option_school">Thi cử ở trường</string>
+    <string name="goal_option_school_desc">Ôn tập và đạt điểm cao trong các kỳ thi</string>
+    <string name="goal_btn_continue">Tiếp tục</string>
+    <string name="goal_btn_skip">Bỏ qua</string>
+
+    <!-- Assessment Intro -->
+    <string name="goal_assess_title">Đánh giá năng lực đầu vào</string>
+    <string name="goal_assess_subtitle">Bài kiểm tra giúp xác định trình độ hiện tại để đề xuất lộ trình phù hợp cho bạn.</string>
+    <string name="goal_assess_questions">câu</string>
+    <string name="goal_assess_minutes">phút</string>
+    <string name="goal_assess_parts">phần</string>
+    <string name="goal_assess_part_vocab">Từ vựng · Ngữ pháp</string>
+    <string name="goal_assess_part_reading">Nghe · Đọc hiểu</string>
+    <string name="goal_assess_note">Không có đúng hay sai – Hãy làm hết tự nhiên nhất</string>
+    <string name="goal_btn_start_quiz">Bắt đầu làm bài</string>
+    <string name="goal_btn_skip_quiz">Bỏ qua, xác lập bài</string>
+
+    <!-- Assessment Quiz -->
+    <string name="goal_quiz_header">Bài đánh giá đầu vào</string>
+    <string name="goal_quiz_question_format">Câu %1$d/%2$d</string>
+    <string name="goal_quiz_timer_format">%1$02d:%2$02d</string>
+    <string name="goal_btn_next_question">Câu tiếp theo</string>
+    <string name="goal_btn_prev_question">Quay lại câu trước</string>
+    <string name="goal_btn_submit">Nộp bài</string>
+    <string name="goal_reading_label">Đọc hiểu</string>
+
+    <!-- Assessment Result -->
+    <string name="goal_result_title">Kết quả của bạn</string>
+    <string name="goal_result_vocab">Từ vựng</string>
+    <string name="goal_result_grammar">Ngữ pháp</string>
+    <string name="goal_result_listening">Trang nghe</string>
+    <string name="goal_result_recommend_title">Lộ trình đề xuất</string>
+    <string name="goal_result_recommend_desc">Tiếng Anh công sở</string>
+    <string name="goal_result_recommend_detail">Phù hợp 15 · 3 Khoá</string>
+    <string name="goal_result_correct">Đúng</string>
+    <string name="goal_result_wrong">Sai</string>
+    <string name="goal_result_skipped">Bỏ qua</string>
+    <string name="goal_btn_start_learning">Bắt đầu học</string>
+    <string name="goal_btn_view_detail">Xem chi tiết kết quả</string>
+
+    <!-- Detail Result -->
+    <string name="goal_detail_title">Chi tiết kết quả</string>
+    <string name="goal_detail_score_format">%1$d/100 điểm</string>
+    <string name="goal_detail_level">Trình độ trung cấp</string>
+    <string name="goal_detail_strength_title">Điểm mạnh</string>
+    <string name="goal_detail_strength_desc">Từ vựng, Đọc hiểu\nBạn nắm khá tốt phần từ vựng cơ bản và đọc hiểu ngắn.</string>
+    <string name="goal_detail_improve_title">Nội dung cần cải thiện</string>
+    <string name="goal_detail_improve_desc">Ngữ pháp\nBạn cần luyện thêm 10 chủ đề ngữ pháp cơ bản và cấu trúc câu.</string>
+    <string name="goal_btn_review_answers">Xem lại câu trả lời</string>
+    <string name="goal_btn_retake">Làm lại bài đánh giá</string>
+
+    <!-- Dialogs -->
+    <string name="goal_exit_title">Thoát bài đánh giá?</string>
+    <string name="goal_exit_message">Tiến trình làm bài sẽ bị mất.\nBạn có chắc muốn thoát không?</string>
+    <string name="goal_exit_continue">Tiếp tục làm</string>
+    <string name="goal_exit_confirm">Thoát bài</string>
+    <string name="goal_submit_title">Xác nhận nộp bài</string>
+    <string name="goal_submit_message">Bạn vẫn còn câu chưa trả lời.\nHãy kiểm tra trước khi nộp bài.</string>
+    <string name="goal_submit_done_format">Đã làm: %1$d/%2$d</string>
+    <string name="goal_submit_skip_format">Bỏ qua: %1$d câu</string>
+    <string name="goal_submit_continue">Tiếp tục làm</string>
+    <string name="goal_submit_confirm">Nộp bài</string>
+    <string name="goal_submit_note">Sau khi nộp, bạn sẽ nhận được kết quả đánh giá</string>
+
+    <!-- Content descriptions -->
+    <string name="goal_back_description">Quay lại</string>
+    <string name="goal_icon_description">Biểu tượng</string>
+</resources>
