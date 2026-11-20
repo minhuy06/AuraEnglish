@@ -38,6 +38,21 @@
         <activity android:name=".ranking.ui.RankingActivity" android:exported="false" />
 
         <activity
+            android:name=".profile.ui.ProfileSettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".profile.ui.EditProfileActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".profile.ui.ChangePasswordActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".profile.ui.GoalReminderActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".admin.ui.AdminExamShopActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />

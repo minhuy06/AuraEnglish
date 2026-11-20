@@ -11,6 +11,7 @@ import com.example.auraenglish.databinding.IncludePracticeBottomNavBinding
 import com.example.auraenglish.dashboard.ui.DashboardCategoryActivity
 import com.example.auraenglish.dashboard.ui.DashboardHomeActivity
 import com.example.auraenglish.practice.ui.PracticeDemoTabActivity
+import com.example.auraenglish.profile.ui.ProfileSettingsActivity
 import com.example.auraenglish.ranking.ui.RankingActivity
 
 // Tab bottom nav (chung practice + ranking)
@@ -84,10 +85,10 @@ object PracticeNavHelper {
             }
             PracticeTab.SETTINGS -> {
                 activity.startActivity(
-                    Intent(activity, PracticeDemoTabActivity::class.java)
-                        .putExtra(EXTRA_TAB, target.name)
+                    Intent(activity, ProfileSettingsActivity::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 )
-                activity.finish()
+                if (activity !is ProfileSettingsActivity) activity.finish()
             }
         }
     }
