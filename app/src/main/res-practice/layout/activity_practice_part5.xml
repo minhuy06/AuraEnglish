@@ -153,93 +153,56 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <FrameLayout
+            <LinearLayout
+                android:id="@+id/questionCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_practice_card"
                 android:elevation="2dp"
+                android:orientation="vertical"
                 android:padding="14dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/tvTag"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bg_practice_tag"
-                            android:paddingHorizontal="10dp"
-                            android:paddingVertical="4dp"
-                            android:text="@string/practice_tag_grammar_verb"
-                            android:textColor="@color/practice_tag_text"
-                            android:textSize="11sp" />
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1" />
-
-                        <ImageView
-                            android:id="@+id/btnBookmark"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:contentDescription="@string/practice_bookmarked_title"
-                            android:src="@drawable/ic_practice_bookmark" />
-                    </LinearLayout>
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tvQuestion"
-                        android:layout_width="match_parent"
+                        android:id="@+id/tvTag"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:lineSpacingExtra="3dp"
-                        android:textColor="@color/practice_text_primary"
-                        android:textIsSelectable="true"
-                        android:textSize="15sp"
-                        tools:text="The marketing team will ______ the new product to our clients next Monday." />
+                        android:background="@drawable/bg_practice_tag"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp"
+                        android:text="@string/practice_tag_grammar_verb"
+                        android:textColor="@color/practice_tag_text"
+                        android:textSize="11sp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:id="@+id/btnBookmark"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:contentDescription="@string/practice_bookmarked_title"
+                        android:src="@drawable/ic_practice_bookmark" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/wordMenu"
-                    android:layout_width="160dp"
+                <TextView
+                    android:id="@+id/tvQuestion"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|top"
-                    android:layout_marginTop="56dp"
-                    android:background="@drawable/bg_practice_menu"
-                    android:orientation="vertical"
-                    android:paddingVertical="6dp"
-                    android:visibility="gone"
-                    tools:visibility="visible">
-
-                    <TextView
-                        android:id="@+id/btnCopy"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:gravity="center_vertical"
-                        android:paddingHorizontal="14dp"
-                        android:text="@string/practice_copy"
-                        android:textColor="@color/white"
-                        android:textSize="13sp" />
-
-                    <TextView
-                        android:id="@+id/btnAddWord"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:gravity="center_vertical"
-                        android:paddingHorizontal="14dp"
-                        android:text="@string/practice_add_word"
-                        android:textColor="@color/white"
-                        android:textSize="13sp" />
-                </LinearLayout>
-            </FrameLayout>
+                    android:layout_marginTop="12dp"
+                    android:lineSpacingExtra="3dp"
+                    android:textColor="@color/practice_text_primary"
+                    android:textIsSelectable="true"
+                    android:textSize="15sp"
+                    tools:text="The marketing team will ______ the new product to our clients next Monday." />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/optionsContainer"

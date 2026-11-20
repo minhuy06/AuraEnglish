@@ -3,7 +3,6 @@ package com.example.auraenglish.practice
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -62,35 +61,6 @@ class PracticePart5Activity : AppCompatActivity() {
             refreshFlagBanner()
             renderQuestionNav()
         }
-        // Menu nổi (Figma): hiện khi đang có đoạn bôi đen
-        binding.btnAddWord.setOnClickListener {
-            val added = PracticeWordHelper.addSelectedWord(
-                this,
-                binding.tvQuestion,
-                currentNumber
-            ) { refreshQuestionText() }
-            if (added) binding.wordMenu.isVisible = false
-        }
-        binding.btnCopy.setOnClickListener {
-            val selected = PracticeWordHelper.selectedText(binding.tvQuestion)
-            val text = selected.ifEmpty {
-                PracticeSampleData.questionByNumber(currentNumber)?.stem.orEmpty()
-            }
-            val clipboard = getSystemService(CLIPBOARD_SERVICE) as android.content.ClipboardManager
-            clipboard.setPrimaryClip(android.content.ClipData.newPlainText("question", text))
-            Toast.makeText(
-                this,
-                if (selected.isEmpty()) R.string.practice_copied else R.string.practice_copied_word,
-                Toast.LENGTH_SHORT
-            ).show()
-            binding.wordMenu.isVisible = false
-        }
-        binding.tvQuestion.setOnTouchListener { _, event ->
-            if (event.action == android.view.MotionEvent.ACTION_UP) {
-                binding.root.post { syncWordMenuWithSelection() }
-            }
-            false
-        }
         binding.btnPrev.setOnClickListener { moveQuestion(-1) }
         binding.btnNext.setOnClickListener { moveQuestion(1) }
 
@@ -116,7 +86,6 @@ class PracticePart5Activity : AppCompatActivity() {
     private fun showQuestion(number: Int) {
         val question = PracticeSampleData.questionByNumber(number) ?: return
         currentNumber = number
-        binding.wordMenu.isVisible = false
 
         val list = PracticeSampleData.part5Questions
         val pos = list.indexOfFirst { it.number == number }.coerceAtLeast(0)
@@ -142,11 +111,6 @@ class PracticePart5Activity : AppCompatActivity() {
     private fun refreshQuestionText() {
         val stem = PracticeSampleData.questionByNumber(currentNumber)?.stem.orEmpty()
         PracticeWordHelper.highlightSavedWords(binding.tvQuestion, stem)
-        syncWordMenuWithSelection()
-    }
-
-    private fun syncWordMenuWithSelection() {
-        binding.wordMenu.isVisible = PracticeWordHelper.selectedText(binding.tvQuestion).isNotEmpty()
     }
 
     private fun refreshFlagBanner() {

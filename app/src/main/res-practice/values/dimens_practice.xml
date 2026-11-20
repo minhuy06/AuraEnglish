@@ -8,4 +8,5 @@
     <dimen name="practice_q_nav_size">36dp</dimen>
     <dimen name="practice_bottom_nav_height">64dp</dimen>
     <dimen name="practice_card_gap">12dp</dimen>
+    <dimen name="practice_word_popup_width">160dp</dimen>
 </resources>
