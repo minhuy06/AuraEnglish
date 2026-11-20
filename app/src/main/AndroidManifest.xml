@@ -81,6 +81,9 @@
             android:windowSoftInputMode="adjustResize" />
 
         <activity
+            android:name=".admin.ui.AdminStatisticsActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.ui.AdminExamShopActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />

@@ -108,6 +108,7 @@
     <string name="admin_stats_learner_count_fmt">%1$d học viên</string>
     <string name="admin_stats_completion_fmt">Hoàn thành %1$d%%</string>
     <string name="admin_stats_percent_fmt">%1$d%%</string>
+    <string name="admin_stats_revenue_value_fmt">%1$s tr ₫</string>
     <string name="admin_stats_positive_change_fmt">Tăng %1$s so với kỳ trước</string>
     <string name="admin_stats_negative_change_fmt">Giảm %1$s so với kỳ trước</string>
     <string name="admin_stats_stable_change">Ổn định so với kỳ trước</string>
