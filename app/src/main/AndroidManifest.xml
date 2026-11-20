@@ -28,7 +28,7 @@
         <activity android:name=".practice.ui.PracticeResultActivity" android:exported="false" />
         <activity android:name=".practice.ui.PracticeAnswerReviewActivity" android:exported="false" />
         <activity android:name=".practice.ui.PracticeDemoTabActivity" android:exported="false" />
-        <activity android:name=".practice.ui.PracticeRankActivity" android:exported="false" />
+        <activity android:name=".ranking.ui.RankingActivity" android:exported="false" />
 
         <activity
             android:name=".admin.ui.AdminExamShopActivity"

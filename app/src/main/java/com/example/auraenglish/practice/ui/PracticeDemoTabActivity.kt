@@ -1,4 +1,4 @@
-package com.example.auraenglish.practice.ui
+package com.example.auraenglish.practice.ui
 
 import com.example.auraenglish.practice.utils.*
 
@@ -18,6 +18,7 @@ import com.example.auraenglish.R
 import com.example.auraenglish.databinding.ActivityPracticeDemoTabBinding
 import com.example.auraenglish.databinding.ItemPracticeSavedWordBinding
 
+// Demo tab HOME / LIBRARY / SETTINGS
 class PracticeDemoTabActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticeDemoTabBinding
@@ -50,6 +51,7 @@ class PracticeDemoTabActivity : AppCompatActivity() {
                 getString(R.string.practice_demo_library_desc),
                 R.drawable.ic_nav_library
             )
+            // RANK chính đi RankingActivity; nhánh này chỉ fallback
             PracticeTab.RANK -> Triple(
                 getString(R.string.practice_nav_rank),
                 getString(R.string.practice_demo_rank_desc),

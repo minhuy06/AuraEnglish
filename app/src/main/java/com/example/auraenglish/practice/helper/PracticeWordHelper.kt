@@ -1,4 +1,4 @@
-package com.example.auraenglish.practice.helper
+package com.example.auraenglish.practice.helper
 
 import com.example.auraenglish.practice.ui.*
 
@@ -27,8 +27,10 @@ import com.example.auraenglish.databinding.DialogPracticeAddWordBinding
 import com.example.auraenglish.databinding.DialogPracticeCreateTopicBinding
 import com.example.auraenglish.databinding.PopupPracticeWordActionsBinding
 
+// Bôi đen từ → lưu sổ từ / tạo topic
 object PracticeWordHelper {
 
+    // Bật chọn text trên textView.
     fun enableSelection(
         activity: AppCompatActivity,
         textView: TextView,
@@ -36,6 +38,7 @@ object PracticeWordHelper {
         onWordAdded: (() -> Unit)? = null
     ) {
         textView.setTextIsSelectable(true)
+        // Ẩn menu copy hệ thống
         val hideSystemMenu = object : ActionMode.Callback {
             override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
                 menu.clear()
@@ -66,6 +69,7 @@ object PracticeWordHelper {
         }
     }
 
+    // Đoạn text đang được bôi (trim); rỗng nếu chưa chọn.
     fun selectedText(textView: TextView): String {
         val start = textView.selectionStart
         val end = textView.selectionEnd
@@ -75,6 +79,7 @@ object PracticeWordHelper {
         return textView.text.subSequence(from, to).toString().trim()
     }
 
+    // Popup gần vùng chọn: Lưu từ / Tạo chủ đề.
     fun showActionPopup(
         activity: AppCompatActivity,
         textView: TextView,
@@ -113,6 +118,7 @@ object PracticeWordHelper {
         popup.showAsDropDown(textView, anchor.first, anchor.second)
     }
 
+    // Dialog lưu từ
     fun showAddWordDialog(
         activity: AppCompatActivity,
         initialWord: String,
@@ -188,6 +194,7 @@ object PracticeWordHelper {
         dialog.show()
     }
 
+    // Dialog tạo topic
     fun showCreateTopicDialog(
         activity: AppCompatActivity,
         onCreated: (String) -> Unit
@@ -264,6 +271,7 @@ object PracticeWordHelper {
         popup.showAsDropDown(anchor, 0, 4)
     }
 
+    // Highlight từ đã lưu
     fun highlightSavedWords(textView: TextView, source: String) {
         val spannable = SpannableString(source)
         val highlight = textView.context.getColor(R.color.practice_word_highlight)

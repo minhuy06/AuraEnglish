@@ -1,4 +1,4 @@
-package com.example.auraenglish.admin.ui
+package com.example.auraenglish.admin.ui
 
 import com.example.auraenglish.admin.helper.AdminExamDialogs
 
@@ -16,11 +16,13 @@ import com.example.auraenglish.databinding.ActivityAdminExamShopBinding
 import com.example.auraenglish.databinding.ItemExamSetFreeBinding
 import com.example.auraenglish.databinding.ItemExamSetPaidBinding
 
+// Admin cửa hàng bộ đề
 class AdminExamShopActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAdminExamShopBinding
     private lateinit var dialogs: AdminExamDialogs
 
+    // Sample in-memory
     private val sampleItems = listOf(
         ExamSetUiModel(
             index = "01",

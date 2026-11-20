@@ -7,6 +7,7 @@ import com.example.auraenglish.practice.data.ExamStatus
 import com.example.auraenglish.practice.data.PracticeExam
 import com.example.auraenglish.practice.data.PracticeSampleData
 
+// VM danh sách đề: filter + search
 class PracticeExamListViewModel : ViewModel() {
 
     private val _filter = MutableLiveData(ExamStatus.ALL)
@@ -33,6 +34,7 @@ class PracticeExamListViewModel : ViewModel() {
         refresh()
     }
 
+    // Lọc theo status rồi theo query (title / index / meta).
     fun refresh() {
         val status = _filter.value ?: ExamStatus.ALL
         val query = _searchQuery.value.orEmpty()

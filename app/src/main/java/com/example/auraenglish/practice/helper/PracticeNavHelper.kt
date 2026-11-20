@@ -1,8 +1,4 @@
-package com.example.auraenglish.practice.helper
-
-import com.example.auraenglish.practice.ui.*
-
-import com.example.auraenglish.practice.data.*
+package com.example.auraenglish.practice.helper
 
 import android.app.Activity
 import android.content.Intent
@@ -12,13 +8,20 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.auraenglish.R
 import com.example.auraenglish.databinding.IncludePracticeBottomNavBinding
+import com.example.auraenglish.practice.ui.PracticeDemoTabActivity
+import com.example.auraenglish.practice.ui.PracticeExamListActivity
+import com.example.auraenglish.ranking.ui.RankingActivity
 
+// Tab bottom nav (chung practice + ranking)
 enum class PracticeTab { HOME, LIBRARY, PRACTICE, RANK, SETTINGS }
 
+// Gắn bottom nav
 object PracticeNavHelper {
 
+    // Extra → PracticeDemoTabActivity
     const val EXTRA_TAB = "extra_demo_tab"
 
+    // Highlight + click tab
     fun bind(
         activity: Activity,
         nav: IncludePracticeBottomNavBinding,
@@ -44,6 +47,7 @@ object PracticeNavHelper {
         nav.navSettings.setOnClickListener { open(activity, PracticeTab.SETTINGS, active) }
     }
 
+    // Điều hướng tab.
     private fun open(activity: Activity, target: PracticeTab, current: PracticeTab) {
         if (target == current) return
         when (target) {
@@ -54,13 +58,15 @@ object PracticeNavHelper {
                 )
                 if (activity !is PracticeExamListActivity) activity.finish()
             }
+            // Ranking đã tách package riêng
             PracticeTab.RANK -> {
                 activity.startActivity(
-                    Intent(activity, PracticeRankActivity::class.java)
+                    Intent(activity, RankingActivity::class.java)
                         .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 )
-                if (activity !is PracticeRankActivity) activity.finish()
+                if (activity !is RankingActivity) activity.finish()
             }
+            // HOME / LIBRARY / SETTINGS → màn demo tạm
             else -> {
                 activity.startActivity(
                     Intent(activity, PracticeDemoTabActivity::class.java)

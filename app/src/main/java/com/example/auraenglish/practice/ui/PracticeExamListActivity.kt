@@ -1,4 +1,4 @@
-package com.example.auraenglish.practice.ui
+package com.example.auraenglish.practice.ui
 
 import com.example.auraenglish.practice.utils.*
 
@@ -23,6 +23,7 @@ import com.example.auraenglish.practice.utils.showToast
 import com.example.auraenglish.practice.utils.visibleIf
 import com.example.auraenglish.practice.viewmodel.PracticeExamListViewModel
 
+// Danh sách đề (launcher practice)
 class PracticeExamListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticeExamListBinding
@@ -42,6 +43,7 @@ class PracticeExamListActivity : AppCompatActivity() {
         viewModel.refresh()
     }
 
+    // Refresh status đề khi quay lại
     override fun onResume() {
         super.onResume()
         viewModel.refresh()
@@ -56,6 +58,7 @@ class PracticeExamListActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
+        // Click đề → lưu currentExamId rồi mở overview
         examAdapter = PracticeExamAdapter { exam ->
             PracticeSampleData.currentExamId = exam.id
             startActivity(

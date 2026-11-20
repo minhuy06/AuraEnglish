@@ -36,6 +36,7 @@ android {
             res.srcDirs(
                 "src/main/res",
                 "src/main/res-practice",
+                "src/main/res-ranking",
                 "src/main/res-admin",
             )
         }

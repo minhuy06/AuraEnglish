@@ -1,4 +1,4 @@
-package com.example.auraenglish.practice.ui
+package com.example.auraenglish.practice.ui
 
 import com.example.auraenglish.practice.utils.*
 
@@ -23,6 +23,7 @@ import com.example.auraenglish.practice.utils.showToast
 import com.example.auraenglish.practice.utils.visibleIf
 import com.example.auraenglish.practice.viewmodel.PracticeBookmarkedViewModel
 
+// Câu đã flag
 class PracticeBookmarkedActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticeBookmarkedBinding

@@ -1,4 +1,4 @@
-package com.example.auraenglish.practice.adapter
+package com.example.auraenglish.ranking.adapter
 
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.auraenglish.R
-import com.example.auraenglish.databinding.ItemPracticeRankRowBinding
-import com.example.auraenglish.practice.data.RankEntry
-import com.example.auraenglish.practice.data.PracticeRankData
+import com.example.auraenglish.databinding.ItemRankingRowBinding
+import com.example.auraenglish.ranking.data.RankEntry
+import com.example.auraenglish.ranking.data.RankingData
 
-class PracticeRankAdapter : ListAdapter<RankEntry, PracticeRankAdapter.VH>(Diff) {
+// List hạng 4+ trên BXH
+class RankingAdapter : ListAdapter<RankEntry, RankingAdapter.VH>(Diff) {
 
     object Diff : DiffUtil.ItemCallback<RankEntry>() {
         override fun areItemsTheSame(oldItem: RankEntry, newItem: RankEntry): Boolean =
@@ -24,7 +25,7 @@ class PracticeRankAdapter : ListAdapter<RankEntry, PracticeRankAdapter.VH>(Diff)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val binding = ItemPracticeRankRowBinding.inflate(
+        val binding = ItemRankingRowBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
         return VH(binding)
@@ -35,7 +36,7 @@ class PracticeRankAdapter : ListAdapter<RankEntry, PracticeRankAdapter.VH>(Diff)
     }
 
     class VH(
-        private val binding: ItemPracticeRankRowBinding
+        private val binding: ItemRankingRowBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entry: RankEntry) = with(binding) {
@@ -43,18 +44,15 @@ class PracticeRankAdapter : ListAdapter<RankEntry, PracticeRankAdapter.VH>(Diff)
             tvRank.text = entry.rank.toString()
             tvAvatar.text = entry.initials
             tintAvatar(tvAvatar, entry.avatarColorRes)
+            // User hiện tại → “(Bạn)” + nền pinned
             tvName.text = if (entry.isCurrentUser) {
-                context.getString(R.string.practice_rank_you_suffix, entry.name)
+                context.getString(R.string.rank_you_suffix, entry.name)
             } else {
                 entry.name
             }
-            tvXp.text = context.getString(
-                R.string.practice_rank_xp,
-                PracticeRankData.formatXp(entry.xp)
-            )
+            tvXp.text = context.getString(R.string.rank_xp, RankingData.formatXp(entry.xp))
             root.setBackgroundResource(
-                if (entry.isCurrentUser) R.drawable.bg_practice_rank_pinned
-                else R.drawable.bg_practice_rank_row
+                if (entry.isCurrentUser) R.drawable.bg_rank_pinned else R.drawable.bg_rank_row
             )
         }
 

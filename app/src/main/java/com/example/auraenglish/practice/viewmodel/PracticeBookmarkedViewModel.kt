@@ -7,12 +7,14 @@ import com.example.auraenglish.practice.data.ExamStatus
 import com.example.auraenglish.practice.data.PracticeQuestion
 import com.example.auraenglish.practice.data.PracticeSampleData
 
+// Đếm chip bookmark
 data class BookmarkChipCounts(
     val all: Int,
     val todo: Int,
     val done: Int
 )
 
+// VM câu đã flag
 class PracticeBookmarkedViewModel : ViewModel() {
 
     private val _filter = MutableLiveData(ExamStatus.ALL)

@@ -1,4 +1,4 @@
-package com.example.auraenglish.practice.ui
+package com.example.auraenglish.practice.ui
 
 import com.example.auraenglish.practice.utils.*
 
@@ -18,6 +18,7 @@ import com.example.auraenglish.R
 import com.example.auraenglish.databinding.ActivityPracticeResultBinding
 import com.example.auraenglish.databinding.ItemPracticePartBinding
 
+// Màn kết quả đề
 class PracticeResultActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticeResultBinding

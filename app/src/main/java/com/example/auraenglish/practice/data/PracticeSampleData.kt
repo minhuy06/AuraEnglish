@@ -1,7 +1,9 @@
 package com.example.auraenglish.practice.data
 
+// Trạng thái đề / filter chip.
 enum class ExamStatus { ALL, TODO, DOING, DONE }
 
+// Model 1 đề TOEIC (list + overview).
 data class PracticeExam(
     val id: String,
     val index: String,
@@ -13,6 +15,7 @@ data class PracticeExam(
     val parts: List<PracticePart>
 )
 
+// 1 Part trong đề
 data class PracticePart(
     val number: Int,
     val title: String,
@@ -21,6 +24,7 @@ data class PracticePart(
     val colorResName: String
 )
 
+// 1 câu Part 5.
 data class PracticeQuestion(
     val number: Int,
     val tag: String,
@@ -35,6 +39,7 @@ data class PracticeQuestion(
     val isAnswered: Boolean get() = userAnswerIndex != null
 }
 
+// Từ đã lưu khi bôi đen trên stem.
 data class SavedWord(
     val word: String,
     val fromQuestion: Int,
@@ -44,10 +49,7 @@ data class SavedWord(
     val addedAt: Long = System.currentTimeMillis()
 )
 
-/**
- * Kho dữ liệu mẫu in-memory (chưa có database).
- * Giữ state trong session app để các màn chia sẻ đáp án / đánh dấu.
- */
+// Kho dữ liệu mẫu in-memory (chưa có database).
 object PracticeSampleData {
 
     const val EXTRA_EXAM_ID = "extra_exam_id"
@@ -56,7 +58,7 @@ object PracticeSampleData {
 
     var currentExamId: String = "exam_01"
 
-    /** Sổ từ vựng in-memory: từ được bôi đen khi làm bài. */
+    // Sổ từ vựng in-memory
     private val _savedWords = linkedMapOf<String, SavedWord>()
     val savedWords: List<SavedWord> get() = _savedWords.values.toList().asReversed()
 
@@ -141,7 +143,7 @@ object PracticeSampleData {
         )
     )
 
-    /** Part 5 sample questions (số câu theo Figma quanh 9–15) */
+    // Part 5 sample questions (số câu theo Figma quanh 9–15)
     val part5Questions: MutableList<PracticeQuestion> = mutableListOf(
         PracticeQuestion(
             number = 9,
@@ -238,12 +240,14 @@ object PracticeSampleData {
 
     val result = ResultSummary()
 
+    // Tìm đề theo id (fallback đề đầu)
     fun examById(id: String): PracticeExam =
         exams.firstOrNull { it.id == id } ?: exams.first()
 
     fun filteredExams(status: ExamStatus): List<PracticeExam> =
         if (status == ExamStatus.ALL) exams else exams.filter { it.status == status }
 
+    // Câu đã flag; filter TODO = chưa trả lời, DONE = đã trả lời.
     fun flaggedQuestions(filter: ExamStatus = ExamStatus.ALL): List<PracticeQuestion> {
         val flagged = part5Questions.filter { it.flagged }
         return when (filter) {
@@ -256,16 +260,19 @@ object PracticeSampleData {
     fun questionByNumber(number: Int): PracticeQuestion? =
         part5Questions.firstOrNull { it.number == number }
 
+    // Lưu đáp án user (0=A … 3=D).
     fun setAnswer(number: Int, optionIndex: Int) {
         part5Questions.find { it.number == number }?.userAnswerIndex = optionIndex
     }
 
+    // Bật/tắt flag; trả về trạng thái sau khi toggle.
     fun toggleFlag(number: Int): Boolean {
         val q = part5Questions.find { it.number == number } ?: return false
         q.flagged = !q.flagged
         return q.flagged
     }
 
+    // Tạo 7 Part mẫu; doneBias / allDone điều khiển progress demo.
     private fun defaultParts(doneBias: Boolean, allDone: Boolean = false): List<PracticePart> {
         val totals = listOf(6, 25, 39, 30, 30, 15, 54)
         val titles = listOf(

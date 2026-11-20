@@ -15,7 +15,7 @@
             <gradient
                 android:angle="270"
                 android:endColor="#FF2563EB"
-                android:startColor="@color/practice_podium_2"
+                android:startColor="@color/rank_podium_2"
                 android:type="linear" />
             <corners android:radius="18dp" />
             <stroke

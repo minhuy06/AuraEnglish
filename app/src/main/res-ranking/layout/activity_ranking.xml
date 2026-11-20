@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_practice_screen"
-    tools:context=".practice.ui.PracticeRankActivity">
+    tools:context=".ranking.ui.RankingActivity">
 
     <LinearLayout
         android:id="@+id/header"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:letterSpacing="0.01"
-            android:text="@string/practice_rank_title"
+            android:text="@string/rank_title"
             android:textColor="@color/practice_text_primary"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -34,20 +34,20 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/practice_rank_cart"
+            android:contentDescription="@string/rank_cart"
             android:padding="12dp"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_practice_cart" />
+            android:src="@drawable/ic_rank_cart" />
 
         <ImageButton
             android:id="@+id/btnBell"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/practice_rank_notifications"
+            android:contentDescription="@string/rank_notifications"
             android:padding="12dp"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_practice_bell" />
+            android:src="@drawable/ic_rank_bell" />
     </LinearLayout>
 
     <HorizontalScrollView
@@ -77,7 +77,7 @@
                 android:gravity="center"
                 android:minWidth="76dp"
                 android:paddingHorizontal="16dp"
-                android:text="@string/practice_rank_day"
+                android:text="@string/rank_day"
                 android:textColor="@color/practice_primary"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -92,7 +92,7 @@
                 android:gravity="center"
                 android:minWidth="76dp"
                 android:paddingHorizontal="16dp"
-                android:text="@string/practice_rank_week"
+                android:text="@string/rank_week"
                 android:textColor="@color/white"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -106,7 +106,7 @@
                 android:gravity="center"
                 android:minWidth="76dp"
                 android:paddingHorizontal="16dp"
-                android:text="@string/practice_rank_month"
+                android:text="@string/rank_month"
                 android:textColor="@color/practice_primary"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -120,7 +120,7 @@
                 android:gravity="center"
                 android:minWidth="76dp"
                 android:paddingHorizontal="16dp"
-                android:text="@string/practice_rank_year"
+                android:text="@string/rank_year"
                 android:textColor="@color/practice_primary"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -151,7 +151,7 @@
                         android:id="@+id/avatar2"
                         android:layout_width="56dp"
                         android:layout_height="56dp"
-                        android:background="@drawable/bg_practice_avatar_ring_silver"
+                        android:background="@drawable/bg_rank_avatar_ring_silver"
                         android:elevation="4dp"
                         android:gravity="center"
                         android:textColor="@color/practice_primary"
@@ -176,10 +176,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:background="@drawable/bg_practice_xp_pill"
+                        android:background="@drawable/bg_rank_xp_pill"
                         android:paddingHorizontal="8dp"
                         android:paddingVertical="2dp"
-                        android:textColor="@color/practice_rank_xp"
+                        android:textColor="@color/rank_xp"
                         android:textSize="11sp"
                         android:textStyle="bold"
                         tools:text="2.180 XP" />
@@ -189,7 +189,7 @@
                         android:layout_height="118dp"
                         android:layout_marginHorizontal="6dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/bg_practice_podium_2"
+                        android:background="@drawable/bg_rank_podium_2"
                         android:elevation="3dp">
 
                         <TextView
@@ -221,14 +221,14 @@
                             android:layout_gravity="center_horizontal"
                             android:contentDescription="@null"
                             android:importantForAccessibility="no"
-                            android:src="@drawable/ic_practice_crown" />
+                            android:src="@drawable/ic_rank_crown" />
 
                         <TextView
                             android:id="@+id/avatar1"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
                             android:layout_marginTop="26dp"
-                            android:background="@drawable/bg_practice_avatar_ring_gold"
+                            android:background="@drawable/bg_rank_avatar_ring_gold"
                             android:elevation="6dp"
                             android:gravity="center"
                             android:textColor="@color/practice_primary"
@@ -254,10 +254,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:background="@drawable/bg_practice_xp_pill"
+                        android:background="@drawable/bg_rank_xp_pill"
                         android:paddingHorizontal="8dp"
                         android:paddingVertical="2dp"
-                        android:textColor="@color/practice_rank_xp"
+                        android:textColor="@color/rank_xp"
                         android:textSize="12sp"
                         android:textStyle="bold"
                         tools:text="2.950 XP" />
@@ -267,7 +267,7 @@
                         android:layout_height="148dp"
                         android:layout_marginHorizontal="4dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/bg_practice_podium_1"
+                        android:background="@drawable/bg_rank_podium_1"
                         android:elevation="5dp">
 
                         <TextView
@@ -293,7 +293,7 @@
                         android:id="@+id/avatar3"
                         android:layout_width="56dp"
                         android:layout_height="56dp"
-                        android:background="@drawable/bg_practice_avatar_ring_bronze"
+                        android:background="@drawable/bg_rank_avatar_ring_bronze"
                         android:elevation="4dp"
                         android:gravity="center"
                         android:textColor="@color/practice_primary"
@@ -318,10 +318,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:background="@drawable/bg_practice_xp_pill"
+                        android:background="@drawable/bg_rank_xp_pill"
                         android:paddingHorizontal="8dp"
                         android:paddingVertical="2dp"
-                        android:textColor="@color/practice_rank_xp"
+                        android:textColor="@color/rank_xp"
                         android:textSize="11sp"
                         android:textStyle="bold"
                         tools:text="2.000 XP" />
@@ -331,7 +331,7 @@
                         android:layout_height="96dp"
                         android:layout_marginHorizontal="6dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/bg_practice_podium_3"
+                        android:background="@drawable/bg_rank_podium_3"
                         android:elevation="3dp">
 
                         <TextView
@@ -352,7 +352,7 @@
         android:layout_height="0dp"
         android:layout_marginHorizontal="@dimen/practice_screen_padding"
         android:layout_marginTop="16dp"
-        android:background="@drawable/bg_practice_rank_list_card"
+        android:background="@drawable/bg_rank_list_card"
         android:clipToPadding="false"
         android:elevation="3dp"
         android:padding="12dp"
@@ -367,7 +367,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/practice_screen_padding"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/bg_practice_rank_sticky"
+        android:background="@drawable/bg_rank_sticky"
         android:elevation="10dp"
         android:gravity="center_vertical"
         android:minHeight="56dp"
@@ -393,9 +393,9 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
-            android:background="@drawable/bg_practice_avatar_circle"
+            android:background="@drawable/bg_rank_avatar_circle"
             android:gravity="center"
-            android:textColor="@color/practice_rank_sticky"
+            android:textColor="@color/rank_sticky"
             android:textSize="12sp"
             android:textStyle="bold"
             tools:text="DH" />
@@ -421,7 +421,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:textColor="@color/practice_on_primary_muted"
+                android:textColor="@color/rank_on_primary_muted"
                 android:textSize="11sp"
                 tools:text="Còn 100 XP để lên hạng 5" />
         </LinearLayout>

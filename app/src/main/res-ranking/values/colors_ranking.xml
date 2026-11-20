@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="rank_podium_1">#FF173B8F</color>
+    <color name="rank_podium_2">#FF3B82F6</color>
+    <color name="rank_podium_3">#FF7BA3F0</color>
+    <color name="rank_row">#FFF7F9FF</color>
+    <color name="rank_pinned">#FFDCEBFF</color>
+    <color name="rank_sticky">#FF2563EB</color>
+    <color name="rank_sticky_end">#FF173B8F</color>
+    <color name="rank_xp">#FF1D4ED8</color>
+    <color name="rank_medal_gold">#FFF59E0B</color>
+    <color name="rank_medal_silver">#FF94A3B8</color>
+    <color name="rank_medal_bronze">#FFD97706</color>
+    <color name="rank_xp_pill">#FFE8F0FF</color>
+    <color name="rank_on_primary_muted">#E6FFFFFF</color>
+    <color name="rank_avatar_tl">#FFE2A1F6</color>
+    <color name="rank_avatar_ma">#FF94E9FE</color>
+    <color name="rank_avatar_qb">#FFDCAA89</color>
+    <color name="rank_avatar_gh">#FFC0FFB3</color>
+    <color name="rank_avatar_nt">#FFF5BFFC</color>
+    <color name="rank_avatar_dh">#FFFFBEBF</color>
+    <color name="rank_avatar_qk">#FF9DEBF7</color>
+</resources>

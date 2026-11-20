@@ -1,4 +1,4 @@
-package com.example.auraenglish.practice.helper
+package com.example.auraenglish.practice.helper
 
 import com.example.auraenglish.practice.ui.*
 
@@ -13,6 +13,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
 import com.example.auraenglish.databinding.DialogPracticeSearchBinding
 
+// Dialog tìm kiếm dùng chung
 object PracticeSearchHelper {
 
     fun show(

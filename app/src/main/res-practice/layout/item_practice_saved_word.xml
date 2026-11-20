@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
-    android:background="@drawable/bg_practice_rank_row"
+    android:background="@drawable/bg_practice_list_row"
     android:elevation="1dp"
     android:gravity="center_vertical"
     android:minHeight="48dp"

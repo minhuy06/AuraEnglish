@@ -12,6 +12,7 @@ import android.widget.ProgressBar
 import androidx.core.view.isVisible
 import com.example.auraenglish.R
 
+// Hiệu ứng UI practice
 object PracticeUiEffects {
 
     fun playEnterTransition(activity: Activity) {
@@ -21,6 +22,7 @@ object PracticeUiEffects {
         )
     }
 
+    // Fade+slide từng child
     fun staggerChildren(container: android.view.ViewGroup, startDelay: Long = 40L) {
         for (i in 0 until container.childCount) {
             val child = container.getChildAt(i)

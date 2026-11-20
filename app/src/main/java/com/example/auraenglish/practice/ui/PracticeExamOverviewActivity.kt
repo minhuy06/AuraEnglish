@@ -1,4 +1,4 @@
-package com.example.auraenglish.practice.ui
+package com.example.auraenglish.practice.ui
 
 import com.example.auraenglish.practice.utils.*
 
@@ -19,6 +19,7 @@ import com.example.auraenglish.R
 import com.example.auraenglish.databinding.ActivityPracticeExamOverviewBinding
 import com.example.auraenglish.databinding.ItemPracticePartBinding
 
+// Tổng quan đề (7 Part) — chỉ Part 5 làm được
 class PracticeExamOverviewActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticeExamOverviewBinding
@@ -96,6 +97,7 @@ class PracticeExamOverviewActivity : AppCompatActivity() {
         }
     }
 
+    // Bind 1 hàng Part: index màu, progress width theo done/total.
     private fun bindPart(item: ItemPracticePartBinding, part: PracticePart) {
         item.tvPartIndex.text = part.number.toString()
         item.tvPartTitle.text = part.title
@@ -126,6 +128,7 @@ class PracticeExamOverviewActivity : AppCompatActivity() {
         }
     }
 
+    // Mở Part 5 (demo).
     private fun openPart(partNumber: Int) {
         startActivity(
             Intent(this, PracticePart5Activity::class.java)

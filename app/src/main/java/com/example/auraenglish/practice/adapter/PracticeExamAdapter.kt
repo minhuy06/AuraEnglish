@@ -10,6 +10,7 @@ import com.example.auraenglish.databinding.ItemPracticeExamBinding
 import com.example.auraenglish.practice.data.ExamStatus
 import com.example.auraenglish.practice.data.PracticeExam
 
+// Adapter danh sách đề
 class PracticeExamAdapter(
     private val onExamClick: (PracticeExam) -> Unit
 ) : ListAdapter<PracticeExam, PracticeExamAdapter.ExamVH>(Diff) {

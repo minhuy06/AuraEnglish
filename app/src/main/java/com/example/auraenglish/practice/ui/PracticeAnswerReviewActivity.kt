@@ -1,4 +1,4 @@
-package com.example.auraenglish.practice.ui
+package com.example.auraenglish.practice.ui
 
 import com.example.auraenglish.practice.utils.*
 
@@ -18,6 +18,7 @@ import com.example.auraenglish.databinding.ActivityPracticeAnswerReviewBinding
 import com.example.auraenglish.databinding.ItemPracticeOptionBinding
 import com.example.auraenglish.databinding.ItemPracticeQuestionNavBinding
 
+// Xem lại đáp án (chỉ đọc)
 class PracticeAnswerReviewActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticeAnswerReviewBinding
@@ -115,6 +116,7 @@ class PracticeAnswerReviewActivity : AppCompatActivity() {
         }
     }
 
+    // Tô đúng/sai — không cho chọn lại
     private fun bindOption(
         item: ItemPracticeOptionBinding,
         index: Int,

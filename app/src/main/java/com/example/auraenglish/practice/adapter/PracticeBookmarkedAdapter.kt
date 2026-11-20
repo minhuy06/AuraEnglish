@@ -9,6 +9,7 @@ import com.example.auraenglish.R
 import com.example.auraenglish.databinding.ItemPracticeBookmarkedBinding
 import com.example.auraenglish.practice.data.PracticeQuestion
 
+// Adapter câu đã flag
 class PracticeBookmarkedAdapter(
     private val onQuestionClick: (PracticeQuestion) -> Unit
 ) : ListAdapter<PracticeQuestion, PracticeBookmarkedAdapter.VH>(Diff) {

@@ -1,4 +1,4 @@
-package com.example.auraenglish.practice.ui
+package com.example.auraenglish.practice.ui
 
 import com.example.auraenglish.practice.utils.*
 
@@ -19,10 +19,12 @@ import com.example.auraenglish.databinding.ActivityPracticePart5Binding
 import com.example.auraenglish.databinding.ItemPracticeOptionBinding
 import com.example.auraenglish.databinding.ItemPracticeQuestionNavBinding
 
+// Màn làm Part 5
 class PracticePart5Activity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticePart5Binding
     private lateinit var exam: PracticeExam
+    // Số câu hiện tại
     private var currentNumber = 12
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +49,7 @@ class PracticePart5Activity : AppCompatActivity() {
         binding.progressBar.max = PracticeSampleData.part5Questions.size
         binding.progressBar.progressDrawable = getDrawable(R.drawable.bg_practice_progress_bar)
 
+        // Bôi đen từ trong đề → popup lưu sổ từ vựng
         PracticeWordHelper.enableSelection(
             activity = this,
             textView = binding.tvQuestion,
@@ -73,6 +76,7 @@ class PracticePart5Activity : AppCompatActivity() {
         showQuestion(currentNumber)
     }
 
+    // Next vượt cuối list → sang màn kết quả.
     private fun moveQuestion(delta: Int) {
         val numbers = PracticeSampleData.part5Questions.map { it.number }
         val index = numbers.indexOf(currentNumber)
@@ -153,6 +157,7 @@ class PracticePart5Activity : AppCompatActivity() {
         }
     }
 
+    // Bind 1 option; click → setAnswer rồi re-render câu hiện tại.
     private fun bindOption(
         item: ItemPracticeOptionBinding,
         index: Int,
