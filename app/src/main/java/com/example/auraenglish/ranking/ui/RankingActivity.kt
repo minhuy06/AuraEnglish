@@ -56,10 +56,13 @@ class RankingActivity : AppCompatActivity() {
 
     private fun setupViews() {
         rankAdapter = RankingAdapter()
+        binding.rankListCard.clipToOutline = true
         binding.rankList.apply {
             layoutManager = LinearLayoutManager(this@RankingActivity)
             adapter = rankAdapter
             setHasFixedSize(true)
+            clipToPadding = true
+            clipChildren = true
         }
         PracticeNavHelper.bind(this, binding.bottomNavInclude, PracticeTab.RANK)
     }
@@ -183,7 +186,7 @@ class RankingActivity : AppCompatActivity() {
 
     // Fade + slide podium → list → sticky
     private fun playEntrance() {
-        val targets = listOf<View>(binding.podiumRow, binding.rankList, binding.stickyRank)
+        val targets = listOf<View>(binding.podiumRow, binding.rankListCard, binding.stickyRank)
         val animators = targets.mapIndexed { index, view ->
             view.alpha = 0f
             view.translationY = 18f
