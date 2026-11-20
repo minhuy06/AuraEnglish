@@ -5,7 +5,6 @@
     android:id="@+id/rootAdminStudentManage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/admin_bg"
     tools:context=".admin.ui.AdminStudentManageActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,7 +55,7 @@
             android:background="@drawable/bg_admin_students_summary"
             android:fontFamily="@font/be_vietnam_pro_bold"
             android:textColor="@color/admin_cyan"
-            android:textSize="9.5sp"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@id/tvAdminStudentsSubtitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvAdminStudentsTitle"
@@ -91,6 +90,7 @@
                 android:fontFamily="@font/be_vietnam_pro_regular"
                 android:hint="@string/admin_students_search_hint"
                 android:imeOptions="actionSearch"
+                android:importantForAutofill="no"
                 android:inputType="text"
                 android:maxLines="1"
                 android:textColor="@color/admin_text_primary"

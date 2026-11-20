@@ -34,7 +34,7 @@ class AdminStatisticsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAdminStatisticsBinding
     private val viewModel: AdminStatisticsViewModel by viewModels()
-    private val locale = Locale("vi", "VN")
+    private val locale = Locale.forLanguageTag("vi-VN")
     private val integerFormatter: NumberFormat by lazy { NumberFormat.getIntegerInstance(locale) }
 
     override fun onCreate(savedInstanceState: Bundle?) {

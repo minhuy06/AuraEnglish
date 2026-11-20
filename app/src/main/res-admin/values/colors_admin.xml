@@ -32,7 +32,6 @@
 
     <!-- Admin dashboard accents -->
     <color name="admin_purple">#FF7C3AED</color>
-    <color name="admin_purple_soft">#FFF3E8FF</color>
     <color name="admin_cyan">#FF0891B2</color>
     <color name="admin_cyan_soft">#FFCFFAFE</color>
     <color name="admin_warning">#FFF59E0B</color>

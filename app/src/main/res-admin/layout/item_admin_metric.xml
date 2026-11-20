@@ -55,7 +55,7 @@
         android:fontFamily="@font/be_vietnam_pro_medium"
         android:maxLines="1"
         android:textColor="@color/admin_success"
-        android:textSize="10.5sp"
+        android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -5,7 +5,6 @@
     android:id="@+id/rootAdminStatistics"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/admin_bg"
     tools:context=".admin.ui.AdminStatisticsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,7 +56,7 @@
             android:fontFamily="@font/be_vietnam_pro_bold"
             android:text="@string/admin_stats_live_badge"
             android:textColor="@color/admin_success"
-            android:textSize="9.5sp"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -108,7 +107,7 @@
                     android:paddingHorizontal="11dp"
                     android:text="@string/admin_stats_period_week"
                     android:textColor="@color/white"
-                    android:textSize="10.5sp" />
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/chipStatsMonth"
@@ -121,7 +120,7 @@
                     android:paddingHorizontal="11dp"
                     android:text="@string/admin_stats_period_month"
                     android:textColor="@color/admin_text_secondary"
-                    android:textSize="10.5sp" />
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/chipStatsYear"
@@ -134,7 +133,7 @@
                     android:paddingHorizontal="11dp"
                     android:text="@string/admin_stats_period_year"
                     android:textColor="@color/admin_text_secondary"
-                    android:textSize="10.5sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -206,7 +205,7 @@
                     android:fontFamily="@font/be_vietnam_pro_regular"
                     android:text="@string/admin_stats_activity_subtitle"
                     android:textColor="@color/admin_text_secondary"
-                    android:textSize="10.5sp" />
+                    android:textSize="11sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -267,7 +266,7 @@
                     android:fontFamily="@font/be_vietnam_pro_regular"
                     android:text="@string/admin_stats_course_subtitle"
                     android:textColor="@color/admin_text_secondary"
-                    android:textSize="10.5sp" />
+                    android:textSize="11sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

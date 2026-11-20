@@ -106,7 +106,6 @@
     <string name="admin_stats_course_title">Khóa học nổi bật</string>
     <string name="admin_stats_course_subtitle">Xếp theo tỷ lệ hoàn thành trong kỳ</string>
     <string name="admin_stats_learner_count_fmt">%1$d học viên</string>
-    <string name="admin_stats_completion_fmt">Hoàn thành %1$d%%</string>
     <string name="admin_stats_percent_fmt">%1$d%%</string>
     <string name="admin_stats_revenue_value_fmt">%1$s tr ₫</string>
     <string name="admin_stats_positive_change_fmt">Tăng %1$s so với kỳ trước</string>
@@ -117,7 +116,7 @@
     <string name="admin_students_title">Quản lý học viên</string>
     <string name="admin_students_subtitle">Theo dõi tiến độ và trạng thái tài khoản</string>
     <string name="admin_students_summary_fmt">%1$d học viên • %2$d cần hỗ trợ</string>
-    <string name="admin_students_search_hint">Tìm theo tên, email hoặc khóa học...</string>
+    <string name="admin_students_search_hint">Tìm theo tên, email hoặc khóa học…</string>
     <string name="admin_students_filter_all_fmt">Tất cả (%1$d)</string>
     <string name="admin_students_filter_active_fmt">Hoạt động (%1$d)</string>
     <string name="admin_students_filter_risk_fmt">Cần hỗ trợ (%1$d)</string>
@@ -129,14 +128,14 @@
     <string name="admin_student_course_fmt">Khóa học: %1$s</string>
     <string name="admin_student_progress_label">Tiến độ khóa học</string>
     <string name="admin_student_progress_fmt">%1$d%%</string>
-    <string name="admin_student_learning_meta_fmt">%1$d/%2$d bài • Chuỗi %3$d ngày</string>
+    <string name="admin_student_learning_meta_fmt">Bài học: %1$d/%2$d • Chuỗi ngày: %3$d</string>
     <string name="admin_student_last_active_fmt">Hoạt động: %1$s</string>
     <string name="admin_student_action_profile">Xem hồ sơ</string>
     <string name="admin_student_action_suspend">Tạm khóa</string>
     <string name="admin_student_action_reactivate">Mở khóa</string>
     <string name="admin_student_avatar_description">Ảnh đại diện của %1$s</string>
     <string name="admin_student_profile_title">Hồ sơ học viên</string>
-    <string name="admin_student_profile_message_fmt">Email: %1$s\nKhóa học: %2$s\nNgày tham gia: %3$s\nTiến độ: %4$d/%5$d bài (%6$d%%)\nChuỗi học: %7$d ngày\nHoạt động gần nhất: %8$s</string>
+    <string name="admin_student_profile_message_fmt">Email: %1$s\nKhóa học: %2$s\nNgày tham gia: %3$s\nTiến độ bài học: %4$d/%5$d (%6$d%%)\nChuỗi học (ngày): %7$d\nHoạt động gần nhất: %8$s</string>
     <string name="admin_student_suspend_title">Tạm khóa tài khoản?</string>
     <string name="admin_student_suspend_message_fmt">Học viên \"%1$s\" sẽ không thể truy cập nội dung học cho đến khi được mở khóa.</string>
     <string name="admin_student_reactivate_title">Mở khóa tài khoản?</string>

@@ -48,7 +48,7 @@
         android:fontFamily="@font/be_vietnam_pro_regular"
         android:maxLines="1"
         android:textColor="@color/admin_text_secondary"
-        android:textSize="10.5sp"
+        android:textSize="11sp"
         app:layout_constraintEnd_toStartOf="@id/tvStudentStatus"
         app:layout_constraintStart_toEndOf="@id/tvStudentAvatar"
         app:layout_constraintTop_toBottomOf="@id/tvStudentName"
@@ -61,7 +61,7 @@
         android:background="@drawable/bg_admin_student_status"
         android:fontFamily="@font/be_vietnam_pro_bold"
         android:textColor="@color/admin_success"
-        android:textSize="9.5sp"
+        android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Đang học" />
@@ -89,7 +89,7 @@
         android:fontFamily="@font/be_vietnam_pro_regular"
         android:text="@string/admin_student_progress_label"
         android:textColor="@color/admin_text_secondary"
-        android:textSize="10.5sp"
+        android:textSize="11sp"
         app:layout_constraintEnd_toStartOf="@id/tvStudentProgress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvStudentCourse" />
@@ -100,7 +100,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/be_vietnam_pro_bold"
         android:textColor="@color/admin_primary"
-        android:textSize="10.5sp"
+        android:textSize="11sp"
         app:layout_constraintBaseline_toBaselineOf="@id/tvStudentProgressLabel"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="72%" />
@@ -128,7 +128,7 @@
         android:fontFamily="@font/be_vietnam_pro_regular"
         android:maxLines="1"
         android:textColor="@color/admin_text_secondary"
-        android:textSize="10.5sp"
+        android:textSize="11sp"
         app:layout_constraintEnd_toStartOf="@id/tvStudentLastActive"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pbStudentProgress"
@@ -142,7 +142,7 @@
         android:fontFamily="@font/be_vietnam_pro_regular"
         android:gravity="end"
         android:textColor="@color/admin_text_placeholder"
-        android:textSize="10sp"
+        android:textSize="11sp"
         app:layout_constraintBaseline_toBaselineOf="@id/tvStudentLearningMeta"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="Hoạt động: 5 phút trước" />
