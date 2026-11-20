@@ -35,6 +35,21 @@
     <color name="practice_menu_bg">#FF334155</color>
     <color name="practice_word_highlight">#FFFFF59D</color>
 
+    <color name="practice_podium_1">#FF173B8F</color>
+    <color name="practice_podium_2">#FF3B82F6</color>
+    <color name="practice_podium_3">#FFA0BDFD</color>
+    <color name="practice_rank_row">#FFF2F2F2</color>
+    <color name="practice_rank_pinned">#FF9FD7FF</color>
+    <color name="practice_rank_sticky">#FF2563EB</color>
+    <color name="practice_rank_xp">#FF2563EB</color>
+    <color name="practice_avatar_tl">#FFE2A1F6</color>
+    <color name="practice_avatar_ma">#FF94E9FE</color>
+    <color name="practice_avatar_qb">#FFDCAA89</color>
+    <color name="practice_avatar_gh">#FFC0FFB3</color>
+    <color name="practice_avatar_nt">#FFF5BFFC</color>
+    <color name="practice_avatar_dh">#FFFFBEBF</color>
+    <color name="practice_avatar_qk">#FF9DEBF7</color>
+
     <color name="practice_part1">#FF3B82F6</color>
     <color name="practice_part2">#FF8B5CF6</color>
     <color name="practice_part3">#FF22C55E</color>

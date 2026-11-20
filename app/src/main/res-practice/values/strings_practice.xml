@@ -111,5 +111,13 @@
     <string name="practice_demo_home_desc">Đây là demo tab Trang chủ. Sau này sẽ hiện lộ trình học, streak và gợi ý bài tập.</string>
     <string name="practice_demo_library_desc">Thư viện từ vựng: các từ bạn bôi đen khi làm bài sẽ hiện bên dưới.</string>
     <string name="practice_demo_rank_desc">Đây là demo tab Xếp hạng. Sau này sẽ hiện bảng xếp hạng điểm TOEIC theo tuần/tháng.</string>
+    <string name="practice_rank_title">Bảng xếp hạng</string>
+    <string name="practice_rank_day">Ngày</string>
+    <string name="practice_rank_week">Tuần</string>
+    <string name="practice_rank_month">Tháng</string>
+    <string name="practice_rank_year">Năm</string>
+    <string name="practice_rank_xp">%1$s XP</string>
+    <string name="practice_rank_you_suffix">%1$s (Bạn)</string>
+    <string name="practice_rank_gap">Còn %1$d XP để lên hạng %2$d</string>
     <string name="practice_demo_settings_desc">Đây là demo tab Cài đặt. Sau này sẽ hiện hồ sơ, thông báo và tùy chọn học tập.</string>
 </resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_practice_rank_row"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="12dp">
+
+    <TextView
+        android:id="@+id/tvRank"
+        android:layout_width="24dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/practice_text_secondary"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        tools:text="4" />
+
+    <TextView
+        android:id="@+id/tvAvatar"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/bg_practice_avatar_circle"
+        android:gravity="center"
+        android:textColor="@color/practice_text_primary"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:text="GH" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/practice_text_primary"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        tools:text="Gia Huy" />
+
+    <TextView
+        android:id="@+id/tvXp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/practice_rank_xp"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        tools:text="2.120 XP" />
+</LinearLayout>
