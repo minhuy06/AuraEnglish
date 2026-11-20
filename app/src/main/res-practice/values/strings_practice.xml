@@ -22,6 +22,12 @@
     <string name="practice_continue">Tiếp tục</string>
     <string name="practice_start">Bắt đầu</string>
     <string name="practice_finish_exam">Hoàn thành bài thi</string>
+    <string name="practice_submit_title">Nộp bài thi?</string>
+    <string name="practice_submit_message">Bạn có chắc muốn nộp bài? Sau khi nộp sẽ xem kết quả và không làm tiếp được.</string>
+    <string name="practice_submit_message_unanswered">Còn %1$d câu chưa làm. Bạn vẫn muốn nộp bài?</string>
+    <string name="practice_submit_cancel">Tiếp tục làm</string>
+    <string name="practice_submit_confirm">Nộp bài</string>
+    <string name="practice_submit_next">Nộp bài</string>
     <string name="practice_by_part">Luyện theo Part</string>
 
     <string name="practice_part1">Part 1: Mô tả hình ảnh</string>

@@ -90,10 +90,16 @@ class PracticeExamOverviewActivity : AppCompatActivity() {
         }
         binding.btnContinue.setOnClickListener { openPart(5) }
         binding.btnFinishExam.setOnClickListener {
-            startActivity(
-                Intent(this, PracticeResultActivity::class.java)
-                    .putExtra(PracticeSampleData.EXTRA_EXAM_ID, exam.id)
-            )
+            val unanswered = PracticeSampleData.part5Questions.count { !it.isAnswered }
+            PracticeConfirmHelper.showSubmitExam(
+                activity = this,
+                unansweredCount = unanswered
+            ) {
+                startActivity(
+                    Intent(this, PracticeResultActivity::class.java)
+                        .putExtra(PracticeSampleData.EXTRA_EXAM_ID, exam.id)
+                )
+            }
         }
     }
 

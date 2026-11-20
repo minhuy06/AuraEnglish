@@ -76,21 +76,29 @@ class PracticePart5Activity : AppCompatActivity() {
         showQuestion(currentNumber)
     }
 
-    // Next vượt cuối list → sang màn kết quả.
+    // Next vượt cuối list → hỏi nộp bài
     private fun moveQuestion(delta: Int) {
         val numbers = PracticeSampleData.part5Questions.map { it.number }
         val index = numbers.indexOf(currentNumber)
         val next = numbers.getOrNull(index + delta)
         if (next == null) {
-            if (delta > 0) {
-                startActivity(
-                    Intent(this, PracticeResultActivity::class.java)
-                        .putExtra(PracticeSampleData.EXTRA_EXAM_ID, exam.id)
-                )
-            }
+            if (delta > 0) confirmSubmit()
             return
         }
         showQuestion(next)
+    }
+
+    private fun confirmSubmit() {
+        val unanswered = PracticeSampleData.part5Questions.count { !it.isAnswered }
+        PracticeConfirmHelper.showSubmitExam(
+            activity = this,
+            unansweredCount = unanswered
+        ) {
+            startActivity(
+                Intent(this, PracticeResultActivity::class.java)
+                    .putExtra(PracticeSampleData.EXTRA_EXAM_ID, exam.id)
+            )
+        }
     }
 
     private fun showQuestion(number: Int) {
@@ -116,6 +124,12 @@ class PracticePart5Activity : AppCompatActivity() {
 
         refreshFlagBanner()
         renderQuestionNav()
+
+        // Câu cuối: nút Next thành “Nộp bài”
+        val isLast = pos == list.lastIndex
+        binding.btnNext.text = getString(
+            if (isLast) R.string.practice_submit_next else R.string.practice_next_question
+        )
     }
 
     private fun refreshQuestionText() {
