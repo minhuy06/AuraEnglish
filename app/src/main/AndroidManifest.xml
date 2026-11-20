@@ -25,6 +25,14 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".auth.ui.RegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".auth.ui.VerifyEmailActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".dashboard.ui.DashboardHomeActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
