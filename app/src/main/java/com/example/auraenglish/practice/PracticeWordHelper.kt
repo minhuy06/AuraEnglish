@@ -11,12 +11,16 @@ import android.view.ActionMode
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.example.auraenglish.R
 import com.example.auraenglish.databinding.DialogPracticeAddWordBinding
+import com.example.auraenglish.databinding.DialogPracticeCreateTopicBinding
 import com.example.auraenglish.databinding.PopupPracticeWordActionsBinding
 
 object PracticeWordHelper {
@@ -28,7 +32,6 @@ object PracticeWordHelper {
         onWordAdded: (() -> Unit)? = null
     ) {
         textView.setTextIsSelectable(true)
-        // Giữ selection handles, ẩn toolbar hệ thống → chỉ dùng popup Figma
         val hideSystemMenu = object : ActionMode.Callback {
             override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
                 menu.clear()
@@ -81,7 +84,7 @@ object PracticeWordHelper {
         val popup = PopupWindow(
             binding.root,
             activity.resources.getDimensionPixelSize(R.dimen.practice_word_popup_width),
-            android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
             true
         ).apply {
             isOutsideTouchable = true
@@ -95,7 +98,7 @@ object PracticeWordHelper {
             clipboard.setPrimaryClip(android.content.ClipData.newPlainText("word", selected))
             Toast.makeText(activity, R.string.practice_copied_word, Toast.LENGTH_SHORT).show()
             popup.dismiss()
-            clearSelection(textView)
+            textView.clearFocus()
         }
         binding.btnAddWord.setOnClickListener {
             popup.dismiss()
@@ -116,15 +119,10 @@ object PracticeWordHelper {
         binding.etWord.setText(initialWord)
         binding.etWord.setSelection(initialWord.length)
 
-        val dialog = Dialog(activity).apply {
-            setContentView(binding.root)
-            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            window?.setLayout(
-                (activity.resources.displayMetrics.widthPixels * 0.9f).toInt(),
-                android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-            )
-        }
+        var selectedTopic = PracticeSampleData.topics.first()
+        binding.tvTopic.text = selectedTopic
 
+        var selectedType = activity.getString(R.string.practice_word_type_noun)
         val chips = listOf(binding.chipNoun, binding.chipVerb, binding.chipAdj, binding.chipAdv)
         fun selectChip(selected: TextView) {
             chips.forEach { chip ->
@@ -136,12 +134,31 @@ object PracticeWordHelper {
                     activity.getColor(if (active) R.color.white else R.color.practice_text_secondary)
                 )
             }
+            selectedType = selected.text.toString()
         }
         chips.forEach { chip -> chip.setOnClickListener { selectChip(chip) } }
 
+        val dialog = Dialog(activity).apply {
+            setContentView(binding.root)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            window?.setLayout(
+                (activity.resources.displayMetrics.widthPixels * 0.9f).toInt(),
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        }
+
+        binding.tvTopic.setOnClickListener {
+            showTopicPicker(activity, binding.tvTopic) { topic ->
+                selectedTopic = topic
+                binding.tvTopic.text = topic
+            }
+        }
         binding.btnCloseDialog.setOnClickListener { dialog.dismiss() }
         binding.btnNewTopic.setOnClickListener {
-            Toast.makeText(activity, R.string.practice_word_new_topic, Toast.LENGTH_SHORT).show()
+            showCreateTopicDialog(activity) { topic ->
+                selectedTopic = topic
+                binding.tvTopic.text = topic
+            }
         }
         binding.btnSaveWord.setOnClickListener {
             val word = binding.etWord.text?.toString().orEmpty().trim()
@@ -149,7 +166,14 @@ object PracticeWordHelper {
                 Toast.makeText(activity, R.string.practice_word_empty_error, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val added = PracticeSampleData.addWord(word, questionNumber)
+            val phonetic = binding.etPhonetic.text?.toString().orEmpty()
+            val added = PracticeSampleData.addWord(
+                raw = word,
+                fromQuestion = questionNumber,
+                topic = selectedTopic,
+                phonetic = phonetic,
+                wordType = selectedType
+            )
             Toast.makeText(
                 activity,
                 if (added) activity.getString(R.string.practice_word_added_named, word)
@@ -160,6 +184,86 @@ object PracticeWordHelper {
             dialog.dismiss()
         }
         dialog.show()
+    }
+
+    fun showCreateTopicDialog(
+        activity: AppCompatActivity,
+        onCreated: (String) -> Unit
+    ) {
+        val binding = DialogPracticeCreateTopicBinding.inflate(LayoutInflater.from(activity))
+        val dialog = Dialog(activity).apply {
+            setContentView(binding.root)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            window?.setLayout(
+                (activity.resources.displayMetrics.widthPixels * 0.9f).toInt(),
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        }
+
+        binding.tvTopicError.isVisible = false
+        binding.btnCloseTopic.setOnClickListener { dialog.dismiss() }
+        binding.btnSaveTopic.setOnClickListener {
+            val name = binding.etTopicName.text?.toString().orEmpty().trim()
+            if (name.isEmpty()) {
+                binding.tvTopicError.text = activity.getString(R.string.practice_topic_empty_error)
+                binding.tvTopicError.isVisible = true
+                return@setOnClickListener
+            }
+            val created = PracticeSampleData.addTopic(name)
+            if (!created) {
+                binding.tvTopicError.text = activity.getString(R.string.practice_topic_exists, name)
+                binding.tvTopicError.isVisible = true
+                return@setOnClickListener
+            }
+            Toast.makeText(
+                activity,
+                activity.getString(R.string.practice_topic_created, name),
+                Toast.LENGTH_SHORT
+            ).show()
+            onCreated(name)
+            dialog.dismiss()
+        }
+        dialog.show()
+        binding.etTopicName.requestFocus()
+    }
+
+    private fun showTopicPicker(
+        activity: AppCompatActivity,
+        anchor: TextView,
+        onSelected: (String) -> Unit
+    ) {
+        val list = LinearLayout(activity).apply {
+            orientation = LinearLayout.VERTICAL
+            setBackgroundResource(R.drawable.bg_practice_card)
+            setPadding(0, 8, 0, 8)
+        }
+        val popup = PopupWindow(
+            list,
+            anchor.width.coerceAtLeast(
+                activity.resources.getDimensionPixelSize(R.dimen.practice_word_popup_width)
+            ),
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            true
+        ).apply {
+            isOutsideTouchable = true
+            elevation = 12f
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        }
+
+        PracticeSampleData.topics.forEach { topic ->
+            val item = TextView(activity).apply {
+                text = topic
+                setTextColor(activity.getColor(R.color.practice_text_primary))
+                textSize = 14f
+                setPadding(36, 28, 36, 28)
+                setOnClickListener {
+                    onSelected(topic)
+                    popup.dismiss()
+                }
+            }
+            list.addView(item)
+        }
+        popup.showAsDropDown(anchor, 0, 4)
     }
 
     fun highlightSavedWords(textView: TextView, source: String) {
@@ -182,11 +286,6 @@ object PracticeWordHelper {
         textView.setText(spannable, TextView.BufferType.SPANNABLE)
     }
 
-    private fun clearSelection(textView: TextView) {
-        textView.clearFocus()
-    }
-
-    /** Offset popup gần đoạn đang bôi đen, không làm đổi kích thước card. */
     private fun selectionAnchor(textView: TextView): Pair<Int, Int> {
         val start = textView.selectionStart.coerceAtLeast(0)
         val layout = textView.layout ?: return 0 to textView.height

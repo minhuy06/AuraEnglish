@@ -38,6 +38,9 @@ data class PracticeQuestion(
 data class SavedWord(
     val word: String,
     val fromQuestion: Int,
+    val topic: String = "Từ vựng công sở",
+    val phonetic: String = "",
+    val wordType: String = "",
     val addedAt: Long = System.currentTimeMillis()
 )
 
@@ -57,12 +60,40 @@ object PracticeSampleData {
     private val _savedWords = linkedMapOf<String, SavedWord>()
     val savedWords: List<SavedWord> get() = _savedWords.values.toList().asReversed()
 
-    fun addWord(raw: String, fromQuestion: Int): Boolean {
+    private val _topics = linkedSetOf("Từ vựng công sở", "Ngữ pháp TOEIC", "Luyện đề ngữ pháp")
+    val topics: List<String> get() = _topics.toList()
+
+    fun addTopic(raw: String): Boolean {
+        val name = raw.trim().replace(Regex("\\s+"), " ")
+        if (name.isEmpty()) return false
+        val exists = _topics.any { it.equals(name, ignoreCase = true) }
+        if (exists) return false
+        _topics.add(name)
+        return true
+    }
+
+    fun addWord(
+        raw: String,
+        fromQuestion: Int,
+        topic: String = topics.first(),
+        phonetic: String = "",
+        wordType: String = ""
+    ): Boolean {
         val word = raw.trim().replace(Regex("\\s+"), " ")
         if (word.isEmpty()) return false
         val key = word.lowercase()
         if (_savedWords.containsKey(key)) return false
-        _savedWords[key] = SavedWord(word = word, fromQuestion = fromQuestion)
+        val topicName = topic.ifBlank { topics.first() }
+        if (_topics.none { it.equals(topicName, ignoreCase = true) }) {
+            _topics.add(topicName)
+        }
+        _savedWords[key] = SavedWord(
+            word = word,
+            fromQuestion = fromQuestion,
+            topic = topicName,
+            phonetic = phonetic.trim(),
+            wordType = wordType.trim()
+        )
         return true
     }
 

@@ -91,6 +91,13 @@
     <string name="practice_word_topic_label">Chọn chủ đề *</string>
     <string name="practice_word_topic_default">Từ vựng công sở</string>
     <string name="practice_word_new_topic">Tự tạo chủ đề mới +</string>
+    <string name="practice_create_topic_title">Tạo chủ đề mới</string>
+    <string name="practice_topic_name_label">Tên chủ đề *</string>
+    <string name="practice_topic_name_hint">Nhập tên chủ đề</string>
+    <string name="practice_topic_save">Lưu chủ đề</string>
+    <string name="practice_topic_empty_error">Tên chủ đề không được để trống.</string>
+    <string name="practice_topic_exists">Chủ đề “%1$s” đã tồn tại</string>
+    <string name="practice_topic_created">Đã tạo chủ đề “%1$s”</string>
     <string name="practice_word_type_label">Từ loại</string>
     <string name="practice_word_type_noun">Danh từ</string>
     <string name="practice_word_type_verb">Động từ</string>
@@ -100,7 +107,7 @@
     <string name="practice_word_empty_error">Vui lòng nhập từ tiếng Anh</string>
     <string name="practice_library_words_title">Từ đã lưu (%1$d)</string>
     <string name="practice_library_words_empty">Chưa có từ nào. Vào Part 5, bôi đen từ trong câu hỏi rồi chọn “Thêm từ mới”.</string>
-    <string name="practice_library_word_meta">Từ câu %1$d</string>
+    <string name="practice_library_word_meta">%1$s • Câu %2$d</string>
     <string name="practice_demo_home_desc">Đây là demo tab Trang chủ. Sau này sẽ hiện lộ trình học, streak và gợi ý bài tập.</string>
     <string name="practice_demo_library_desc">Thư viện từ vựng: các từ bạn bôi đen khi làm bài sẽ hiện bên dưới.</string>
     <string name="practice_demo_rank_desc">Đây là demo tab Xếp hạng. Sau này sẽ hiện bảng xếp hạng điểm TOEIC theo tuần/tháng.</string>

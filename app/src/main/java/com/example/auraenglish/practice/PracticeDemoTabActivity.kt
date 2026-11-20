@@ -87,7 +87,11 @@ class PracticeDemoTabActivity : AppCompatActivity() {
                 LayoutInflater.from(this), binding.wordList, false
             )
             item.tvWord.text = saved.word
-            item.tvMeta.text = getString(R.string.practice_library_word_meta, saved.fromQuestion)
+            item.tvMeta.text = getString(
+                R.string.practice_library_word_meta,
+                saved.topic,
+                saved.fromQuestion
+            )
             binding.wordList.addView(item.root)
         }
     }
