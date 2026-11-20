@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardRoomRankRow"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_room_card"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/tvRankPosition"
+        android:layout_width="28dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:gravity="center"
+        android:textColor="@color/room_primary"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRankAvatar"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="6dp"
+        android:background="@drawable/bg_room_avatar_circle"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvRankPosition"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRankMemberName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:textColor="@color/room_text_primary"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@id/tvRankPoints"
+        app:layout_constraintStart_toEndOf="@id/tvRankAvatar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRankDetailMeta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/be_vietnam_pro_regular"
+        android:textColor="@color/room_text_secondary"
+        android:textSize="11.5sp"
+        app:layout_constraintEnd_toStartOf="@id/tvRankPoints"
+        app:layout_constraintStart_toEndOf="@id/tvRankAvatar"
+        app:layout_constraintTop_toBottomOf="@id/tvRankMemberName" />
+
+    <TextView
+        android:id="@+id/tvRankPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:textColor="@color/room_primary_royal"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

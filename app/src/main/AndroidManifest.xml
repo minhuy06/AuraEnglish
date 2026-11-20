@@ -89,6 +89,21 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".room.ui.RoomHubActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".room.ui.RoomLobbyActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".room.ui.RoomExamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".room.ui.RoomRankingActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
