@@ -39,6 +39,7 @@ android {
                 "src/main/res-ranking",
                 "src/main/res-dashboard",
                 "src/main/res-admin",
+                "src/main/res-profile",
             )
         }
     }
