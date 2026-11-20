@@ -138,27 +138,44 @@ class ListeningQuestionActivity : AppCompatActivity() {
 
     private fun renderWordResult(q: ListeningQuestion) {
         if (!q.submitted || q.wordResults.isEmpty()) {
+            binding.tvBlankPattern.text = q.blankPattern
+            binding.tvBlankPattern.setTextColor(getColor(R.color.listen_blank))
             binding.tvResultLabel.isVisible = false
             binding.tvWordResult.isVisible = false
             return
         }
-        binding.tvResultLabel.isVisible = true
-        binding.tvWordResult.isVisible = true
+        // Đúng → hiện chữ xanh; sai → hiện *** đỏ
         val green = getColor(R.color.listen_correct)
         val red = getColor(R.color.listen_wrong)
         val sb = SpannableStringBuilder()
         q.answerWords.forEachIndexed { i, word ->
             if (i > 0) sb.append(' ')
             val start = sb.length
-            sb.append(word)
             val ok = q.wordResults.getOrNull(i) == true
-            sb.setSpan(
-                ForegroundColorSpan(if (ok) green else red),
-                start,
-                sb.length,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
+            if (ok) {
+                sb.append(word)
+                sb.setSpan(
+                    ForegroundColorSpan(green),
+                    start,
+                    sb.length,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+            } else {
+                val letters = word.count { it.isLetterOrDigit() }.coerceAtLeast(1)
+                val punct = word.filterNot { it.isLetterOrDigit() }
+                sb.append("*".repeat(letters))
+                sb.append(punct)
+                sb.setSpan(
+                    ForegroundColorSpan(red),
+                    start,
+                    sb.length,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+            }
         }
+        binding.tvBlankPattern.text = sb
+        binding.tvResultLabel.isVisible = true
+        binding.tvWordResult.isVisible = true
         binding.tvWordResult.text = sb
     }
 
