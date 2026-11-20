@@ -1,6 +1,5 @@
 package com.example.auraenglish.admin.ui
 
-import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.widget.TextView
@@ -16,10 +15,11 @@ import com.example.auraenglish.R
 import com.example.auraenglish.admin.adapter.AdminStudentAdapter
 import com.example.auraenglish.admin.data.AdminStudentFilter
 import com.example.auraenglish.admin.data.AdminStudentUiModel
+import com.example.auraenglish.admin.helper.AdminNavHelper
+import com.example.auraenglish.admin.helper.AdminTab
 import com.example.auraenglish.admin.viewmodel.AdminStudentListState
 import com.example.auraenglish.admin.viewmodel.AdminStudentViewModel
 import com.example.auraenglish.databinding.ActivityAdminStudentManageBinding
-import com.example.auraenglish.practice.utils.setOnClickDebounced
 import com.example.auraenglish.practice.utils.showToast
 import com.example.auraenglish.practice.utils.visibleIf
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -38,6 +38,7 @@ class AdminStudentManageActivity : AppCompatActivity() {
 
         setupWindowInsets()
         setupStudentList()
+        AdminNavHelper.bind(this, binding.includeAdminBottomNav, AdminTab.STUDENTS)
         setupListeners()
         observeViewModel()
     }
@@ -78,16 +79,6 @@ class AdminStudentManageActivity : AppCompatActivity() {
         }
         chipStudentSuspended.setOnClickListener {
             viewModel.setFilter(AdminStudentFilter.SUSPENDED)
-        }
-
-        includeAdminBottomNav.navStats.setOnClickDebounced {
-            openAdminScreen(AdminStatisticsActivity::class.java)
-        }
-        includeAdminBottomNav.navCourses.setOnClickDebounced {
-            openAdminScreen(AdminCourseManageActivity::class.java)
-        }
-        includeAdminBottomNav.navExams.setOnClickDebounced {
-            openAdminScreen(AdminExamShopActivity::class.java)
         }
     }
 
@@ -201,12 +192,5 @@ class AdminStudentManageActivity : AppCompatActivity() {
                 )
             }
             .show()
-    }
-
-    private fun openAdminScreen(target: Class<out AppCompatActivity>) {
-        startActivity(
-            Intent(this, target).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        )
-        finish()
     }
 }

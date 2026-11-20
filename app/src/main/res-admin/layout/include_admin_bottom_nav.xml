@@ -18,12 +18,14 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/ivNavStats"
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:contentDescription="@string/admin_nav_stats"
             android:src="@drawable/ic_admin_stats" />
 
         <TextView
+            android:id="@+id/tvNavStats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -78,9 +80,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:text="@string/admin_nav_exams"
-            android:textColor="@color/admin_primary"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:textColor="@color/admin_nav_inactive"
+            android:textSize="11sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -92,12 +93,14 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/ivNavStudents"
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:contentDescription="@string/admin_nav_students"
             android:src="@drawable/ic_admin_students" />
 
         <TextView
+            android:id="@+id/tvNavStudents"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"

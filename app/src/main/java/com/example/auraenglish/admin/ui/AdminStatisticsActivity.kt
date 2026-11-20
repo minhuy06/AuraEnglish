@@ -1,6 +1,5 @@
 package com.example.auraenglish.admin.ui
 
-import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Typeface
 import android.os.Bundle
@@ -18,6 +17,8 @@ import com.example.auraenglish.admin.data.AdminActivityPoint
 import com.example.auraenglish.admin.data.AdminCoursePerformance
 import com.example.auraenglish.admin.data.AdminStatisticsPeriod
 import com.example.auraenglish.admin.data.AdminStatisticsUiModel
+import com.example.auraenglish.admin.helper.AdminNavHelper
+import com.example.auraenglish.admin.helper.AdminTab
 import com.example.auraenglish.admin.viewmodel.AdminStatisticsViewModel
 import com.example.auraenglish.databinding.ActivityAdminStatisticsBinding
 import com.example.auraenglish.databinding.ItemAdminActivityBarBinding
@@ -44,6 +45,7 @@ class AdminStatisticsActivity : AppCompatActivity() {
 
         setupWindowInsets()
         setupMetricCards()
+        AdminNavHelper.bind(this, binding.includeAdminBottomNav, AdminTab.STATS)
         setupListeners()
         observeViewModel()
     }
@@ -99,13 +101,6 @@ class AdminStatisticsActivity : AppCompatActivity() {
         }
         chipStatsYear.setOnClickDebounced {
             viewModel.setPeriod(AdminStatisticsPeriod.YEAR)
-        }
-
-        includeAdminBottomNav.navCourses.setOnClickDebounced {
-            openAdminScreen(AdminCourseManageActivity::class.java)
-        }
-        includeAdminBottomNav.navExams.setOnClickDebounced {
-            openAdminScreen(AdminExamShopActivity::class.java)
         }
     }
 
@@ -235,12 +230,5 @@ class AdminStatisticsActivity : AppCompatActivity() {
             course.completionPercent
         )
         pbCourseProgress.progress = course.completionPercent
-    }
-
-    private fun openAdminScreen(target: Class<out AppCompatActivity>) {
-        startActivity(
-            Intent(this, target).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        )
-        finish()
     }
 }

@@ -1,10 +1,11 @@
 package com.example.auraenglish.admin.ui
 
 import com.example.auraenglish.admin.helper.AdminExamDialogs
+import com.example.auraenglish.admin.helper.AdminNavHelper
+import com.example.auraenglish.admin.helper.AdminTab
 
 import com.example.auraenglish.admin.data.ExamSetUiModel
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -71,6 +72,7 @@ class AdminExamShopActivity : AppCompatActivity() {
         binding = ActivityAdminExamShopBinding.inflate(layoutInflater)
         setContentView(binding.root)
         dialogs = AdminExamDialogs(this)
+        AdminNavHelper.bind(this, binding.bottomNavInclude, AdminTab.EXAMS)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -184,13 +186,6 @@ class AdminExamShopActivity : AppCompatActivity() {
             dialogs.showCreateExamSet { name ->
                 Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
             }
-        }
-        binding.bottomNavInclude.navCourses.setOnClickListener {
-            startActivity(
-                Intent(this, AdminCourseManageActivity::class.java)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            )
-            finish()
         }
     }
 }

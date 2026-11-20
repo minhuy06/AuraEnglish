@@ -1,6 +1,5 @@
 package com.example.auraenglish.admin.ui
 
-import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.widget.TextView
@@ -17,6 +16,8 @@ import com.example.auraenglish.admin.adapter.AdminCourseAdapter
 import com.example.auraenglish.admin.data.AdminCourseSkill
 import com.example.auraenglish.admin.data.AdminCourseUiModel
 import com.example.auraenglish.admin.helper.AdminCourseDialogHelper
+import com.example.auraenglish.admin.helper.AdminNavHelper
+import com.example.auraenglish.admin.helper.AdminTab
 import com.example.auraenglish.admin.viewmodel.AdminCourseListState
 import com.example.auraenglish.admin.viewmodel.AdminCourseViewModel
 import com.example.auraenglish.databinding.ActivityAdminCourseManageBinding
@@ -49,15 +50,11 @@ class AdminCourseManageActivity : AppCompatActivity() {
             insets
         }
 
-        // Highlight tab Khóa học trong Admin Bottom Nav
-        val primary = ContextCompat.getColor(this@AdminCourseManageActivity, R.color.admin_primary)
-        val inactive = ContextCompat.getColor(this@AdminCourseManageActivity, R.color.admin_nav_inactive)
-        includeAdminBottomNav.tvNavCourses.setTextColor(primary)
-        includeAdminBottomNav.tvNavCourses.setTypeface(null, Typeface.BOLD)
-        includeAdminBottomNav.ivNavCourses.setColorFilter(primary)
-        includeAdminBottomNav.tvNavExams.setTextColor(inactive)
-        includeAdminBottomNav.tvNavExams.setTypeface(null, Typeface.NORMAL)
-        includeAdminBottomNav.ivNavExams.setColorFilter(inactive)
+        AdminNavHelper.bind(
+            this@AdminCourseManageActivity,
+            includeAdminBottomNav,
+            AdminTab.COURSES
+        )
 
         courseAdapter = AdminCourseAdapter(
             onPrimaryAction = { course -> handlePrimaryAction(course) },
@@ -118,14 +115,6 @@ class AdminCourseManageActivity : AppCompatActivity() {
                 viewModel.addCourse(title, skill, cefr, meta)
                 showToast(getString(R.string.admin_toast_course_created, title))
             }
-        }
-
-        includeAdminBottomNav.navExams.setOnClickListener {
-            startActivity(
-                Intent(this@AdminCourseManageActivity, AdminExamShopActivity::class.java)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            )
-            finish()
         }
     }
 
