@@ -50,6 +50,13 @@ object PracticeNavHelper {
                 )
                 if (activity !is PracticeExamListActivity) activity.finish()
             }
+            PracticeTab.RANK -> {
+                activity.startActivity(
+                    Intent(activity, PracticeRankActivity::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                )
+                if (activity !is PracticeRankActivity) activity.finish()
+            }
             else -> {
                 activity.startActivity(
                     Intent(activity, PracticeDemoTabActivity::class.java)

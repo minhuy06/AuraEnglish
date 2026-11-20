@@ -28,6 +28,7 @@
         <activity android:name=".practice.PracticeResultActivity" android:exported="false" />
         <activity android:name=".practice.PracticeAnswerReviewActivity" android:exported="false" />
         <activity android:name=".practice.PracticeDemoTabActivity" android:exported="false" />
+        <activity android:name=".practice.PracticeRankActivity" android:exported="false" />
 
         <activity
             android:name=".admin.AdminExamShopActivity"
