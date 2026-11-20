@@ -2,12 +2,15 @@ package com.example.auraenglish.practice
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import com.example.auraenglish.R
 import com.example.auraenglish.databinding.ActivityPracticeDemoTabBinding
+import com.example.auraenglish.databinding.ItemPracticeSavedWordBinding
 
 class PracticeDemoTabActivity : AppCompatActivity() {
 
@@ -64,9 +67,29 @@ class PracticeDemoTabActivity : AppCompatActivity() {
         binding.ivIcon.setImageResource(icon)
         binding.ivIcon.setColorFilter(getColor(R.color.practice_primary))
 
+        binding.librarySection.isVisible = tab == PracticeTab.LIBRARY
+        if (tab == PracticeTab.LIBRARY) {
+            renderLibraryWords()
+        }
+
         binding.btnBack.setOnClickListener { goPractice() }
         binding.btnPrimary.setOnClickListener { goPractice() }
         PracticeNavHelper.bind(this, binding.bottomNavInclude, tab)
+    }
+
+    private fun renderLibraryWords() {
+        val words = PracticeSampleData.savedWords
+        binding.tvLibraryTitle.text = getString(R.string.practice_library_words_title, words.size)
+        binding.tvLibraryEmpty.isVisible = words.isEmpty()
+        binding.wordList.removeAllViews()
+        words.forEach { saved ->
+            val item = ItemPracticeSavedWordBinding.inflate(
+                LayoutInflater.from(this), binding.wordList, false
+            )
+            item.tvWord.text = saved.word
+            item.tvMeta.text = getString(R.string.practice_library_word_meta, saved.fromQuestion)
+            binding.wordList.addView(item.root)
+        }
     }
 
     private fun goPractice() {

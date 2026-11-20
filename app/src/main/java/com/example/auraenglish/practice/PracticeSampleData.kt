@@ -35,6 +35,12 @@ data class PracticeQuestion(
     val isAnswered: Boolean get() = userAnswerIndex != null
 }
 
+data class SavedWord(
+    val word: String,
+    val fromQuestion: Int,
+    val addedAt: Long = System.currentTimeMillis()
+)
+
 /**
  * Kho dữ liệu mẫu in-memory (chưa có database).
  * Giữ state trong session app để các màn chia sẻ đáp án / đánh dấu.
@@ -46,6 +52,19 @@ object PracticeSampleData {
     const val EXTRA_PART_NUMBER = "extra_part_number"
 
     var currentExamId: String = "exam_01"
+
+    /** Sổ từ vựng in-memory: từ được bôi đen khi làm bài. */
+    private val _savedWords = linkedMapOf<String, SavedWord>()
+    val savedWords: List<SavedWord> get() = _savedWords.values.toList().asReversed()
+
+    fun addWord(raw: String, fromQuestion: Int): Boolean {
+        val word = raw.trim().replace(Regex("\\s+"), " ")
+        if (word.isEmpty()) return false
+        val key = word.lowercase()
+        if (_savedWords.containsKey(key)) return false
+        _savedWords[key] = SavedWord(word = word, fromQuestion = fromQuestion)
+        return true
+    }
 
     val exams: List<PracticeExam> = listOf(
         PracticeExam(

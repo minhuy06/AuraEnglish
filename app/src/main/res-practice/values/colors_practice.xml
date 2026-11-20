@@ -33,6 +33,7 @@
     <color name="practice_nav_inactive">#FF94A3B8</color>
     <color name="practice_progress_track">#FFE2E8F0</color>
     <color name="practice_menu_bg">#FF334155</color>
+    <color name="practice_word_highlight">#FFFFF59D</color>
 
     <color name="practice_part1">#FF3B82F6</color>
     <color name="practice_part2">#FF8B5CF6</color>

@@ -42,6 +42,13 @@ class PracticePart5Activity : AppCompatActivity() {
         binding.progressBar.max = PracticeSampleData.part5Questions.size
         binding.progressBar.progressDrawable = getDrawable(R.drawable.bg_practice_progress_bar)
 
+        PracticeWordHelper.enableSelection(
+            activity = this,
+            textView = binding.tvQuestion,
+            questionNumber = { currentNumber },
+            onWordAdded = { refreshQuestionText() }
+        )
+
         binding.btnClose.setOnClickListener { finish() }
         binding.btnViewFlagged.setOnClickListener {
             startActivity(
@@ -55,22 +62,34 @@ class PracticePart5Activity : AppCompatActivity() {
             refreshFlagBanner()
             renderQuestionNav()
         }
-        binding.tvQuestion.setOnLongClickListener {
-            binding.wordMenu.isVisible = !binding.wordMenu.isVisible
-            true
-        }
+        // Menu nổi (Figma): hiện khi đang có đoạn bôi đen
         binding.btnAddWord.setOnClickListener {
-            binding.wordMenu.isVisible = false
-            Toast.makeText(this, R.string.practice_word_added, Toast.LENGTH_SHORT).show()
+            val added = PracticeWordHelper.addSelectedWord(
+                this,
+                binding.tvQuestion,
+                currentNumber
+            ) { refreshQuestionText() }
+            if (added) binding.wordMenu.isVisible = false
         }
         binding.btnCopy.setOnClickListener {
-            binding.wordMenu.isVisible = false
-            val q = PracticeSampleData.questionByNumber(currentNumber)
+            val selected = PracticeWordHelper.selectedText(binding.tvQuestion)
+            val text = selected.ifEmpty {
+                PracticeSampleData.questionByNumber(currentNumber)?.stem.orEmpty()
+            }
             val clipboard = getSystemService(CLIPBOARD_SERVICE) as android.content.ClipboardManager
-            clipboard.setPrimaryClip(
-                android.content.ClipData.newPlainText("question", q?.stem.orEmpty())
-            )
-            Toast.makeText(this, R.string.practice_copied, Toast.LENGTH_SHORT).show()
+            clipboard.setPrimaryClip(android.content.ClipData.newPlainText("question", text))
+            Toast.makeText(
+                this,
+                if (selected.isEmpty()) R.string.practice_copied else R.string.practice_copied_word,
+                Toast.LENGTH_SHORT
+            ).show()
+            binding.wordMenu.isVisible = false
+        }
+        binding.tvQuestion.setOnTouchListener { _, event ->
+            if (event.action == android.view.MotionEvent.ACTION_UP) {
+                binding.root.post { syncWordMenuWithSelection() }
+            }
+            false
         }
         binding.btnPrev.setOnClickListener { moveQuestion(-1) }
         binding.btnNext.setOnClickListener { moveQuestion(1) }
@@ -108,7 +127,7 @@ class PracticePart5Activity : AppCompatActivity() {
         )
         binding.progressBar.progress = list.count { it.isAnswered }
         binding.tvTag.text = question.tag
-        binding.tvQuestion.text = question.stem
+        refreshQuestionText()
         binding.btnBookmark.alpha = if (question.flagged) 1f else 0.4f
 
         bindOption(binding.optionA, 0, "A", question.options[0], question)
@@ -118,6 +137,16 @@ class PracticePart5Activity : AppCompatActivity() {
 
         refreshFlagBanner()
         renderQuestionNav()
+    }
+
+    private fun refreshQuestionText() {
+        val stem = PracticeSampleData.questionByNumber(currentNumber)?.stem.orEmpty()
+        PracticeWordHelper.highlightSavedWords(binding.tvQuestion, stem)
+        syncWordMenuWithSelection()
+    }
+
+    private fun syncWordMenuWithSelection() {
+        binding.wordMenu.isVisible = PracticeWordHelper.selectedText(binding.tvQuestion).isNotEmpty()
     }
 
     private fun refreshFlagBanner() {
