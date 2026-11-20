@@ -2,15 +2,15 @@
 <resources>
     <!-- Chung & Lối vào -->
     <string name="room_feature_title">Thi theo phòng</string>
-    <string name="room_feature_subtitle">Tạo phòng tối đa 4 người, thi TOEIC hoặc Ngữ pháp cùng bạn bè</string>
+    <string name="room_feature_subtitle">Tạo phòng tối đa 4 người, thi Từ vựng hoặc Ngữ pháp cùng bạn bè</string>
     <string name="room_back_desc">Quay lại</string>
-    <string name="room_topic_toeic">TOEIC</string>
+    <string name="room_topic_vocab">Từ vựng</string>
     <string name="room_topic_grammar">Ngữ pháp</string>
 
     <!-- Sảnh tạo / tham gia phòng -->
     <string name="room_hub_create_section">TẠO PHÒNG THI MỚI</string>
     <string name="room_hub_name_label">Tên phòng</string>
-    <string name="room_hub_name_hint">VD: Phòng luyện TOEIC tối nay</string>
+    <string name="room_hub_name_hint">VD: Phòng luyện Từ vựng tối nay</string>
     <string name="room_hub_name_default">Phòng thi của Duy Hưng</string>
     <string name="room_hub_topic_label">Chọn chủ đề thi</string>
     <string name="room_hub_config_label">Số câu hỏi &amp; Thời gian</string>

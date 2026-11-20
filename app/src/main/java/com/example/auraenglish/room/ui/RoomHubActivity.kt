@@ -22,7 +22,7 @@ import com.example.auraenglish.room.data.RoomTopic
 class RoomHubActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRoomHubBinding
-    private var selectedTopic: RoomTopic = RoomTopic.TOEIC
+    private var selectedTopic: RoomTopic = RoomTopic.VOCAB
     private var isStandardConfig: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +33,7 @@ class RoomHubActivity : AppCompatActivity() {
 
         if (savedInstanceState != null) {
             val savedTopic = savedInstanceState.getString(KEY_TOPIC)
-            selectedTopic = RoomTopic.entries.firstOrNull { it.name == savedTopic } ?: RoomTopic.TOEIC
+            selectedTopic = RoomTopic.entries.firstOrNull { it.name == savedTopic } ?: RoomTopic.VOCAB
             isStandardConfig = savedInstanceState.getBoolean(KEY_IS_STANDARD_CONFIG, false)
         }
 
@@ -76,8 +76,8 @@ class RoomHubActivity : AppCompatActivity() {
     private fun setupListeners() = with(binding) {
         btnBackRoomHub.setOnClickListener { finish() }
 
-        chipTopicToeic.setOnClickListener {
-            selectedTopic = RoomTopic.TOEIC
+        chipTopicVocab.setOnClickListener {
+            selectedTopic = RoomTopic.VOCAB
             updateTopicChips()
         }
         chipTopicGrammar.setOnClickListener {
@@ -134,7 +134,7 @@ class RoomHubActivity : AppCompatActivity() {
     }
 
     private fun updateTopicChips() = with(binding) {
-        styleChip(chipTopicToeic, isSelected = selectedTopic == RoomTopic.TOEIC)
+        styleChip(chipTopicVocab, isSelected = selectedTopic == RoomTopic.VOCAB)
         styleChip(chipTopicGrammar, isSelected = selectedTopic == RoomTopic.GRAMMAR)
     }
 

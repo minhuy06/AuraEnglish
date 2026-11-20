@@ -86,7 +86,7 @@ class RoomLobbyActivity : AppCompatActivity() {
         tvLobbyRoomName.text = room.roomName
         tvLobbyTopicBadge.setText(
             when (room.topic) {
-                RoomTopic.TOEIC -> R.string.room_topic_toeic
+                RoomTopic.VOCAB -> R.string.room_topic_vocab
                 RoomTopic.GRAMMAR -> R.string.room_topic_grammar
             }
         )

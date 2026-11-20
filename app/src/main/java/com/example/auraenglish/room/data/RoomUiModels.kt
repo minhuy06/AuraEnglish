@@ -4,7 +4,7 @@ import java.util.Locale
 import kotlin.random.Random
 
 enum class RoomTopic(val label: String) {
-    TOEIC("TOEIC"),
+    VOCAB("Từ vựng"),
     GRAMMAR("Ngữ pháp")
 }
 
@@ -92,7 +92,7 @@ object RoomSessionStore {
     var currentRoom: RoomSessionConfig = RoomSessionConfig(
         code = DEFAULT_ROOM_CODE,
         roomName = DEFAULT_ROOM_NAME,
-        topic = RoomTopic.TOEIC,
+        topic = RoomTopic.VOCAB,
         questionCount = 5,
         durationMinutes = 5
     )
@@ -131,8 +131,8 @@ object RoomSessionStore {
         val normalizedCode = code.trim().uppercase().ifEmpty { DEFAULT_ROOM_CODE }
         val config = RoomSessionConfig(
             code = normalizedCode,
-            roomName = "Phòng luyện TOEIC #$normalizedCode",
-            topic = RoomTopic.TOEIC,
+            roomName = "Phòng luyện Từ vựng #$normalizedCode",
+            topic = RoomTopic.VOCAB,
             questionCount = 5,
             durationMinutes = 5
         )
@@ -195,7 +195,7 @@ object RoomSessionStore {
 
     fun getQuestionsForCurrentRoom(): List<RoomQuestionUiModel> {
         val bank = when (currentRoom.topic) {
-            RoomTopic.TOEIC -> toeicQuestions
+            RoomTopic.VOCAB -> vocabQuestions
             RoomTopic.GRAMMAR -> grammarQuestions
         }
         val limit = currentRoom.questionCount.coerceIn(1, bank.size)
@@ -278,76 +278,76 @@ object RoomSessionStore {
         }
     }
 
-    private val toeicQuestions: List<RoomQuestionUiModel> = listOf(
+    private val vocabQuestions: List<RoomQuestionUiModel> = listOf(
         RoomQuestionUiModel(
             id = 101,
             number = 1,
-            question = "All employees must submit their expense reports ___ Friday afternoon.",
-            options = listOf("by", "until", "since", "during"),
+            question = "Từ \"Negotiate\" (/nɪˈɡəʊʃieɪt/) có nghĩa tiếng Việt là gì?",
+            options = listOf("Đàm phán, thương lượng", "Từ chối, bác bỏ", "Lên lịch trình", "Chỉnh sửa tài liệu"),
             correctIndex = 0
         ),
         RoomQuestionUiModel(
             id = 102,
             number = 2,
-            question = "The marketing director was very ___ with the results of the product launch.",
-            options = listOf("satisfy", "satisfying", "satisfied", "satisfaction"),
-            correctIndex = 2
+            question = "Chọn từ đồng nghĩa gần nhất với \"Deadline\" trong môi trường công sở:",
+            options = listOf("Meeting room", "Due date", "Bonus pay", "Work shift"),
+            correctIndex = 1
         ),
         RoomQuestionUiModel(
             id = 103,
             number = 3,
-            question = "Please review the attached invoice ___ and notify us of any discrepancies.",
-            options = listOf("care", "careful", "carefully", "carefulness"),
+            question = "Từ \"Collaborate\" (/kəˈlæb.ə.reɪt/) có nghĩa là gì?",
+            options = listOf("Cạnh tranh", "Giám sát", "Hợp tác, cộng tác", "Tổ chức sự kiện"),
             correctIndex = 2
         ),
         RoomQuestionUiModel(
             id = 104,
             number = 4,
-            question = "Because the conference room was fully booked, the meeting was ___ to Tuesday.",
-            options = listOf("postponed", "attended", "cancelled", "delivered"),
+            question = "Chọn từ thích hợp nhất: \"The new app makes learning English much more ___.\"",
+            options = listOf("efficient", "empty", "fragile", "hesitant"),
             correctIndex = 0
         ),
         RoomQuestionUiModel(
             id = 105,
             number = 5,
-            question = "Neither the sales manager ___ the regional director could attend the ceremony.",
-            options = listOf("or", "and", "nor", "but"),
-            correctIndex = 2
+            question = "Từ \"Candidate\" (/ˈkæn.dɪ.dət/) trong tuyển dụng có nghĩa là gì?",
+            options = listOf("Nhà tuyển dụng", "Ứng viên", "Hợp đồng lao động", "Kỳ thực tập"),
+            correctIndex = 1
         ),
         RoomQuestionUiModel(
             id = 106,
             number = 6,
-            question = "Customers who register before May 15 will receive a 20% ___ on their first order.",
-            options = listOf("refund", "discount", "receipt", "deposit"),
-            correctIndex = 1
+            question = "Từ \"Reliable\" (/rɪˈlaɪ.ə.bəl/) diễn tả đặc điểm nào sau đây?",
+            options = listOf("Đáng tin cậy", "Tốn nhiều chi phí", "Khó tiếp cận", "Cần thiết lập lại"),
+            correctIndex = 0
         ),
         RoomQuestionUiModel(
             id = 107,
             number = 7,
-            question = "The new software update significantly ___ the speed of data processing.",
-            options = listOf("improves", "improving", "improvement", "improvable"),
-            correctIndex = 0
+            question = "Chọn từ thích hợp: \"Customers who register early will receive a 20% ___.\"",
+            options = listOf("refund", "discount", "receipt", "deposit"),
+            correctIndex = 1
         ),
         RoomQuestionUiModel(
             id = 108,
             number = 8,
-            question = "Ms. Park is responsible ___ coordinating all international shipments.",
-            options = listOf("to", "with", "for", "about"),
-            correctIndex = 2
+            question = "Từ \"Postpone\" (/pəʊstˈpəʊn/) đồng nghĩa với cụm động từ nào?",
+            options = listOf("Put off", "Carry out", "Look up", "Turn on"),
+            correctIndex = 0
         ),
         RoomQuestionUiModel(
             id = 109,
             number = 9,
-            question = "Although the proposal was well written, the board decided not to ___ it.",
-            options = listOf("approve", "approval", "approved", "approving"),
+            question = "Từ \"Approve\" (/əˈpruːv/) trong công việc mang nghĩa là gì?",
+            options = listOf("Phê duyệt, chấp thuận", "Đề xuất ý tưởng", "Thống kê doanh thu", "Bàn giao dự án"),
             correctIndex = 0
         ),
         RoomQuestionUiModel(
             id = 110,
             number = 10,
-            question = "The renovated lobby will be open to visitors ___ construction is completed next week.",
-            options = listOf("once", "despite", "during", "however"),
-            correctIndex = 0
+            question = "Từ \"Beneficial\" (/ˌben.ɪˈfɪʃ.əl/) có nghĩa là gì?",
+            options = listOf("Bất tiện", "Có lợi, hữu ích", "Bắt buộc", "Tạm thời"),
+            correctIndex = 1
         )
     )
 

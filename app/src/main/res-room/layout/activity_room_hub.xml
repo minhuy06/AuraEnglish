@@ -107,7 +107,7 @@
                 android:textColorHint="@color/room_text_muted"
                 android:textSize="13.5sp" />
 
-            <!-- Chọn chủ đề: TOEIC / Ngữ pháp -->
+            <!-- Chọn chủ đề: Từ vựng / Ngữ pháp -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/chipTopicToeic"
+                    android:id="@+id/chipTopicVocab"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="8dp"
@@ -134,7 +134,7 @@
                     android:focusable="true"
                     android:fontFamily="@font/be_vietnam_pro_bold"
                     android:gravity="center"
-                    android:text="@string/room_topic_toeic"
+                    android:text="@string/room_topic_vocab"
                     android:textColor="@color/white"
                     android:textSize="13.5sp" />
 
