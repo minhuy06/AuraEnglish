@@ -346,20 +346,34 @@
                 </LinearLayout>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rankList"
+    <FrameLayout
+        android:id="@+id/rankListCard"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="@dimen/practice_screen_padding"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/bg_rank_list_card"
-        android:clipToPadding="false"
+        android:clipChildren="true"
+        android:clipToOutline="true"
         android:elevation="3dp"
-        android:padding="12dp"
+        android:outlineProvider="background"
         app:layout_constraintBottom_toTopOf="@id/stickyRank"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/podiumRow" />
+        app:layout_constraintTop_toBottomOf="@id/podiumRow">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rankList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            android:overScrollMode="never"
+            android:paddingHorizontal="12dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp" />
+    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/stickyRank"
