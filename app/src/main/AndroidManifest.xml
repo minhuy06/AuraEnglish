@@ -52,6 +52,26 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+                <activity
+            android:name=".goal.ui.GoalSelectionActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".goal.ui.AssessmentIntroActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".goal.ui.AssessmentQuizActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".goal.ui.AssessmentResultActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".goal.ui.AssessmentDetailActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".dashboard.ui.DashboardCategoryActivity" android:exported="false" />
         <activity android:name=".dashboard.ui.DashboardStoreActivity" android:exported="false" />
 

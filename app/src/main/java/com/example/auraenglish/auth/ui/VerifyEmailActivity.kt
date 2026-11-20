@@ -13,7 +13,7 @@ class VerifyEmailActivity : BaseOtpActivity() {
 
     override fun onCodeAccepted(email: String) {
         startActivity(
-            Intent(this, LoginActivity::class.java)
+            Intent(this, com.example.auraenglish.goal.ui.GoalSelectionActivity::class.java)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         )
         finish()
