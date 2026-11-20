@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_admin_popup"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvDialogCourseTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:text="@string/admin_popup_create_course_title"
+            android:textColor="@color/admin_text_primary"
+            android:textSize="17sp" />
+
+        <ImageButton
+            android:id="@+id/btnCloseCourseDialog"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/action_close"
+            android:src="@drawable/ic_practice_close" />
+    </LinearLayout>
+
+    <!-- Tên khóa học * -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:text="@string/admin_label_course_name"
+        android:textColor="@color/admin_text_primary"
+        android:textSize="12.5sp" />
+
+    <EditText
+        android:id="@+id/edtCourseName"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bg_admin_input"
+        android:fontFamily="@font/be_vietnam_pro_regular"
+        android:hint="@string/admin_hint_course_name"
+        android:inputType="textCapSentences"
+        android:paddingHorizontal="12dp"
+        android:textColor="@color/admin_text_primary"
+        android:textColorHint="@color/admin_text_placeholder"
+        android:textSize="13.5sp" />
+
+    <!-- Danh mục kỹ năng * (3 pill chips) -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:text="@string/admin_label_course_skill"
+        android:textColor="@color/admin_text_primary"
+        android:textSize="12.5sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/chipSkillVocab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_admin_chip_active"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:gravity="center"
+            android:text="@string/admin_skill_vocab"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/chipSkillGrammar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_admin_chip_inactive"
+            android:fontFamily="@font/be_vietnam_pro_medium"
+            android:gravity="center"
+            android:text="@string/admin_skill_grammar"
+            android:textColor="@color/admin_text_secondary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/chipSkillListen"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_admin_chip_inactive"
+            android:fontFamily="@font/be_vietnam_pro_medium"
+            android:gravity="center"
+            android:text="@string/admin_skill_listen"
+            android:textColor="@color/admin_text_secondary"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Trình độ mục tiêu (CEFR) * -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:text="@string/admin_label_course_cefr"
+        android:textColor="@color/admin_text_primary"
+        android:textSize="12.5sp" />
+
+    <TextView
+        android:id="@+id/tvCourseCefrDropdown"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bg_admin_input"
+        android:fontFamily="@font/be_vietnam_pro_medium"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="12dp"
+        android:text="@string/admin_cefr_default"
+        android:textColor="@color/admin_text_primary"
+        android:textSize="13.5sp" />
+
+    <!-- Số lượng chủ đề & bài học -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:text="@string/admin_label_course_meta"
+        android:textColor="@color/admin_text_primary"
+        android:textSize="12.5sp" />
+
+    <EditText
+        android:id="@+id/edtCourseMeta"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bg_admin_input"
+        android:fontFamily="@font/be_vietnam_pro_regular"
+        android:hint="@string/admin_hint_course_meta"
+        android:inputType="text"
+        android:paddingHorizontal="12dp"
+        android:textColor="@color/admin_text_primary"
+        android:textColorHint="@color/admin_text_placeholder"
+        android:textSize="13.5sp" />
+
+    <TextView
+        android:id="@+id/tvCourseDialogError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/be_vietnam_pro_medium"
+        android:text="@string/admin_err_course_name_empty"
+        android:textColor="@color/admin_danger"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <!-- Nút Lưu khóa học & Hủy bỏ -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSaveCourse"
+        style="@style/Widget.AuraEnglish.AdminPrimaryButton"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/admin_btn_save_course"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvCancelCourseDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/be_vietnam_pro_semibold"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="6dp"
+        android:text="@string/admin_btn_cancel_course"
+        android:textColor="@color/admin_text_secondary"
+        android:textSize="13sp" />
+</LinearLayout>

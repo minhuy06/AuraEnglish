@@ -4,6 +4,7 @@ import com.example.auraenglish.admin.helper.AdminExamDialogs
 
 import com.example.auraenglish.admin.data.ExamSetUiModel
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -183,6 +184,13 @@ class AdminExamShopActivity : AppCompatActivity() {
             dialogs.showCreateExamSet { name ->
                 Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
             }
+        }
+        binding.bottomNavInclude.navCourses.setOnClickListener {
+            startActivity(
+                Intent(this, AdminCourseManageActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            )
+            finish()
         }
     }
 }
