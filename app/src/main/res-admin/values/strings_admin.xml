@@ -47,4 +47,45 @@
     <string name="action_create">Tạo bộ đề</string>
     <string name="action_confirm_stop">Ngừng bán</string>
     <string name="action_confirm_delete">Xóa bộ đề</string>
+
+    <!-- Admin: Quản lý khóa học -->
+    <string name="admin_course_manage_title">Quản lý khóa học &amp; bài học</string>
+    <string name="admin_course_btn_add">+ Thêm mới</string>
+    <string name="admin_course_search_hint">Tìm kiếm khóa học, chủ đề bài học...</string>
+    <string name="admin_course_filter_all_fmt">Tất cả (%1$d)</string>
+    <string name="admin_course_filter_vocab_fmt">Từ vựng (%1$d)</string>
+    <string name="admin_course_filter_grammar_fmt">Ngữ pháp (%1$d)</string>
+    <string name="admin_course_filter_listen_fmt">Nghe (%1$d)</string>
+    <string name="admin_course_status_published">Đang hiển thị</string>
+    <string name="admin_course_status_draft">Bản nháp</string>
+    <string name="admin_course_unpublished_meta">Chưa xuất bản</string>
+    <string name="admin_course_action_manage_vocab">Quản lý từ vựng</string>
+    <string name="admin_course_action_manage_grammar">Quản lý câu hỏi</string>
+    <string name="admin_course_action_manage_listen">Quản lý bài nghe</string>
+    <string name="admin_course_action_publish">Xuất bản ngay</string>
+    <string name="admin_course_action_hide">Ẩn</string>
+    <string name="admin_course_action_delete">Xóa</string>
+    <string name="admin_course_empty">Không tìm thấy khóa học phù hợp</string>
+
+    <!-- Popup Thêm khóa học mới -->
+    <string name="admin_popup_create_course_title">Thêm khóa học mới</string>
+    <string name="admin_popup_edit_course_title">Chỉnh sửa khóa học</string>
+    <string name="admin_label_course_name">Tên khóa học *</string>
+    <string name="admin_hint_course_name">VD: Tiếng Anh thương mại B2</string>
+    <string name="admin_label_course_skill">Danh mục kỹ năng *</string>
+    <string name="admin_skill_vocab">Từ vựng</string>
+    <string name="admin_skill_grammar">Ngữ pháp</string>
+    <string name="admin_skill_listen">Luyện nghe</string>
+    <string name="admin_label_course_cefr">Trình độ mục tiêu (CEFR) *</string>
+    <string name="admin_cefr_default">B1 - B2 (Trung cấp - Cao cấp)</string>
+    <string name="admin_label_course_meta">Số lượng chủ đề &amp; bài học</string>
+    <string name="admin_hint_course_meta">VD: 8 chủ đề • 32 bài học</string>
+    <string name="admin_btn_save_course">Lưu khóa học</string>
+    <string name="admin_btn_cancel_course">Hủy bỏ</string>
+    <string name="admin_err_course_name_empty">Vui lòng nhập tên khóa học</string>
+    <string name="admin_toast_course_created">Đã thêm khóa học \"%1$s\"</string>
+    <string name="admin_toast_course_updated">Đã cập nhật khóa học \"%1$s\"</string>
+    <string name="admin_toast_course_published">Đã xuất bản khóa học \"%1$s\"</string>
+    <string name="admin_toast_course_hidden">Đã ẩn khóa học \"%1$s\"</string>
+    <string name="admin_toast_course_deleted">Đã xóa khóa học \"%1$s\"</string>
 </resources>
