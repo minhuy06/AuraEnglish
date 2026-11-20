@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="grammar_title">Luyện đề ngữ pháp</string>
+    <string name="grammar_back_desc">Quay lại</string>
+    <string name="grammar_quiz_subtitle_format">%1$s • Câu %2$d/%3$d</string>
+    <string name="grammar_question_label_format">Câu hỏi %1$d:</string>
+    <string name="grammar_btn_next">Tiếp theo</string>
+    <string name="grammar_btn_submit">Nộp bài</string>
+    <string name="grammar_btn_prev">Xem lại câu trước</string>
+
+    <string name="grammar_review_subtitle_format">Kết quả &amp; Giải thích • %1$s</string>
+    <string name="grammar_review_counter_format">%1$d/%2$d</string>
+    <string name="grammar_review_question_header_format">CÂU %1$d/%2$d</string>
+    <string name="grammar_review_nav_item_format">Câu %1$d</string>
+    <string name="grammar_explain_title">💡 Giải thích chi tiết</string>
+    <string name="grammar_btn_next_review">Câu tiếp theo →</string>
+    <string name="grammar_btn_finish_review">Hoàn thành xem lại</string>
+    <string name="grammar_timer_default">⏱ 14:25</string>
+</resources>

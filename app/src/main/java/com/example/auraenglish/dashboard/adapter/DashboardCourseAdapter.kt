@@ -12,7 +12,9 @@ import com.example.auraenglish.dashboard.data.DashCourse
 import com.example.auraenglish.databinding.ItemDashboardCourseBinding
 
 // Adapter danh mục khóa học
-class DashboardCourseAdapter :
+class DashboardCourseAdapter(
+    private val onCourseClick: (DashCourse) -> Unit = {}
+) :
     ListAdapter<DashCourse, DashboardCourseAdapter.VH>(Diff) {
 
     object Diff : DiffUtil.ItemCallback<DashCourse>() {
@@ -31,13 +33,14 @@ class DashboardCourseAdapter :
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onCourseClick)
     }
 
     class VH(private val binding: ItemDashboardCourseBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: DashCourse) = with(binding) {
+        fun bind(item: DashCourse, onCourseClick: (DashCourse) -> Unit) = with(binding) {
+            root.setOnClickListener { onCourseClick(item) }
             val ctx = root.context
             tvTitle.text = item.title
             tvMeta.text = if (item.topics > 0) {

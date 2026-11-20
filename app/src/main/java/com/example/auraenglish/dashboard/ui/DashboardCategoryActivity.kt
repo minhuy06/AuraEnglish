@@ -19,6 +19,7 @@ import com.example.auraenglish.dashboard.adapter.DashboardSectionAdapter
 import com.example.auraenglish.dashboard.data.CourseFilter
 import com.example.auraenglish.dashboard.data.DashboardSampleData
 import com.example.auraenglish.databinding.ActivityDashboardCategoryBinding
+import com.example.auraenglish.grammar.ui.GrammarQuizActivity
 import com.example.auraenglish.practice.adapter.PracticeExamAdapter
 import com.example.auraenglish.practice.data.ExamStatus
 import com.example.auraenglish.practice.data.PracticeExam
@@ -57,7 +58,11 @@ class DashboardCategoryActivity : AppCompatActivity() {
             CourseFilter.valueOf(intent.getStringExtra(EXTRA_FILTER) ?: CourseFilter.ALL.name)
         }.getOrDefault(CourseFilter.ALL)
 
-        courseAdapter = DashboardCourseAdapter()
+        courseAdapter = DashboardCourseAdapter { course ->
+            if (course.filter == CourseFilter.GRAMMAR) {
+                startActivity(Intent(this, GrammarQuizActivity::class.java))
+            }
+        }
         examHeaderAdapter = DashboardSectionAdapter()
         examAdapter = PracticeExamAdapter { exam -> openExam(exam) }
 
