@@ -43,6 +43,7 @@ android {
                 "src/main/res-vocab",
                 "src/main/res-grammar",
                 "src/main/res-listening",
+                "src/main/res-room",
             )
         }
     }
