@@ -17,6 +17,7 @@ import com.example.auraenglish.practice.helper.PracticeNavHelper
 import com.example.auraenglish.practice.helper.PracticeTab
 import com.example.auraenglish.practice.ui.PracticeExamOverviewActivity
 import com.example.auraenglish.practice.utils.setOnClickDebounced
+import com.example.auraenglish.room.ui.RoomHubActivity
 
 // Trang chủ học viên — hero, tuần, skill cards
 class DashboardHomeActivity : AppCompatActivity() {
@@ -45,6 +46,9 @@ class DashboardHomeActivity : AppCompatActivity() {
         binding.heroInclude.btnHeroCta.setOnClickDebounced { openSuggested() }
         binding.heroInclude.heroCard.setOnClickDebounced { openSuggested() }
         binding.continueCard.setOnClickDebounced { openCategory() }
+        binding.roomExamCard.setOnClickDebounced {
+            startActivity(Intent(this, RoomHubActivity::class.java))
+        }
         binding.skillVocab.setOnClickDebounced { openCategory(CourseFilter.VOCAB) }
         binding.skillGrammar.setOnClickDebounced { openCategory(CourseFilter.GRAMMAR) }
         binding.skillExam.setOnClickDebounced { openCategory(CourseFilter.EXAM) }
