@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.auraenglish.R
 import com.example.auraenglish.databinding.ItemPracticeBookmarkedBinding
-import com.example.auraenglish.practice.PracticeQuestion
+import com.example.auraenglish.practice.data.PracticeQuestion
 
 class PracticeBookmarkedAdapter(
     private val onQuestionClick: (PracticeQuestion) -> Unit

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_practice_screen"
-    tools:context=".practice.PracticeRankActivity">
+    tools:context=".practice.ui.PracticeRankActivity">
 
     <LinearLayout
         android:id="@+id/header"

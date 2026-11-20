@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.auraenglish.R
 import com.example.auraenglish.databinding.ItemPracticeRankRowBinding
-import com.example.auraenglish.practice.RankEntry
-import com.example.auraenglish.practice.PracticeRankData
+import com.example.auraenglish.practice.data.RankEntry
+import com.example.auraenglish.practice.data.PracticeRankData
 
 class PracticeRankAdapter : ListAdapter<RankEntry, PracticeRankAdapter.VH>(Diff) {
 

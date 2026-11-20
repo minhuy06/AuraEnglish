@@ -1,4 +1,4 @@
-package com.example.auraenglish.practice
+package com.example.auraenglish.practice.data
 
 import com.example.auraenglish.R
 

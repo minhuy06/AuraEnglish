@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.auraenglish.R
 import com.example.auraenglish.databinding.ItemPracticeExamBinding
-import com.example.auraenglish.practice.ExamStatus
-import com.example.auraenglish.practice.PracticeExam
+import com.example.auraenglish.practice.data.ExamStatus
+import com.example.auraenglish.practice.data.PracticeExam
 
 class PracticeExamAdapter(
     private val onExamClick: (PracticeExam) -> Unit

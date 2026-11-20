@@ -13,7 +13,7 @@
         android:theme="@style/Theme.AuraEnglish">
 
         <activity
-            android:name=".practice.PracticeExamListActivity"
+            android:name=".practice.ui.PracticeExamListActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -22,16 +22,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".practice.PracticeExamOverviewActivity" android:exported="false" />
-        <activity android:name=".practice.PracticePart5Activity" android:exported="false" />
-        <activity android:name=".practice.PracticeBookmarkedActivity" android:exported="false" />
-        <activity android:name=".practice.PracticeResultActivity" android:exported="false" />
-        <activity android:name=".practice.PracticeAnswerReviewActivity" android:exported="false" />
-        <activity android:name=".practice.PracticeDemoTabActivity" android:exported="false" />
-        <activity android:name=".practice.PracticeRankActivity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticeExamOverviewActivity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticePart5Activity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticeBookmarkedActivity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticeResultActivity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticeAnswerReviewActivity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticeDemoTabActivity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticeRankActivity" android:exported="false" />
 
         <activity
-            android:name=".admin.AdminExamShopActivity"
+            android:name=".admin.ui.AdminExamShopActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity

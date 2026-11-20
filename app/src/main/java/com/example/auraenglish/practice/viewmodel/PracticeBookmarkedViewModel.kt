@@ -3,9 +3,9 @@ package com.example.auraenglish.practice.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.auraenglish.practice.ExamStatus
-import com.example.auraenglish.practice.PracticeQuestion
-import com.example.auraenglish.practice.PracticeSampleData
+import com.example.auraenglish.practice.data.ExamStatus
+import com.example.auraenglish.practice.data.PracticeQuestion
+import com.example.auraenglish.practice.data.PracticeSampleData
 
 data class BookmarkChipCounts(
     val all: Int,

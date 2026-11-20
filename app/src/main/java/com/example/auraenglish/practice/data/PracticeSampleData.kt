@@ -1,4 +1,4 @@
-package com.example.auraenglish.practice
+package com.example.auraenglish.practice.data
 
 enum class ExamStatus { ALL, TODO, DOING, DONE }
 

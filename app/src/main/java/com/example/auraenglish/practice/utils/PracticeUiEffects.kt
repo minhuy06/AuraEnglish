@@ -1,4 +1,4 @@
-package com.example.auraenglish.practice
+package com.example.auraenglish.practice.utils
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator

@@ -1,4 +1,4 @@
-package com.example.auraenglish.admin
+package com.example.auraenglish.admin.data
 
 data class ExamSetUiModel(
     val index: String,

@@ -3,9 +3,9 @@ package com.example.auraenglish.practice.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.auraenglish.practice.PracticeRankData
-import com.example.auraenglish.practice.RankEntry
-import com.example.auraenglish.practice.RankPeriod
+import com.example.auraenglish.practice.data.PracticeRankData
+import com.example.auraenglish.practice.data.RankEntry
+import com.example.auraenglish.practice.data.RankPeriod
 
 data class RankUiState(
     val period: RankPeriod = RankPeriod.WEEK,
