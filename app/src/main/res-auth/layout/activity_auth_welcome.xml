@@ -13,7 +13,7 @@
         android:background="@drawable/bg_auth_header"
         android:paddingHorizontal="@dimen/auth_screen_padding"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.58"
+        app:layout_constraintHeight_percent="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -39,15 +39,16 @@
             android:id="@+id/tvWelcomeLogo"
             android:layout_width="64dp"
             android:layout_height="64dp"
+            android:layout_marginTop="92dp"
             android:background="@drawable/bg_auth_logo_white"
             android:fontFamily="@font/be_vietnam_pro_bold"
             android:gravity="center"
             android:text="@string/auth_logo_letter"
             android:textColor="@color/auth_primary"
             android:textSize="28sp"
-            app:layout_constraintBottom_toTopOf="@id/tvWelcomeTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvWelcomeTitle"
@@ -58,9 +59,9 @@
             android:text="@string/auth_welcome_title"
             android:textColor="@color/white"
             android:textSize="25sp"
-            app:layout_constraintBottom_toTopOf="@id/tvWelcomeSubtitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWelcomeLogo" />
 
         <TextView
             android:id="@+id/tvWelcomeSubtitle"
@@ -72,9 +73,9 @@
             android:text="@string/auth_welcome_subtitle"
             android:textColor="@color/auth_text_on_primary_muted"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@id/welcomeSkills"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWelcomeTitle" />
 
         <LinearLayout
             android:id="@+id/welcomeSkills"
@@ -83,11 +84,9 @@
             android:layout_marginTop="18dp"
             android:baselineAligned="false"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvWelcomeSubtitle"
-            app:layout_constraintVertical_bias="0.35">
+            app:layout_constraintTop_toBottomOf="@id/tvWelcomeSubtitle">
 
             <TextView
                 android:layout_width="wrap_content"

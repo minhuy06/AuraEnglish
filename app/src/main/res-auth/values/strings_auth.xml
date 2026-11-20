@@ -73,4 +73,5 @@
     <string name="auth_code_resent">Đã gửi lại mã xác nhận</string>
     <string name="auth_back_description">Quay lại</string>
     <string name="auth_success_icon_description">Đặt lại mật khẩu thành công</string>
+    <string name="auth_otp_digit_description">Chữ số trong mã xác nhận</string>
 </resources>

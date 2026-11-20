@@ -10,6 +10,7 @@
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxStrokeWidthFocused">2dp</item>
         <item name="hintTextColor">@color/auth_text_secondary</item>
+        <item name="expandedHintEnabled">false</item>
         <item name="startIconTint">@color/auth_primary</item>
         <item name="endIconTint">@color/auth_text_secondary</item>
         <item name="errorTextColor">@color/auth_error</item>
