@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Trang cài đặt -->
+    <string name="profile_settings_title">Cài đặt</string>
+    <string name="profile_default_initials">DH</string>
+    <string name="profile_default_name">Duy Hưng</string>
+    <string name="profile_default_level_badge">B1 • Trung cấp</string>
+    <string name="profile_default_level_full">Trình độ B1 • Trung cấp</string>
+    <string name="profile_default_email">duyhung@example.com</string>
+    <string name="profile_default_phone">0912345678</string>
+    <string name="profile_default_streak_xp">Chuỗi 7 ngày • 1.920 XP</string>
+    <string name="profile_edit_link">Sửa hồ sơ &gt;</string>
+
+    <string name="profile_sec_learning">THIẾT LẬP HỌC TẬP</string>
+    <string name="profile_item_goal_title">Mục tiêu &amp; Nhắc nhở học tập</string>
+    <string name="profile_item_goal_sub_default">5 bài/ngày • Nhắc lúc 20:00</string>
+    <string name="profile_item_route_title">Lộ trình hiện tại</string>
+    <string name="profile_item_route_sub">Tiếng Anh công sở (B1)</string>
+    <string name="profile_item_route_action">Đổi lộ trình &gt;</string>
+    <string name="profile_item_auto_audio_title">Tự động phát âm Flashcard</string>
+    <string name="profile_item_auto_audio_sub">Phát âm khi lật thẻ từ vựng</string>
+
+    <string name="profile_sec_account">TÀI KHOẢN &amp; BẢO MẬT</string>
+    <string name="profile_item_info_title">Thông tin cá nhân</string>
+    <string name="profile_item_info_sub">Họ tên, email, số điện thoại</string>
+    <string name="profile_item_pwd_title">Đổi mật khẩu</string>
+    <string name="profile_item_pwd_sub">Cập nhật mật khẩu bảo mật</string>
+    <string name="profile_item_purchased_title">Bộ đề đã mua</string>
+    <string name="profile_item_purchased_sub">1 bộ đề trong Cửa hàng</string>
+
+    <string name="profile_sec_other">KHÁC</string>
+    <string name="profile_item_logout_title">Đăng xuất tài khoản</string>
+    <string name="profile_item_logout_sub">Tạm thoát khỏi thiết bị này</string>
+    <string name="profile_version_footer">Aura English • Phiên bản 1.2.0</string>
+
+    <!-- Trang chỉnh sửa hồ sơ -->
+    <string name="profile_edit_title">Thông tin cá nhân</string>
+    <string name="profile_edit_subtitle">Cập nhật hồ sơ học tập của bạn.</string>
+    <string name="profile_change_avatar">Đổi ảnh đại diện</string>
+    <string name="profile_label_fullname">Họ và tên</string>
+    <string name="profile_label_email">Email</string>
+    <string name="profile_email_verified">Đã xác minh email ✓</string>
+    <string name="profile_label_phone">Số điện thoại</string>
+    <string name="profile_label_goal">Mục tiêu học tập</string>
+    <string name="profile_goal_default">Công việc / TOEIC</string>
+    <string name="profile_btn_save_changes">Lưu thay đổi</string>
+    <string name="profile_btn_cancel">Hủy</string>
+
+    <!-- Trang đổi mật khẩu -->
+    <string name="profile_pwd_title">Đổi mật khẩu</string>
+    <string name="profile_pwd_subtitle">Mật khẩu mới tối thiểu 8 ký tự, gồm chữ và số.</string>
+    <string name="profile_label_current_pwd">Mật khẩu hiện tại</string>
+    <string name="profile_label_new_pwd">Mật khẩu mới</string>
+    <string name="profile_hint_new_pwd">Nhập mật khẩu mới</string>
+    <string name="profile_label_confirm_pwd">Nhập lại mật khẩu mới</string>
+    <string name="profile_hint_confirm_pwd">Nhập lại mật khẩu mới</string>
+    <string name="profile_forgot_pwd">Quên mật khẩu hiện tại?</string>
+    <string name="profile_security_tip">Mẹo bảo mật: Không sử dụng lại mật khẩu cũ hoặc chia sẻ mật khẩu với người khác.</string>
+    <string name="profile_btn_update_pwd">Cập nhật mật khẩu</string>
+
+    <!-- Trang mục tiêu & nhắc nhở -->
+    <string name="profile_goal_header_tag">THIẾT LẬP HỌC TẬP</string>
+    <string name="profile_goal_page_title">Mục tiêu &amp; Nhắc nhở</string>
+    <string name="profile_goal_page_subtitle">Duy trì thói quen học đều đặn mỗi ngày.</string>
+    <string name="profile_sec_daily_goal">MỤC TIÊU HÀNG NGÀY</string>
+    <string name="profile_goal_3_title">Cơ bản — 3 bài học / ngày</string>
+    <string name="profile_goal_3_sub">Khoảng 10 phút mỗi ngày</string>
+    <string name="profile_goal_5_title">Tiêu chuẩn — 5 bài học / ngày</string>
+    <string name="profile_goal_5_sub">Khoảng 15 phút mỗi ngày</string>
+    <string name="profile_goal_5_sub_selected">Khoảng 15 phút mỗi ngày • Đang chọn</string>
+    <string name="profile_goal_10_title">Chăm chỉ — 10 bài học / ngày</string>
+    <string name="profile_goal_10_sub">Khoảng 30 phút mỗi ngày</string>
+    <string name="profile_sec_reminder">NHẮC NHỞ HỌC TẬP</string>
+    <string name="profile_reminder_time_title">Giờ nhắc học hằng ngày</string>
+    <string name="profile_reminder_time_sub">Thông báo nhắc học mỗi tối</string>
+    <string name="profile_reminder_time_default">20:00</string>
+    <string name="profile_reminder_streak_title">Nhắc bảo vệ chuỗi Streak</string>
+    <string name="profile_reminder_streak_sub">Cảnh báo khi sắp mất chuỗi 7 ngày</string>
+    <string name="profile_btn_save_goal">Lưu thiết lập</string>
+    <string name="profile_btn_back">Quay lại</string>
+
+    <!-- Popup xác nhận đăng xuất -->
+    <string name="profile_logout_dialog_title">Đăng xuất tài khoản?</string>
+    <string name="profile_logout_dialog_msg">Tiến trình học tập của bạn đã được lưu lại. Bạn có chắc muốn đăng xuất không?</string>
+    <string name="profile_logout_btn_stay">Ở lại</string>
+    <string name="profile_logout_btn_confirm">Đăng xuất</string>
+
+    <!-- Thông báo & Validate -->
+    <string name="profile_err_name_empty">Vui lòng nhập họ và tên</string>
+    <string name="profile_err_name_short">Họ và tên phải có ít nhất 2 ký tự</string>
+    <string name="profile_err_email_invalid">Email không đúng định dạng</string>
+    <string name="profile_err_phone_invalid">Số điện thoại Việt Nam không hợp lệ (10 số)</string>
+    <string name="profile_err_pwd_current_empty">Vui lòng nhập mật khẩu hiện tại</string>
+    <string name="profile_err_pwd_rule">Mật khẩu mới phải từ 8 ký tự, gồm cả chữ và số</string>
+    <string name="profile_err_pwd_same">Mật khẩu mới không được trùng mật khẩu hiện tại</string>
+    <string name="profile_err_pwd_mismatch">Mật khẩu nhập lại không khớp</string>
+    <string name="profile_toast_saved">Đã lưu thay đổi hồ sơ</string>
+    <string name="profile_toast_pwd_updated">Đã cập nhật mật khẩu thành công</string>
+    <string name="profile_toast_goal_saved">Đã lưu mục tiêu &amp; nhắc nhở học tập</string>
+    <string name="profile_toast_logged_out">Đã đăng xuất tài khoản</string>
+</resources>
