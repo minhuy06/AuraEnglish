@@ -16,7 +16,7 @@ import com.example.auraenglish.databinding.ItemPracticeRankRowBinding
 class PracticeRankActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticeRankBinding
-    private var period = RankPeriod.WEEK
+    private var period = RankPeriod.DAY
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +43,7 @@ class PracticeRankActivity : AppCompatActivity() {
                 render()
             }
         }
-        selectChip(binding.chipWeek, chips.map { it.first })
+        selectChip(binding.chipDay, chips.map { it.first })
 
         PracticeNavHelper.bind(this, binding.bottomNavInclude, PracticeTab.RANK)
         render()
@@ -58,7 +58,7 @@ class PracticeRankActivity : AppCompatActivity() {
             chip.setTextColor(
                 ContextCompat.getColor(
                     this,
-                    if (active) R.color.white else R.color.practice_primary
+                    if (active) R.color.white else R.color.practice_text_secondary
                 )
             )
             chip.setTypeface(
