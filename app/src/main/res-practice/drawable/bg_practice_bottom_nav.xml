@@ -8,7 +8,7 @@
     <item android:gravity="top">
         <shape android:shape="rectangle">
             <size android:height="1dp" />
-            <solid android:color="#E2E8F5" />
+            <solid android:color="@color/practice_stroke_soft" />
         </shape>
     </item>
 </layer-list>

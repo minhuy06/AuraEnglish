@@ -48,6 +48,11 @@
     <color name="practice_medal_bronze">#FFD97706</color>
     <color name="practice_xp_pill">#FFE8F0FF</color>
     <color name="practice_bg_end">#FFE8EEFF</color>
+    <color name="practice_stroke_soft">#FFE2E8F5</color>
+    <color name="practice_stroke_chip">#FFD5E0F5</color>
+    <color name="practice_stroke_index">#FFC7D7F5</color>
+    <color name="practice_on_primary_soft">#CCFFFFFF</color>
+    <color name="practice_on_primary_muted">#E6FFFFFF</color>
     <color name="practice_avatar_tl">#FFE2A1F6</color>
     <color name="practice_avatar_ma">#FF94E9FE</color>
     <color name="practice_avatar_qb">#FFDCAA89</color>

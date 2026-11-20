@@ -15,7 +15,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
-import android.widget.Toast
+import com.example.auraenglish.practice.utils.showToast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.auraenglish.R
@@ -96,7 +96,7 @@ object PracticeWordHelper {
             val clipboard = activity.getSystemService(AppCompatActivity.CLIPBOARD_SERVICE)
                 as android.content.ClipboardManager
             clipboard.setPrimaryClip(android.content.ClipData.newPlainText("word", selected))
-            Toast.makeText(activity, R.string.practice_copied_word, Toast.LENGTH_SHORT).show()
+            activity.showToast(R.string.practice_copied_word)
             popup.dismiss()
             textView.clearFocus()
         }
@@ -163,7 +163,7 @@ object PracticeWordHelper {
         binding.btnSaveWord.setOnClickListener {
             val word = binding.etWord.text?.toString().orEmpty().trim()
             if (word.isEmpty()) {
-                Toast.makeText(activity, R.string.practice_word_empty_error, Toast.LENGTH_SHORT).show()
+                activity.showToast(R.string.practice_word_empty_error)
                 return@setOnClickListener
             }
             val phonetic = binding.etPhonetic.text?.toString().orEmpty()
@@ -174,12 +174,10 @@ object PracticeWordHelper {
                 phonetic = phonetic,
                 wordType = selectedType
             )
-            Toast.makeText(
-                activity,
+            activity.showToast(
                 if (added) activity.getString(R.string.practice_word_added_named, word)
-                else activity.getString(R.string.practice_word_exists, word),
-                Toast.LENGTH_SHORT
-            ).show()
+                else activity.getString(R.string.practice_word_exists, word)
+            )
             if (added) onWordAdded?.invoke()
             dialog.dismiss()
         }
@@ -215,11 +213,7 @@ object PracticeWordHelper {
                 binding.tvTopicError.isVisible = true
                 return@setOnClickListener
             }
-            Toast.makeText(
-                activity,
-                activity.getString(R.string.practice_topic_created, name),
-                Toast.LENGTH_SHORT
-            ).show()
+            activity.showToast(activity.getString(R.string.practice_topic_created, name))
             onCreated(name)
             dialog.dismiss()
         }

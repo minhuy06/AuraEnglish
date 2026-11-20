@@ -4,23 +4,27 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.auraenglish.R
 import com.example.auraenglish.databinding.ActivityPracticeRankBinding
-import com.example.auraenglish.databinding.ItemPracticeRankRowBinding
+import com.example.auraenglish.practice.adapter.PracticeRankAdapter
+import com.example.auraenglish.practice.viewmodel.PracticeRankViewModel
+import com.example.auraenglish.practice.viewmodel.RankUiState
 
 class PracticeRankActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticeRankBinding
-    private var period = RankPeriod.WEEK
+    private val viewModel: PracticeRankViewModel by viewModels()
+    private lateinit var rankAdapter: PracticeRankAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +32,32 @@ class PracticeRankActivity : AppCompatActivity() {
         binding = ActivityPracticeRankBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupWindowInsets()
+        setupViews()
+        setupListeners()
+        observeData()
+        playEntrance()
+    }
+
+    private fun setupWindowInsets() {
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.setPadding(bars.left, bars.top, bars.right, bars.bottom)
             insets
         }
+    }
 
+    private fun setupViews() {
+        rankAdapter = PracticeRankAdapter()
+        binding.rankList.apply {
+            layoutManager = LinearLayoutManager(this@PracticeRankActivity)
+            adapter = rankAdapter
+            setHasFixedSize(true)
+        }
+        PracticeNavHelper.bind(this, binding.bottomNavInclude, PracticeTab.RANK)
+    }
+
+    private fun setupListeners() {
         val chips = listOf(
             binding.chipDay to RankPeriod.DAY,
             binding.chipWeek to RankPeriod.WEEK,
@@ -42,16 +66,62 @@ class PracticeRankActivity : AppCompatActivity() {
         )
         chips.forEach { (chip, value) ->
             chip.setOnClickListener {
-                period = value
+                viewModel.setPeriod(value)
                 selectChip(chip, chips.map { it.first })
-                render(animateList = true)
             }
         }
-        selectChip(binding.chipWeek, chips.map { it.first })
+    }
 
-        PracticeNavHelper.bind(this, binding.bottomNavInclude, PracticeTab.RANK)
-        render(animateList = false)
-        playEntrance()
+    private fun observeData() {
+        viewModel.uiState.observe(this) { state ->
+            bindUi(state)
+            selectChipForPeriod(state.period)
+        }
+    }
+
+    private fun bindUi(state: RankUiState) = with(binding) {
+        val top = state.podium
+        bindPodium(top.getOrNull(0), avatar1, name1, xp1, R.color.practice_medal_gold)
+        bindPodium(top.getOrNull(1), avatar2, name2, xp2, R.color.practice_medal_silver)
+        bindPodium(top.getOrNull(2), avatar3, name3, xp3, R.color.practice_medal_bronze)
+
+        rankAdapter.submitList(state.listRows)
+
+        val me = state.me ?: return@with
+        val above = state.aboveMe
+        tvStickyRank.text = me.rank.toString()
+        tvStickyAvatar.text = me.initials
+        tintAvatar(tvStickyAvatar, android.R.color.white)
+        tvStickyAvatar.setTextColor(
+            ContextCompat.getColor(this@PracticeRankActivity, R.color.practice_rank_sticky)
+        )
+        tvStickyName.text = me.name
+        tvStickyXp.text = getString(
+            R.string.practice_rank_xp,
+            PracticeRankData.formatXp(me.xp)
+        )
+        tvStickyGap.text = if (above != null) {
+            getString(
+                R.string.practice_rank_gap,
+                (above.xp - me.xp).coerceAtLeast(0),
+                above.rank
+            )
+        } else {
+            getString(R.string.practice_rank_title)
+        }
+    }
+
+    private fun selectChipForPeriod(period: RankPeriod) {
+        val selected = when (period) {
+            RankPeriod.DAY -> binding.chipDay
+            RankPeriod.WEEK -> binding.chipWeek
+            RankPeriod.MONTH -> binding.chipMonth
+            RankPeriod.YEAR -> binding.chipYear
+        }
+        selectChip(
+            selected,
+            listOf(binding.chipDay, binding.chipWeek, binding.chipMonth, binding.chipYear)
+        )
     }
 
     private fun selectChip(selected: TextView, all: List<TextView>) {
@@ -71,90 +141,6 @@ class PracticeRankActivity : AppCompatActivity() {
                 if (active) android.graphics.Typeface.BOLD else android.graphics.Typeface.NORMAL
             )
             chip.elevation = if (active) 4f else 0f
-        }
-    }
-
-    private fun render(animateList: Boolean) {
-        val entries = PracticeRankData.entries(period)
-        val top = entries.take(3)
-        bindPodium(
-            top.getOrNull(0),
-            binding.avatar1,
-            binding.name1,
-            binding.xp1,
-            R.color.practice_medal_gold
-        )
-        bindPodium(
-            top.getOrNull(1),
-            binding.avatar2,
-            binding.name2,
-            binding.xp2,
-            R.color.practice_medal_silver
-        )
-        bindPodium(
-            top.getOrNull(2),
-            binding.avatar3,
-            binding.name3,
-            binding.xp3,
-            R.color.practice_medal_bronze
-        )
-
-        binding.rankList.removeAllViews()
-        entries.drop(3).forEachIndexed { index, entry ->
-            val item = ItemPracticeRankRowBinding.inflate(
-                LayoutInflater.from(this), binding.rankList, false
-            )
-            item.tvRank.text = entry.rank.toString()
-            item.tvAvatar.text = entry.initials
-            tintAvatar(item.tvAvatar, entry.avatarColorRes)
-            item.tvName.text = if (entry.isCurrentUser) {
-                getString(R.string.practice_rank_you_suffix, entry.name)
-            } else {
-                entry.name
-            }
-            item.tvXp.text = getString(
-                R.string.practice_rank_xp,
-                PracticeRankData.formatXp(entry.xp)
-            )
-            item.root.setBackgroundResource(
-                if (entry.isCurrentUser) R.drawable.bg_practice_rank_pinned
-                else R.drawable.bg_practice_rank_row
-            )
-            binding.rankList.addView(item.root)
-            if (animateList) {
-                item.root.alpha = 0f
-                item.root.translationY = 12f
-                item.root.animate()
-                    .alpha(1f)
-                    .translationY(0f)
-                    .setStartDelay((index * 40L))
-                    .setDuration(180L)
-                    .setInterpolator(DecelerateInterpolator())
-                    .start()
-            }
-        }
-
-        val me = entries.first { it.isCurrentUser }
-        val above = entries.firstOrNull { it.rank == me.rank - 1 }
-        binding.tvStickyRank.text = me.rank.toString()
-        binding.tvStickyAvatar.text = me.initials
-        tintAvatar(binding.tvStickyAvatar, android.R.color.white)
-        binding.tvStickyAvatar.setTextColor(
-            ContextCompat.getColor(this, R.color.practice_rank_sticky)
-        )
-        binding.tvStickyName.text = me.name
-        binding.tvStickyXp.text = getString(
-            R.string.practice_rank_xp,
-            PracticeRankData.formatXp(me.xp)
-        )
-        binding.tvStickyGap.text = if (above != null) {
-            getString(
-                R.string.practice_rank_gap,
-                (above.xp - me.xp).coerceAtLeast(0),
-                above.rank
-            )
-        } else {
-            getString(R.string.practice_rank_title)
         }
     }
 
@@ -189,11 +175,7 @@ class PracticeRankActivity : AppCompatActivity() {
     }
 
     private fun playEntrance() {
-        val targets = listOf<View>(
-            binding.podiumRow,
-            binding.rankList,
-            binding.stickyRank
-        )
+        val targets = listOf<View>(binding.podiumRow, binding.rankList, binding.stickyRank)
         val animators = targets.mapIndexed { index, view ->
             view.alpha = 0f
             view.translationY = 18f

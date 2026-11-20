@@ -78,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/practice_mock_label"
-                    android:textColor="#CCFFFFFF"
+                    android:textColor="@color/practice_on_primary_soft"
                     android:textSize="12sp" />
 
                 <TextView
@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="@string/practice_exam_meta"
-                    android:textColor="#E6FFFFFF"
+                    android:textColor="@color/practice_on_primary_muted"
                     android:textSize="12sp" />
 
                 <TextView

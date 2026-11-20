@@ -2,22 +2,26 @@ package com.example.auraenglish.practice
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.auraenglish.R
 import com.example.auraenglish.databinding.ActivityPracticeBookmarkedBinding
-import com.example.auraenglish.databinding.ItemPracticeBookmarkedBinding
+import com.example.auraenglish.practice.adapter.PracticeBookmarkedAdapter
+import com.example.auraenglish.practice.utils.setOnClickDebounced
+import com.example.auraenglish.practice.utils.showToast
+import com.example.auraenglish.practice.utils.visibleIf
+import com.example.auraenglish.practice.viewmodel.PracticeBookmarkedViewModel
 
 class PracticeBookmarkedActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticeBookmarkedBinding
-    private var filter = ExamStatus.ALL
-    private var searchQuery = ""
+    private val viewModel: PracticeBookmarkedViewModel by viewModels()
+    private lateinit var bookmarkedAdapter: PracticeBookmarkedAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,66 +29,83 @@ class PracticeBookmarkedActivity : AppCompatActivity() {
         binding = ActivityPracticeBookmarkedBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupWindowInsets()
+        setupViews()
+        setupListeners()
+        observeData()
+        viewModel.refresh()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.refresh()
+    }
+
+    private fun setupWindowInsets() {
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.setPadding(bars.left, bars.top, bars.right, bars.bottom)
             insets
         }
+    }
 
-        setupFilters()
-        renderList()
-        binding.btnBack.setOnClickListener { finish() }
-        binding.btnSearch.setOnClickListener {
+    private fun setupViews() {
+        bookmarkedAdapter = PracticeBookmarkedAdapter { q ->
+            val examId = intent.getStringExtra(PracticeSampleData.EXTRA_EXAM_ID)
+                ?: PracticeSampleData.currentExamId
+            startActivity(
+                Intent(this, PracticePart5Activity::class.java)
+                    .putExtra(PracticeSampleData.EXTRA_EXAM_ID, examId)
+                    .putExtra(PracticeSampleData.EXTRA_QUESTION_NUMBER, q.number)
+            )
+        }
+        binding.listContainer.apply {
+            layoutManager = LinearLayoutManager(this@PracticeBookmarkedActivity)
+            adapter = bookmarkedAdapter
+            setHasFixedSize(true)
+        }
+        selectChip(binding.chipAll)
+    }
+
+    private fun setupListeners() {
+        binding.btnBack.setOnClickDebounced { finish() }
+        binding.btnSearch.setOnClickDebounced {
             PracticeSearchHelper.show(
                 activity = this,
-                initialQuery = searchQuery,
-                hint = "Ví dụ: policy, động từ…",
-                onApply = { query ->
-                    searchQuery = query
-                    renderList()
-                },
+                initialQuery = viewModel.searchQuery.value.orEmpty(),
+                hint = getString(R.string.practice_search_hint_bookmark),
+                onApply = { query -> viewModel.setSearchQuery(query) },
                 onClear = {
-                    searchQuery = ""
-                    renderList()
-                    Toast.makeText(this, "Đã xóa tìm kiếm", Toast.LENGTH_SHORT).show()
+                    viewModel.clearSearch()
+                    showToast(R.string.practice_search_cleared)
                 }
             )
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        renderList()
-        updateChipLabels()
-    }
-
-    private fun setupFilters() {
-        updateChipLabels()
-        selectChip(binding.chipAll)
         binding.chipAll.setOnClickListener {
-            filter = ExamStatus.ALL
+            viewModel.setFilter(ExamStatus.ALL)
             selectChip(binding.chipAll)
-            renderList()
         }
         binding.chipTodo.setOnClickListener {
-            filter = ExamStatus.TODO
+            viewModel.setFilter(ExamStatus.TODO)
             selectChip(binding.chipTodo)
-            renderList()
         }
         binding.chipDone.setOnClickListener {
-            filter = ExamStatus.DONE
+            viewModel.setFilter(ExamStatus.DONE)
             selectChip(binding.chipDone)
-            renderList()
         }
     }
 
-    private fun updateChipLabels() {
-        val all = PracticeSampleData.flaggedQuestions(ExamStatus.ALL)
-        val todo = PracticeSampleData.flaggedQuestions(ExamStatus.TODO)
-        val done = PracticeSampleData.flaggedQuestions(ExamStatus.DONE)
-        binding.chipAll.text = getString(R.string.practice_filter_flagged_all, all.size)
-        binding.chipTodo.text = getString(R.string.practice_filter_flagged_todo, todo.size)
-        binding.chipDone.text = getString(R.string.practice_filter_flagged_done, done.size)
+    private fun observeData() {
+        viewModel.chipCounts.observe(this) { counts ->
+            binding.chipAll.text = getString(R.string.practice_filter_flagged_all, counts.all)
+            binding.chipTodo.text = getString(R.string.practice_filter_flagged_todo, counts.todo)
+            binding.chipDone.text = getString(R.string.practice_filter_flagged_done, counts.done)
+        }
+        viewModel.questions.observe(this) { list ->
+            bookmarkedAdapter.submitList(list)
+            binding.tvEmpty.visibleIf(list.isEmpty())
+            binding.listContainer.visibleIf(list.isNotEmpty())
+        }
     }
 
     private fun selectChip(selected: TextView) {
@@ -94,58 +115,6 @@ class PracticeBookmarkedActivity : AppCompatActivity() {
                 if (active) R.drawable.bg_practice_chip_active else R.drawable.bg_practice_chip_inactive
             )
             chip.setTextColor(getColor(if (active) R.color.white else R.color.practice_primary))
-        }
-    }
-
-    private fun renderList() {
-        updateChipLabels()
-        binding.listContainer.removeAllViews()
-        val data = PracticeSampleData.flaggedQuestions(filter).filter { q ->
-            if (searchQuery.isBlank()) true
-            else {
-                val s = searchQuery.lowercase()
-                q.stem.lowercase().contains(s) ||
-                    q.tag.lowercase().contains(s) ||
-                    q.number.toString() == searchQuery.trim()
-            }
-        }
-        if (data.isEmpty()) {
-            val empty = TextView(this).apply {
-                text = getString(R.string.practice_search_empty)
-                setTextColor(getColor(R.color.practice_text_secondary))
-                textSize = 14f
-                setPadding(8, 40, 8, 8)
-            }
-            binding.listContainer.addView(empty)
-            return
-        }
-        data.forEach { q ->
-            val item = ItemPracticeBookmarkedBinding.inflate(
-                LayoutInflater.from(this), binding.listContainer, false
-            )
-            item.tvNumber.text = q.number.toString()
-            item.tvTag.text = q.tag
-            item.tvQuestion.text = q.stem
-            if (q.isAnswered) {
-                val letter = ('A' + (q.userAnswerIndex ?: 0)).toString()
-                item.tvStatus.text = getString(R.string.practice_selected_answer, letter)
-                item.tvStatus.setBackgroundResource(R.drawable.bg_practice_status_doing)
-                item.tvStatus.setTextColor(getColor(R.color.practice_chip_progress_text))
-            } else {
-                item.tvStatus.text = getString(R.string.practice_status_todo)
-                item.tvStatus.setBackgroundResource(R.drawable.bg_practice_status_todo)
-                item.tvStatus.setTextColor(getColor(R.color.practice_pending_text))
-            }
-            item.root.setOnClickListener {
-                val examId = intent.getStringExtra(PracticeSampleData.EXTRA_EXAM_ID)
-                    ?: PracticeSampleData.currentExamId
-                startActivity(
-                    Intent(this, PracticePart5Activity::class.java)
-                        .putExtra(PracticeSampleData.EXTRA_EXAM_ID, examId)
-                        .putExtra(PracticeSampleData.EXTRA_QUESTION_NUMBER, q.number)
-                )
-            }
-            binding.listContainer.addView(item.root)
         }
     }
 }

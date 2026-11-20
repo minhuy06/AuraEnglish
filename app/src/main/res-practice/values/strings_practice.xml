@@ -72,6 +72,11 @@
 
     <string name="practice_search_title">Tìm kiếm</string>
     <string name="practice_search_hint">Nhập từ khóa…</string>
+    <string name="practice_search_hint_exam">Ví dụ: 01, TOEIC, đề thi thử…</string>
+    <string name="practice_search_hint_bookmark">Ví dụ: policy, động từ…</string>
+    <string name="practice_search_applied">Đã lọc theo “%1$s”</string>
+    <string name="practice_search_cleared">Đã xóa bộ lọc tìm kiếm</string>
+    <string name="practice_demo_list_back">Đây là màn Luyện đề (demo)</string>
     <string name="practice_search_demo_hint">Demo: lọc theo tên đề / nội dung câu hỏi trong dữ liệu mẫu.</string>
     <string name="practice_search_clear">Xóa lọc</string>
     <string name="practice_search_apply">Tìm</string>
