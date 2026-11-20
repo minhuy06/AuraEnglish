@@ -33,6 +33,8 @@ class ListeningQuestionActivity : AppCompatActivity() {
     private var player: MediaPlayer? = null
     private var userSeeking = false
     private val handler = Handler(Looper.getMainLooper())
+
+    // Cập nhật thanh seek khi đang phát
     private val tick = object : Runnable {
         override fun run() {
             val p = player ?: return
@@ -67,6 +69,7 @@ class ListeningQuestionActivity : AppCompatActivity() {
             .coerceIn(0, exam.questions.lastIndex)
 
         binding.tvExamTitle.text = exam.title
+        // Back / đóng → hỏi xác nhận thoát
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() = confirmLeave()
         })
@@ -75,7 +78,13 @@ class ListeningQuestionActivity : AppCompatActivity() {
         binding.btnSubmit.setOnClickListener { submitCurrent() }
         binding.btnPrev.setOnClickListener { moveQuestion(-1) }
         binding.btnNext.setOnClickListener { moveQuestion(1) }
+        setupSeekBar()
 
+        showQuestion(questionIndex)
+    }
+
+    // Kéo SeekBar → seek audio
+    private fun setupSeekBar() {
         binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (!fromUser) return
@@ -88,10 +97,12 @@ class ListeningQuestionActivity : AppCompatActivity() {
                 )
             }
 
+            // Tạm dừng sync tick khi user kéo
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
                 userSeeking = true
             }
 
+            // Thả tay → nhảy tới vị trí mới
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 val p = player ?: return
                 val pos = ((seekBar?.progress ?: 0) / 1000f * p.duration).toInt()
@@ -99,22 +110,24 @@ class ListeningQuestionActivity : AppCompatActivity() {
                 userSeeking = false
             }
         })
-
-        showQuestion(questionIndex)
     }
 
+    // Giải phóng player khi thoát màn
     override fun onDestroy() {
         handler.removeCallbacks(tick)
         releasePlayer()
         super.onDestroy()
     }
 
+    // Popup xác nhận thoát bài nghe
     private fun confirmLeave() {
         PracticeConfirmHelper.showExitExam(this) { finish() }
     }
 
+    // Câu đang hiển thị
     private fun current(): ListeningQuestion = exam.questions[questionIndex]
 
+    // Bind UI + audio cho 1 câu
     private fun showQuestion(index: Int) {
         questionIndex = index
         val q = current()
@@ -125,6 +138,7 @@ class ListeningQuestionActivity : AppCompatActivity() {
         )
         binding.tvBlankPattern.text = q.blankPattern
         binding.etAnswer.setText(q.userAnswer)
+        // Disable prev/next ở đầu/cuối list
         binding.btnPrev.isEnabled = index > 0
         binding.btnPrev.alpha = if (index > 0) 1f else 0.4f
         binding.btnNext.isEnabled = index < exam.questions.lastIndex
@@ -136,15 +150,16 @@ class ListeningQuestionActivity : AppCompatActivity() {
         preparePlayer(q.audioRes)
     }
 
+    // Hiện pattern: đúng = chữ xanh, sai = *** đỏ
     private fun renderWordResult(q: ListeningQuestion) {
         if (!q.submitted || q.wordResults.isEmpty()) {
+            // Chưa nộp → chỉ hiện *** xám
             binding.tvBlankPattern.text = q.blankPattern
             binding.tvBlankPattern.setTextColor(getColor(R.color.listen_blank))
             binding.tvResultLabel.isVisible = false
             binding.tvWordResult.isVisible = false
             return
         }
-        // Đúng → hiện chữ xanh; sai → hiện *** đỏ
         val green = getColor(R.color.listen_correct)
         val red = getColor(R.color.listen_wrong)
         val sb = SpannableStringBuilder()
@@ -153,6 +168,7 @@ class ListeningQuestionActivity : AppCompatActivity() {
             val start = sb.length
             val ok = q.wordResults.getOrNull(i) == true
             if (ok) {
+                // Từ đúng: hiện chữ thật màu xanh
                 sb.append(word)
                 sb.setSpan(
                     ForegroundColorSpan(green),
@@ -161,6 +177,7 @@ class ListeningQuestionActivity : AppCompatActivity() {
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
                 )
             } else {
+                // Từ sai: giữ *** đỏ (+ dấu câu nếu có)
                 val letters = word.count { it.isLetterOrDigit() }.coerceAtLeast(1)
                 val punct = word.filterNot { it.isLetterOrDigit() }
                 sb.append("*".repeat(letters))
@@ -179,6 +196,7 @@ class ListeningQuestionActivity : AppCompatActivity() {
         binding.tvWordResult.text = sb
     }
 
+    // Nộp câu → check từng từ, cho nộp lại
     private fun submitCurrent() {
         val q = current()
         val input = binding.etAnswer.text?.toString().orEmpty().trim()
@@ -194,19 +212,21 @@ class ListeningQuestionActivity : AppCompatActivity() {
         renderWordResult(q)
     }
 
+    // Chuyển câu trước/sau (lưu draft ô nhập)
     private fun moveQuestion(delta: Int) {
         val next = questionIndex + delta
         if (next !in exam.questions.indices) return
-        // Lưu draft khi chuyển câu
         current().userAnswer = binding.etAnswer.text?.toString().orEmpty()
         showQuestion(next)
     }
 
+    // Tạo MediaPlayer từ raw + reset seek
     private fun preparePlayer(audioRes: Int) {
         handler.removeCallbacks(tick)
         releasePlayer()
         try {
             player = MediaPlayer.create(this, audioRes)?.also { p ->
+                // Hết bài → icon play + seek full
                 p.setOnCompletionListener {
                     binding.btnPlay.setImageResource(R.drawable.ic_listen_play)
                     binding.seekBar.progress = 1000
@@ -230,6 +250,7 @@ class ListeningQuestionActivity : AppCompatActivity() {
         }
     }
 
+    // Bật / tạm dừng audio
     private fun togglePlay() {
         val p = player ?: return
         if (p.isPlaying) {
@@ -241,6 +262,7 @@ class ListeningQuestionActivity : AppCompatActivity() {
         }
     }
 
+    // Stop + release MediaPlayer
     private fun releasePlayer() {
         player?.run {
             runCatching {
@@ -251,6 +273,7 @@ class ListeningQuestionActivity : AppCompatActivity() {
         player = null
     }
 
+    // ms → "m:ss"
     private fun formatMs(ms: Int): String {
         val m = TimeUnit.MILLISECONDS.toMinutes(ms.toLong())
         val s = TimeUnit.MILLISECONDS.toSeconds(ms.toLong()) % 60

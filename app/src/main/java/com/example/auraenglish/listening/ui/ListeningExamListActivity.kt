@@ -31,6 +31,7 @@ class ListeningExamListActivity : AppCompatActivity() {
             insets
         }
 
+        // Click đề → mở màn làm câu
         adapter = ListeningExamAdapter { exam ->
             startActivity(
                 Intent(this, ListeningQuestionActivity::class.java)
@@ -45,11 +46,13 @@ class ListeningExamListActivity : AppCompatActivity() {
         refresh()
     }
 
+    // Quay lại list → refresh status đề
     override fun onResume() {
         super.onResume()
         refresh()
     }
 
+    // Đồng bộ progress rồi submitList
     private fun refresh() {
         ListeningSampleData.exams.forEach { ListeningSampleData.refreshProgress(it) }
         adapter.submitList(ListeningSampleData.exams.toList())

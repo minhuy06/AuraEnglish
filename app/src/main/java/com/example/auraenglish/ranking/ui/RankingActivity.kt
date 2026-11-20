@@ -46,6 +46,7 @@ class RankingActivity : AppCompatActivity() {
         playEntrance()
     }
 
+    // Padding theo system bars
     private fun setupWindowInsets() {
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -54,8 +55,10 @@ class RankingActivity : AppCompatActivity() {
         }
     }
 
+    // List + clip khung trắng + bottom nav
     private fun setupViews() {
         rankAdapter = RankingAdapter()
+        // Clip hàng xám trong card bo góc
         binding.rankListCard.clipToOutline = true
         binding.rankList.apply {
             layoutManager = LinearLayoutManager(this@RankingActivity)
@@ -67,6 +70,7 @@ class RankingActivity : AppCompatActivity() {
         PracticeNavHelper.bind(this, binding.bottomNavInclude, PracticeTab.RANK)
     }
 
+    // Chip Ngày/Tuần/Tháng/Năm → đổi period
     private fun setupListeners() {
         val chips = listOf(
             binding.chipDay to RankPeriod.DAY,
@@ -82,6 +86,7 @@ class RankingActivity : AppCompatActivity() {
         }
     }
 
+    // Observe RankUiState
     private fun observeData() {
         viewModel.uiState.observe(this) { state ->
             bindUi(state)
@@ -89,6 +94,7 @@ class RankingActivity : AppCompatActivity() {
         }
     }
 
+    // Bind podium + list + sticky “bạn”
     private fun bindUi(state: RankUiState) = with(binding) {
         val top = state.podium
         // Podium: giữa=1, trái=2, phải=3
@@ -120,6 +126,7 @@ class RankingActivity : AppCompatActivity() {
         }
     }
 
+    // Map period → chip đang active
     private fun selectChipForPeriod(period: RankPeriod) {
         val selected = when (period) {
             RankPeriod.DAY -> binding.chipDay
@@ -133,7 +140,7 @@ class RankingActivity : AppCompatActivity() {
         )
     }
 
-    // Chip reuse bg_practice_chip_* (chrome chung)
+    // Highlight chip (reuse bg_practice_chip_*)
     private fun selectChip(selected: TextView, all: List<TextView>) {
         all.forEach { chip ->
             val active = chip == selected
@@ -154,6 +161,7 @@ class RankingActivity : AppCompatActivity() {
         }
     }
 
+    // Bind 1 ô podium (avatar + tên + XP)
     private fun bindPodium(
         entry: RankEntry?,
         avatar: TextView,
@@ -168,6 +176,7 @@ class RankingActivity : AppCompatActivity() {
         xp.text = getString(R.string.rank_xp, RankingData.formatXp(entry.xp))
     }
 
+    // Avatar podium: fill + viền huy chương
     private fun tintPodiumAvatar(view: TextView, fillColorRes: Int, strokeColorRes: Int) {
         val stroke = (3f * resources.displayMetrics.density).toInt().coerceAtLeast(3)
         view.background = GradientDrawable().apply {
@@ -177,6 +186,7 @@ class RankingActivity : AppCompatActivity() {
         }
     }
 
+    // Avatar sticky: chỉ fill màu
     private fun tintAvatar(view: TextView, colorRes: Int) {
         view.background = GradientDrawable().apply {
             shape = GradientDrawable.OVAL

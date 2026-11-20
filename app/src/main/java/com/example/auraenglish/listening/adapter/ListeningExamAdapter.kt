@@ -15,6 +15,7 @@ class ListeningExamAdapter(
     private val onClick: (ListeningExam) -> Unit
 ) : ListAdapter<ListeningExam, ListeningExamAdapter.VH>(Diff) {
 
+    // DiffUtil: so id / nội dung
     object Diff : DiffUtil.ItemCallback<ListeningExam>() {
         override fun areItemsTheSame(a: ListeningExam, b: ListeningExam) = a.id == b.id
         override fun areContentsTheSame(a: ListeningExam, b: ListeningExam) = a == b
@@ -34,11 +35,13 @@ class ListeningExamAdapter(
         private val onClick: (ListeningExam) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
+        // Bind 1 hàng đề + chip trạng thái
         fun bind(item: ListeningExam) = with(binding) {
             val ctx = root.context
             tvIndex.text = item.index
             tvTitle.text = item.title
             tvMeta.text = item.meta
+            // Chip TODO / DOING / DONE
             when (item.status) {
                 ListenStatus.TODO -> {
                     tvStatus.text = ctx.getString(R.string.listen_status_todo)
