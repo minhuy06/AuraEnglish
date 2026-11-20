@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootProfileSettings"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/profile_bg">
+
+    <!-- Top Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBarSettings"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:paddingHorizontal="@dimen/profile_screen_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvSettingsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:text="@string/profile_settings_title"
+            android:textColor="@color/profile_text_primary"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnSettingsCart"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/profile_item_purchased_title"
+            android:src="@drawable/ic_rank_cart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnSettingsBell"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnSettingsBell"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/profile_item_goal_title"
+            android:src="@drawable/ic_rank_bell"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Nội dung cuộn -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollSettings"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/profile_screen_padding"
+        android:paddingBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@id/includeBottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topBarSettings">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Card Tóm tắt Hồ sơ -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cardProfileSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_profile_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvAvatarInitials"
+                    android:layout_width="@dimen/profile_avatar_size"
+                    android:layout_height="@dimen/profile_avatar_size"
+                    android:background="@drawable/bg_profile_avatar_circle"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:text="@string/profile_default_initials"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgAvatarPhoto"
+                    android:layout_width="@dimen/profile_avatar_size"
+                    android:layout_height="@dimen/profile_avatar_size"
+                    android:contentDescription="@string/profile_change_avatar"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/tvAvatarInitials"
+                    app:layout_constraintEnd_toEndOf="@id/tvAvatarInitials"
+                    app:layout_constraintStart_toStartOf="@id/tvAvatarInitials"
+                    app:layout_constraintTop_toTopOf="@id/tvAvatarInitials" />
+
+                <TextView
+                    android:id="@+id/tvProfileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:text="@string/profile_default_name"
+                    android:textColor="@color/profile_text_primary"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/tvAvatarInitials"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvProfileLevelBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_profile_btn_outlined"
+                    android:fontFamily="@font/be_vietnam_pro_semibold"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="2dp"
+                    android:text="@string/profile_default_level_badge"
+                    android:textColor="@color/profile_primary_royal"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvProfileName"
+                    app:layout_constraintStart_toEndOf="@id/tvProfileName"
+                    app:layout_constraintTop_toTopOf="@id/tvProfileName" />
+
+                <TextView
+                    android:id="@+id/tvProfileEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="2dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/be_vietnam_pro_regular"
+                    android:maxLines="1"
+                    android:text="@string/profile_default_email"
+                    android:textColor="@color/profile_text_secondary"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toStartOf="@id/tvEditProfileLink"
+                    app:layout_constraintStart_toEndOf="@id/tvAvatarInitials"
+                    app:layout_constraintTop_toBottomOf="@id/tvProfileName" />
+
+                <TextView
+                    android:id="@+id/tvProfileStreakXp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:text="@string/profile_default_streak_xp"
+                    android:textColor="@color/profile_primary_royal"
+                    android:textSize="11sp"
+                    app:layout_constraintEnd_toStartOf="@id/tvEditProfileLink"
+                    app:layout_constraintStart_toEndOf="@id/tvAvatarInitials"
+                    app:layout_constraintTop_toBottomOf="@id/tvProfileEmail" />
+
+                <TextView
+                    android:id="@+id/tvEditProfileLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/be_vietnam_pro_semibold"
+                    android:text="@string/profile_edit_link"
+                    android:textColor="@color/profile_primary_royal"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- NHÓM 1: THIẾT LẬP HỌC TẬP -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/be_vietnam_pro_bold"
+                android:text="@string/profile_sec_learning"
+                android:textColor="@color/profile_text_secondary"
+                android:textSize="11sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_profile_card"
+                android:orientation="vertical"
+                android:paddingVertical="4dp">
+
+                <!-- Hàng 1: Mục tiêu & Nhắc nhở -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/rowGoalReminder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/badgeGoal"
+                        android:layout_width="@dimen/profile_badge_size"
+                        android:layout_height="@dimen/profile_badge_size"
+                        android:background="@drawable/bg_profile_badge_blue"
+                        android:fontFamily="@font/be_vietnam_pro_bold"
+                        android:gravity="center"
+                        android:text="M"
+                        android:textColor="@color/profile_primary_royal"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvGoalRowTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:fontFamily="@font/be_vietnam_pro_semibold"
+                        android:text="@string/profile_item_goal_title"
+                        android:textColor="@color/profile_text_primary"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toStartOf="@id/tvGoalChevron"
+                        app:layout_constraintStart_toEndOf="@id/badgeGoal"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvGoalRowSub"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/be_vietnam_pro_regular"
+                        android:text="@string/profile_item_goal_sub_default"
+                        android:textColor="@color/profile_text_secondary"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/tvGoalChevron"
+                        app:layout_constraintStart_toEndOf="@id/badgeGoal"
+                        app:layout_constraintTop_toBottomOf="@id/tvGoalRowTitle" />
+
+                    <TextView
+                        android:id="@+id/tvGoalChevron"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="&gt;"
+                        android:textColor="@color/profile_text_muted"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="14dp"
+                    android:background="@color/profile_border" />
+
+                <!-- Hàng 2: Lộ trình hiện tại -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/rowCurrentRoute"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/badgeRoute"
+                        android:layout_width="@dimen/profile_badge_size"
+                        android:layout_height="@dimen/profile_badge_size"
+                        android:background="@drawable/bg_profile_badge_blue"
+                        android:fontFamily="@font/be_vietnam_pro_bold"
+                        android:gravity="center"
+                        android:text="B1"
+                        android:textColor="@color/profile_primary_royal"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvRouteTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:fontFamily="@font/be_vietnam_pro_semibold"
+                        android:text="@string/profile_item_route_title"
+                        android:textColor="@color/profile_text_primary"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toStartOf="@id/tvChangeRouteAction"
+                        app:layout_constraintStart_toEndOf="@id/badgeRoute"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvRouteSub"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/be_vietnam_pro_regular"
+                        android:text="@string/profile_item_route_sub"
+                        android:textColor="@color/profile_text_secondary"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/tvChangeRouteAction"
+                        app:layout_constraintStart_toEndOf="@id/badgeRoute"
+                        app:layout_constraintTop_toBottomOf="@id/tvRouteTitle" />
+
+                    <TextView
+                        android:id="@+id/tvChangeRouteAction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/be_vietnam_pro_semibold"
+                        android:text="@string/profile_item_route_action"
+                        android:textColor="@color/profile_primary_royal"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="14dp"
+                    android:background="@color/profile_border" />
+
+                <!-- Hàng 3: Tự động phát âm Flashcard -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/badgeAudio"
+                        android:layout_width="@dimen/profile_badge_size"
+                        android:layout_height="@dimen/profile_badge_size"
+                        android:background="@drawable/bg_profile_badge_blue"
+                        android:fontFamily="@font/be_vietnam_pro_bold"
+                        android:gravity="center"
+                        android:text="A"
+                        android:textColor="@color/profile_primary_royal"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvAudioTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:fontFamily="@font/be_vietnam_pro_semibold"
+                        android:text="@string/profile_item_auto_audio_title"
+                        android:textColor="@color/profile_text_primary"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toStartOf="@id/swAutoPronounce"
+                        app:layout_constraintStart_toEndOf="@id/badgeAudio"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvAudioSub"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/be_vietnam_pro_regular"
+                        android:text="@string/profile_item_auto_audio_sub"
+                        android:textColor="@color/profile_text_secondary"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/swAutoPronounce"
+                        app:layout_constraintStart_toEndOf="@id/badgeAudio"
+                        app:layout_constraintTop_toBottomOf="@id/tvAudioTitle" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/swAutoPronounce"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <!-- NHÓM 2: TÀI KHOẢN & BẢO MẬT -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/be_vietnam_pro_bold"
+                android:text="@string/profile_sec_account"
+                android:textColor="@color/profile_text_secondary"
+                android:textSize="11sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_profile_card"
+                android:orientation="vertical"
+                android:paddingVertical="4dp">
+
+                <!-- Thông tin cá nhân -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/rowPersonalInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/badgeUser"
+                        android:layout_width="@dimen/profile_badge_size"
+                        android:layout_height="@dimen/profile_badge_size"
+                        android:background="@drawable/bg_profile_badge_blue"
+                        android:fontFamily="@font/be_vietnam_pro_bold"
+                        android:gravity="center"
+                        android:text="U"
+                        android:textColor="@color/profile_primary_royal"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvInfoTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:fontFamily="@font/be_vietnam_pro_semibold"
+                        android:text="@string/profile_item_info_title"
+                        android:textColor="@color/profile_text_primary"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toStartOf="@id/tvInfoChevron"
+                        app:layout_constraintStart_toEndOf="@id/badgeUser"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/be_vietnam_pro_regular"
+                        android:text="@string/profile_item_info_sub"
+                        android:textColor="@color/profile_text_secondary"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/tvInfoChevron"
+                        app:layout_constraintStart_toEndOf="@id/badgeUser"
+                        app:layout_constraintTop_toBottomOf="@id/tvInfoTitle" />
+
+                    <TextView
+                        android:id="@+id/tvInfoChevron"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="&gt;"
+                        android:textColor="@color/profile_text_muted"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="14dp"
+                    android:background="@color/profile_border" />
+
+                <!-- Đổi mật khẩu -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/rowChangePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/badgeKey"
+                        android:layout_width="@dimen/profile_badge_size"
+                        android:layout_height="@dimen/profile_badge_size"
+                        android:background="@drawable/bg_profile_badge_blue"
+                        android:fontFamily="@font/be_vietnam_pro_bold"
+                        android:gravity="center"
+                        android:text="K"
+                        android:textColor="@color/profile_primary_royal"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvPwdRowTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:fontFamily="@font/be_vietnam_pro_semibold"
+                        android:text="@string/profile_item_pwd_title"
+                        android:textColor="@color/profile_text_primary"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toStartOf="@id/tvPwdChevron"
+                        app:layout_constraintStart_toEndOf="@id/badgeKey"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/be_vietnam_pro_regular"
+                        android:text="@string/profile_item_pwd_sub"
+                        android:textColor="@color/profile_text_secondary"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/tvPwdChevron"
+                        app:layout_constraintStart_toEndOf="@id/badgeKey"
+                        app:layout_constraintTop_toBottomOf="@id/tvPwdRowTitle" />
+
+                    <TextView
+                        android:id="@+id/tvPwdChevron"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="&gt;"
+                        android:textColor="@color/profile_text_muted"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="14dp"
+                    android:background="@color/profile_border" />
+
+                <!-- Bộ đề đã mua -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/rowPurchasedExams"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/badgePurchased"
+                        android:layout_width="@dimen/profile_badge_size"
+                        android:layout_height="@dimen/profile_badge_size"
+                        android:background="@drawable/bg_profile_badge_green"
+                        android:fontFamily="@font/be_vietnam_pro_bold"
+                        android:gravity="center"
+                        android:text="★"
+                        android:textColor="@color/profile_success_text"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvPurchasedTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:fontFamily="@font/be_vietnam_pro_semibold"
+                        android:text="@string/profile_item_purchased_title"
+                        android:textColor="@color/profile_text_primary"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toStartOf="@id/tvPurchasedChevron"
+                        app:layout_constraintStart_toEndOf="@id/badgePurchased"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/be_vietnam_pro_regular"
+                        android:text="@string/profile_item_purchased_sub"
+                        android:textColor="@color/profile_text_secondary"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/tvPurchasedChevron"
+                        app:layout_constraintStart_toEndOf="@id/badgePurchased"
+                        app:layout_constraintTop_toBottomOf="@id/tvPurchasedTitle" />
+
+                    <TextView
+                        android:id="@+id/tvPurchasedChevron"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="&gt;"
+                        android:textColor="@color/profile_text_muted"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <!-- NHÓM 3: KHÁC -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/be_vietnam_pro_bold"
+                android:text="@string/profile_sec_other"
+                android:textColor="@color/profile_text_secondary"
+                android:textSize="11sp" />
+
+            <!-- Card Đăng xuất -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cardLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_profile_card_danger"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/badgeLogout"
+                    android:layout_width="@dimen/profile_badge_size"
+                    android:layout_height="@dimen/profile_badge_size"
+                    android:background="@drawable/bg_profile_badge_danger_circle"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:text="↪"
+                    android:textColor="@color/profile_danger_text"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvLogoutTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:text="@string/profile_item_logout_title"
+                    android:textColor="@color/profile_danger_text"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toStartOf="@id/tvLogoutChevron"
+                    app:layout_constraintStart_toEndOf="@id/badgeLogout"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/be_vietnam_pro_regular"
+                    android:text="@string/profile_item_logout_sub"
+                    android:textColor="@color/profile_text_secondary"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toStartOf="@id/tvLogoutChevron"
+                    app:layout_constraintStart_toEndOf="@id/badgeLogout"
+                    app:layout_constraintTop_toBottomOf="@id/tvLogoutTitle" />
+
+                <TextView
+                    android:id="@+id/tvLogoutChevron"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="&gt;"
+                    android:textColor="@color/profile_danger_text"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/be_vietnam_pro_regular"
+                android:gravity="center"
+                android:text="@string/profile_version_footer"
+                android:textColor="@color/profile_text_muted"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Navigation dùng chung -->
+    <include
+        android:id="@+id/includeBottomNav"
+        layout="@layout/include_practice_bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

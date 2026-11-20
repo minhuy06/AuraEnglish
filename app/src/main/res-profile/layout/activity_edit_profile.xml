@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootEditProfile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/profile_bg"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="28dp">
+
+        <!-- Hero Header xanh đậm bo tròn đáy -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/heroEditProfile"
+            android:layout_width="0dp"
+            android:layout_height="190dp"
+            android:background="@drawable/bg_profile_hero_header"
+            android:padding="@dimen/profile_screen_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/btnBackEditProfile"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/profile_btn_back"
+                android:src="@drawable/ic_practice_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/badgeHeroUser"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_profile_badge_yellow"
+                android:fontFamily="@font/be_vietnam_pro_bold"
+                android:gravity="center"
+                android:text="U"
+                android:textColor="@color/profile_badge_yellow_text"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnBackEditProfile" />
+
+            <TextView
+                android:id="@+id/tvHeroEditTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/be_vietnam_pro_bold"
+                android:text="@string/profile_edit_title"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/badgeHeroUser"
+                app:layout_constraintTop_toTopOf="@id/badgeHeroUser" />
+
+            <TextView
+                android:id="@+id/tvHeroEditSubtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/be_vietnam_pro_regular"
+                android:text="@string/profile_edit_subtitle"
+                android:textColor="@color/profile_primary_soft"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/badgeHeroUser"
+                app:layout_constraintTop_toBottomOf="@id/tvHeroEditTitle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Card Avatar nổi đè lên mép dưới Header -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardFloatingAvatar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/profile_screen_padding"
+            android:layout_marginTop="-36dp"
+            android:background="@drawable/bg_profile_card"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heroEditProfile">
+
+            <TextView
+                android:id="@+id/tvEditAvatarInitials"
+                android:layout_width="@dimen/profile_avatar_size"
+                android:layout_height="@dimen/profile_avatar_size"
+                android:background="@drawable/bg_profile_avatar_circle"
+                android:fontFamily="@font/be_vietnam_pro_bold"
+                android:gravity="center"
+                android:text="@string/profile_default_initials"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgEditAvatarPhoto"
+                android:layout_width="@dimen/profile_avatar_size"
+                android:layout_height="@dimen/profile_avatar_size"
+                android:contentDescription="@string/profile_change_avatar"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/tvEditAvatarInitials"
+                app:layout_constraintEnd_toEndOf="@id/tvEditAvatarInitials"
+                app:layout_constraintStart_toStartOf="@id/tvEditAvatarInitials"
+                app:layout_constraintTop_toTopOf="@id/tvEditAvatarInitials" />
+
+            <TextView
+                android:id="@+id/tvEditCardName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:fontFamily="@font/be_vietnam_pro_bold"
+                android:text="@string/profile_default_name"
+                android:textColor="@color/profile_text_primary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@id/btnChangeAvatar"
+                app:layout_constraintStart_toEndOf="@id/tvEditAvatarInitials"
+                app:layout_constraintTop_toTopOf="@id/tvEditAvatarInitials" />
+
+            <TextView
+                android:id="@+id/tvEditCardLevel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/be_vietnam_pro_medium"
+                android:text="@string/profile_default_level_full"
+                android:textColor="@color/profile_primary_royal"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@id/btnChangeAvatar"
+                app:layout_constraintStart_toEndOf="@id/tvEditAvatarInitials"
+                app:layout_constraintTop_toBottomOf="@id/tvEditCardName" />
+
+            <TextView
+                android:id="@+id/btnChangeAvatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_profile_btn_outlined"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/be_vietnam_pro_semibold"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="8dp"
+                android:text="@string/profile_change_avatar"
+                android:textColor="@color/profile_primary_royal"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Card Form Thông tin cá nhân -->
+        <LinearLayout
+            android:id="@+id/cardEditProfileForm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/profile_screen_padding"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_profile_card"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardFloatingAvatar">
+
+            <!-- Họ và tên -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFullName"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/profile_label_fullname"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtFullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:inputType="textPersonName"
+                    android:text="@string/profile_default_name"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Email -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmail"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/profile_label_email"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:inputType="textEmailAddress"
+                    android:text="@string/profile_default_email"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvEmailVerifiedBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/be_vietnam_pro_semibold"
+                android:text="@string/profile_email_verified"
+                android:textColor="@color/profile_success_text"
+                android:textSize="11sp" />
+
+            <!-- Số điện thoại -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPhone"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/profile_label_phone"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:inputType="phone"
+                    android:text="@string/profile_default_phone"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Mục tiêu học tập (Dropdown) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLearningGoal"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/profile_label_goal">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/actvLearningGoal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:inputType="none"
+                    android:text="@string/profile_goal_default"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- Nút Lưu thay đổi & Hủy -->
+        <TextView
+            android:id="@+id/btnSaveProfile"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/profile_btn_height"
+            android:layout_marginHorizontal="@dimen/profile_screen_padding"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_profile_btn_primary"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:text="@string/profile_btn_save_changes"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardEditProfileForm" />
+
+        <TextView
+            android:id="@+id/tvCancelEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/be_vietnam_pro_semibold"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="8dp"
+            android:text="@string/profile_btn_cancel"
+            android:textColor="@color/profile_text_secondary"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnSaveProfile" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
