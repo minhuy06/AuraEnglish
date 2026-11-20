@@ -88,4 +88,27 @@
     <string name="admin_toast_course_published">Đã xuất bản khóa học \"%1$s\"</string>
     <string name="admin_toast_course_hidden">Đã ẩn khóa học \"%1$s\"</string>
     <string name="admin_toast_course_deleted">Đã xóa khóa học \"%1$s\"</string>
+
+    <!-- Admin: Thống kê -->
+    <string name="admin_stats_title">Tổng quan quản trị</string>
+    <string name="admin_stats_subtitle">Theo dõi hiệu quả học tập và vận hành</string>
+    <string name="admin_stats_live_badge">Đang cập nhật</string>
+    <string name="admin_stats_overview">Hiệu suất nền tảng</string>
+    <string name="admin_stats_period_week">7 ngày</string>
+    <string name="admin_stats_period_month">30 ngày</string>
+    <string name="admin_stats_period_year">12 tháng</string>
+    <string name="admin_stats_metric_students">Tổng học viên</string>
+    <string name="admin_stats_metric_active">Đang hoạt động</string>
+    <string name="admin_stats_metric_completion">Tỷ lệ hoàn thành</string>
+    <string name="admin_stats_metric_revenue">Doanh thu</string>
+    <string name="admin_stats_activity_title">Hoạt động học tập</string>
+    <string name="admin_stats_activity_subtitle">Số học viên hoàn thành ít nhất một bài học</string>
+    <string name="admin_stats_course_title">Khóa học nổi bật</string>
+    <string name="admin_stats_course_subtitle">Xếp theo tỷ lệ hoàn thành trong kỳ</string>
+    <string name="admin_stats_learner_count_fmt">%1$d học viên</string>
+    <string name="admin_stats_completion_fmt">Hoàn thành %1$d%%</string>
+    <string name="admin_stats_percent_fmt">%1$d%%</string>
+    <string name="admin_stats_positive_change_fmt">Tăng %1$s so với kỳ trước</string>
+    <string name="admin_stats_negative_change_fmt">Giảm %1$s so với kỳ trước</string>
+    <string name="admin_stats_stable_change">Ổn định so với kỳ trước</string>
 </resources>

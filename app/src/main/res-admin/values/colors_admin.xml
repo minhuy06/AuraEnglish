@@ -29,4 +29,12 @@
 
     <color name="admin_nav_inactive">#FF94A3B8</color>
     <color name="admin_overlay">#990F172A</color>
+
+    <!-- Admin dashboard accents -->
+    <color name="admin_purple">#FF7C3AED</color>
+    <color name="admin_purple_soft">#FFF3E8FF</color>
+    <color name="admin_cyan">#FF0891B2</color>
+    <color name="admin_cyan_soft">#FFCFFAFE</color>
+    <color name="admin_warning">#FFF59E0B</color>
+    <color name="admin_warning_soft">#FFFEF3C7</color>
 </resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="112dp"
+    android:background="@drawable/bg_admin_card"
+    android:padding="14dp">
+
+    <View
+        android:id="@+id/viewMetricAccent"
+        android:layout_width="4dp"
+        android:layout_height="42dp"
+        android:background="@drawable/bg_admin_metric_accent"
+        app:layout_constraintBottom_toBottomOf="@id/tvMetricValue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvMetricLabel" />
+
+    <TextView
+        android:id="@+id/tvMetricLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/be_vietnam_pro_medium"
+        android:maxLines="1"
+        android:textColor="@color/admin_text_secondary"
+        android:textSize="11.5sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/viewMetricAccent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Tổng học viên" />
+
+    <TextView
+        android:id="@+id/tvMetricValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:maxLines="1"
+        android:textColor="@color/admin_text_primary"
+        android:textSize="21sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/viewMetricAccent"
+        app:layout_constraintTop_toBottomOf="@id/tvMetricLabel"
+        tools:text="1.248" />
+
+    <TextView
+        android:id="@+id/tvMetricTrend"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:fontFamily="@font/be_vietnam_pro_medium"
+        android:maxLines="1"
+        android:textColor="@color/admin_success"
+        android:textSize="10.5sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="↑ 8,4% so với kỳ trước" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootAdminStatistics"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/admin_bg"
+    tools:context=".admin.ui.AdminStatisticsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerAdminStatistics"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_admin_header"
+        android:paddingHorizontal="@dimen/admin_screen_padding"
+        android:paddingTop="14dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvStatsTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:text="@string/admin_stats_title"
+            android:textColor="@color/admin_text_primary"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/tvStatsLiveBadge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvStatsSubtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="12dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/be_vietnam_pro_regular"
+            android:maxLines="1"
+            android:text="@string/admin_stats_subtitle"
+            android:textColor="@color/admin_text_secondary"
+            android:textSize="11.5sp"
+            app:layout_constraintEnd_toStartOf="@id/tvStatsLiveBadge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvStatsTitle" />
+
+        <TextView
+            android:id="@+id/tvStatsLiveBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_admin_live_badge"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:text="@string/admin_stats_live_badge"
+            android:textColor="@color/admin_success"
+            android:textSize="9.5sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/statsScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/includeAdminBottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerAdminStatistics">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/admin_screen_padding"
+            android:paddingTop="14dp"
+            android:paddingBottom="18dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:text="@string/admin_stats_overview"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/chipStatsWeek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_admin_chip_active"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:paddingHorizontal="11dp"
+                    android:text="@string/admin_stats_period_week"
+                    android:textColor="@color/white"
+                    android:textSize="10.5sp" />
+
+                <TextView
+                    android:id="@+id/chipStatsMonth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/bg_admin_chip_inactive"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:gravity="center"
+                    android:paddingHorizontal="11dp"
+                    android:text="@string/admin_stats_period_month"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="10.5sp" />
+
+                <TextView
+                    android:id="@+id/chipStatsYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/bg_admin_chip_inactive"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:gravity="center"
+                    android:paddingHorizontal="11dp"
+                    android:text="@string/admin_stats_period_year"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="10.5sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/metricStudents"
+                    layout="@layout/item_admin_metric"
+                    android:layout_width="0dp"
+                    android:layout_height="112dp"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/metricActive"
+                    layout="@layout/item_admin_metric"
+                    android:layout_width="0dp"
+                    android:layout_height="112dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/metricCompletion"
+                    layout="@layout/item_admin_metric"
+                    android:layout_width="0dp"
+                    android:layout_height="112dp"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/metricRevenue"
+                    layout="@layout/item_admin_metric"
+                    android:layout_width="0dp"
+                    android:layout_height="112dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_admin_card"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:text="@string/admin_stats_activity_title"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="13.5sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/be_vietnam_pro_regular"
+                    android:text="@string/admin_stats_activity_subtitle"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="10.5sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/activityBar1"
+                        layout="@layout/item_admin_activity_bar" />
+
+                    <include
+                        android:id="@+id/activityBar2"
+                        layout="@layout/item_admin_activity_bar" />
+
+                    <include
+                        android:id="@+id/activityBar3"
+                        layout="@layout/item_admin_activity_bar" />
+
+                    <include
+                        android:id="@+id/activityBar4"
+                        layout="@layout/item_admin_activity_bar" />
+
+                    <include
+                        android:id="@+id/activityBar5"
+                        layout="@layout/item_admin_activity_bar" />
+
+                    <include
+                        android:id="@+id/activityBar6"
+                        layout="@layout/item_admin_activity_bar" />
+
+                    <include
+                        android:id="@+id/activityBar7"
+                        layout="@layout/item_admin_activity_bar" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_admin_card"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:text="@string/admin_stats_course_title"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="13.5sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/be_vietnam_pro_regular"
+                    android:text="@string/admin_stats_course_subtitle"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="10.5sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/courseProgress1"
+                        layout="@layout/item_admin_course_progress" />
+
+                    <include
+                        android:id="@+id/courseProgress2"
+                        layout="@layout/item_admin_course_progress" />
+
+                    <include
+                        android:id="@+id/courseProgress3"
+                        layout="@layout/item_admin_course_progress" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/includeAdminBottomNav"
+        layout="@layout/include_admin_bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/admin_bottom_nav_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

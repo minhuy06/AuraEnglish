@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="66dp">
+
+    <TextView
+        android:id="@+id/tvCourseProgressTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:maxLines="1"
+        android:textColor="@color/admin_text_primary"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@id/tvCourseProgressPercent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Ngữ pháp trọng tâm" />
+
+    <TextView
+        android:id="@+id/tvCourseProgressPercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/be_vietnam_pro_bold"
+        android:textColor="@color/admin_primary"
+        android:textSize="12sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvCourseProgressTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="82%" />
+
+    <TextView
+        android:id="@+id/tvCourseProgressMeta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/be_vietnam_pro_regular"
+        android:maxLines="1"
+        android:textColor="@color/admin_text_secondary"
+        android:textSize="10.5sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCourseProgressTitle"
+        tools:text="680 học viên" />
+
+    <ProgressBar
+        android:id="@+id/pbCourseProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:layout_marginTop="7dp"
+        android:max="100"
+        android:progress="82"
+        android:progressBackgroundTint="@color/admin_primary_soft"
+        android:progressTint="@color/admin_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCourseProgressMeta" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
