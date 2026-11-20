@@ -11,16 +11,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AuraEnglish">
+
         <activity
-            android:name=".MainActivity"
+            android:name=".dashboard.ui.DashboardHomeActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".dashboard.ui.DashboardCategoryActivity" android:exported="false" />
+        <activity android:name=".dashboard.ui.DashboardStoreActivity" android:exported="false" />
+
+        <activity
+            android:name=".practice.ui.PracticeExamListActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".practice.ui.PracticeExamOverviewActivity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticePart5Activity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticeBookmarkedActivity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticeResultActivity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticeAnswerReviewActivity" android:exported="false" />
+        <activity android:name=".practice.ui.PracticeDemoTabActivity" android:exported="false" />
+        <activity android:name=".ranking.ui.RankingActivity" android:exported="false" />
+
+        <activity
+            android:name=".admin.ui.AdminExamShopActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

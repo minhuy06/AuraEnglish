@@ -1,7 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Admin UI giữ palette sáng theo Figma để đồng bộ với màn quản trị -->
     <style name="Base.Theme.AuraEnglish" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/admin_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:statusBarColor">@color/admin_surface</item>
+        <item name="android:navigationBarColor">@color/admin_surface</item>
+        <item name="android:windowBackground">@color/admin_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

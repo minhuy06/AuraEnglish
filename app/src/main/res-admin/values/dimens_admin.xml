@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="admin_screen_padding">16dp</dimen>
+    <dimen name="admin_header_height">64dp</dimen>
+    <dimen name="admin_search_height">40dp</dimen>
+    <dimen name="admin_card_radius">14dp</dimen>
+    <dimen name="admin_chip_radius">20dp</dimen>
+    <dimen name="admin_btn_radius">10dp</dimen>
+    <dimen name="admin_input_radius">12dp</dimen>
+    <dimen name="admin_popup_radius">16dp</dimen>
+    <dimen name="admin_index_size">28dp</dimen>
+    <dimen name="admin_card_gap">12dp</dimen>
+    <dimen name="admin_bottom_nav_height">64dp</dimen>
+</resources>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottomNav"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/practice_bottom_nav_height"
+    android:background="@drawable/bg_practice_bottom_nav"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp">
+
+    <LinearLayout
+        android:id="@+id/navHome"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivNavHome"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:contentDescription="@string/practice_nav_home"
+            android:src="@drawable/ic_nav_home" />
+
+        <TextView
+            android:id="@+id/tvNavHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/dash_body"
+            android:text="@string/practice_nav_home"
+            android:textColor="@color/practice_nav_inactive"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navLibrary"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivNavLibrary"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:contentDescription="@string/practice_nav_library"
+            android:src="@drawable/ic_nav_library" />
+
+        <TextView
+            android:id="@+id/tvNavLibrary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/dash_body"
+            android:text="@string/practice_nav_library"
+            android:textColor="@color/practice_nav_inactive"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navPractice"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivNavPractice"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:contentDescription="@string/practice_nav_practice"
+            android:src="@drawable/ic_nav_practice" />
+
+        <TextView
+            android:id="@+id/tvNavPractice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/dash_body"
+            android:text="@string/practice_nav_practice"
+            android:textColor="@color/practice_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navRank"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivNavRank"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:contentDescription="@string/practice_nav_rank"
+            android:src="@drawable/ic_nav_rank" />
+
+        <TextView
+            android:id="@+id/tvNavRank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/dash_body"
+            android:text="@string/practice_nav_rank"
+            android:textColor="@color/practice_nav_inactive"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navSettings"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivNavSettings"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:contentDescription="@string/practice_nav_settings"
+            android:src="@drawable/ic_nav_settings" />
+
+        <TextView
+            android:id="@+id/tvNavSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/dash_body"
+            android:text="@string/practice_nav_settings"
+            android:textColor="@color/practice_nav_inactive"
+            android:textSize="12sp" />
+    </LinearLayout>
+</LinearLayout>
