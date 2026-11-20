@@ -40,6 +40,7 @@ android {
                 "src/main/res-dashboard",
                 "src/main/res-admin",
                 "src/main/res-profile",
+                "src/main/res-vocab",
             )
         }
     }
