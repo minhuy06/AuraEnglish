@@ -33,6 +33,21 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".auth.ui.ForgotPasswordActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".auth.ui.ResetCodeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".auth.ui.NewPasswordActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".auth.ui.ResetSuccessActivity"
+            android:exported="false" />
+        <activity
             android:name=".dashboard.ui.DashboardHomeActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
