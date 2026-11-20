@@ -37,11 +37,17 @@
 
     <color name="practice_podium_1">#FF173B8F</color>
     <color name="practice_podium_2">#FF3B82F6</color>
-    <color name="practice_podium_3">#FFA0BDFD</color>
-    <color name="practice_rank_row">#FFF2F2F2</color>
-    <color name="practice_rank_pinned">#FF9FD7FF</color>
+    <color name="practice_podium_3">#FF7BA3F0</color>
+    <color name="practice_rank_row">#FFF7F9FF</color>
+    <color name="practice_rank_pinned">#FFDCEBFF</color>
     <color name="practice_rank_sticky">#FF2563EB</color>
-    <color name="practice_rank_xp">#FF2563EB</color>
+    <color name="practice_rank_sticky_end">#FF173B8F</color>
+    <color name="practice_rank_xp">#FF1D4ED8</color>
+    <color name="practice_medal_gold">#FFF59E0B</color>
+    <color name="practice_medal_silver">#FF94A3B8</color>
+    <color name="practice_medal_bronze">#FFD97706</color>
+    <color name="practice_xp_pill">#FFE8F0FF</color>
+    <color name="practice_bg_end">#FFE8EEFF</color>
     <color name="practice_avatar_tl">#FFE2A1F6</color>
     <color name="practice_avatar_ma">#FF94E9FE</color>
     <color name="practice_avatar_qb">#FFDCAA89</color>

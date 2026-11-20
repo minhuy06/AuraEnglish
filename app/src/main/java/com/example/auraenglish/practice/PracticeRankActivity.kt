@@ -1,8 +1,12 @@
 package com.example.auraenglish.practice
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +20,7 @@ import com.example.auraenglish.databinding.ItemPracticeRankRowBinding
 class PracticeRankActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticeRankBinding
-    private var period = RankPeriod.DAY
+    private var period = RankPeriod.WEEK
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,13 +44,14 @@ class PracticeRankActivity : AppCompatActivity() {
             chip.setOnClickListener {
                 period = value
                 selectChip(chip, chips.map { it.first })
-                render()
+                render(animateList = true)
             }
         }
-        selectChip(binding.chipDay, chips.map { it.first })
+        selectChip(binding.chipWeek, chips.map { it.first })
 
         PracticeNavHelper.bind(this, binding.bottomNavInclude, PracticeTab.RANK)
-        render()
+        render(animateList = false)
+        playEntrance()
     }
 
     private fun selectChip(selected: TextView, all: List<TextView>) {
@@ -58,25 +63,44 @@ class PracticeRankActivity : AppCompatActivity() {
             chip.setTextColor(
                 ContextCompat.getColor(
                     this,
-                    if (active) R.color.white else R.color.practice_text_secondary
+                    if (active) R.color.white else R.color.practice_primary
                 )
             )
             chip.setTypeface(
                 null,
                 if (active) android.graphics.Typeface.BOLD else android.graphics.Typeface.NORMAL
             )
+            chip.elevation = if (active) 4f else 0f
         }
     }
 
-    private fun render() {
+    private fun render(animateList: Boolean) {
         val entries = PracticeRankData.entries(period)
         val top = entries.take(3)
-        bindPodium(top.getOrNull(0), binding.avatar1, binding.name1, binding.xp1)
-        bindPodium(top.getOrNull(1), binding.avatar2, binding.name2, binding.xp2)
-        bindPodium(top.getOrNull(2), binding.avatar3, binding.name3, binding.xp3)
+        bindPodium(
+            top.getOrNull(0),
+            binding.avatar1,
+            binding.name1,
+            binding.xp1,
+            R.color.practice_medal_gold
+        )
+        bindPodium(
+            top.getOrNull(1),
+            binding.avatar2,
+            binding.name2,
+            binding.xp2,
+            R.color.practice_medal_silver
+        )
+        bindPodium(
+            top.getOrNull(2),
+            binding.avatar3,
+            binding.name3,
+            binding.xp3,
+            R.color.practice_medal_bronze
+        )
 
         binding.rankList.removeAllViews()
-        entries.drop(3).forEach { entry ->
+        entries.drop(3).forEachIndexed { index, entry ->
             val item = ItemPracticeRankRowBinding.inflate(
                 LayoutInflater.from(this), binding.rankList, false
             )
@@ -97,6 +121,17 @@ class PracticeRankActivity : AppCompatActivity() {
                 else R.drawable.bg_practice_rank_row
             )
             binding.rankList.addView(item.root)
+            if (animateList) {
+                item.root.alpha = 0f
+                item.root.translationY = 12f
+                item.root.animate()
+                    .alpha(1f)
+                    .translationY(0f)
+                    .setStartDelay((index * 40L))
+                    .setDuration(180L)
+                    .setInterpolator(DecelerateInterpolator())
+                    .start()
+            }
         }
 
         val me = entries.first { it.isCurrentUser }
@@ -127,20 +162,54 @@ class PracticeRankActivity : AppCompatActivity() {
         entry: RankEntry?,
         avatar: TextView,
         name: TextView,
-        xp: TextView
+        xp: TextView,
+        medalColorRes: Int
     ) {
         if (entry == null) return
         avatar.text = entry.initials
-        tintAvatar(avatar, entry.avatarColorRes)
+        tintPodiumAvatar(avatar, entry.avatarColorRes, medalColorRes)
         name.text = entry.name
         xp.text = getString(R.string.practice_rank_xp, PracticeRankData.formatXp(entry.xp))
     }
 
+    private fun tintPodiumAvatar(view: TextView, fillColorRes: Int, strokeColorRes: Int) {
+        val stroke = (3f * resources.displayMetrics.density).toInt().coerceAtLeast(3)
+        view.background = GradientDrawable().apply {
+            shape = GradientDrawable.OVAL
+            setColor(ContextCompat.getColor(this@PracticeRankActivity, fillColorRes))
+            setStroke(stroke, ContextCompat.getColor(this@PracticeRankActivity, strokeColorRes))
+        }
+    }
+
     private fun tintAvatar(view: TextView, colorRes: Int) {
-        val drawable = GradientDrawable().apply {
+        view.background = GradientDrawable().apply {
             shape = GradientDrawable.OVAL
             setColor(ContextCompat.getColor(this@PracticeRankActivity, colorRes))
         }
-        view.background = drawable
+    }
+
+    private fun playEntrance() {
+        val targets = listOf<View>(
+            binding.podiumRow,
+            binding.rankList,
+            binding.stickyRank
+        )
+        val animators = targets.mapIndexed { index, view ->
+            view.alpha = 0f
+            view.translationY = 18f
+            AnimatorSet().apply {
+                playTogether(
+                    ObjectAnimator.ofFloat(view, View.ALPHA, 0f, 1f),
+                    ObjectAnimator.ofFloat(view, View.TRANSLATION_Y, 18f, 0f)
+                )
+                duration = 220L
+                startDelay = index * 70L
+                interpolator = DecelerateInterpolator()
+            }
+        }
+        AnimatorSet().apply {
+            playTogether(animators)
+            start()
+        }
     }
 }

@@ -119,5 +119,7 @@
     <string name="practice_rank_xp">%1$s XP</string>
     <string name="practice_rank_you_suffix">%1$s (Bạn)</string>
     <string name="practice_rank_gap">Còn %1$d XP để lên hạng %2$d</string>
+    <string name="practice_rank_cart">Cửa hàng</string>
+    <string name="practice_rank_notifications">Thông báo</string>
     <string name="practice_demo_settings_desc">Đây là demo tab Cài đặt. Sau này sẽ hiện hồ sơ, thông báo và tùy chọn học tập.</string>
 </resources>
