@@ -1,7 +1,9 @@
 package com.example.auraenglish.dashboard.adapter
 
+import android.animation.ValueAnimator
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -49,13 +51,25 @@ class DashboardCourseAdapter :
                 ctx.getString(R.string.dash_progress_fmt, item.done, item.total)
             }
             accent.setBackgroundResource(item.accentRes)
+            ivIcon.setImageResource(item.iconRes)
+            root.alpha = 0f
+            root.translationY = 10f
+            root.animate().alpha(1f).translationY(0f).setDuration(220).start()
             progressFill.post {
                 val parentW = (progressFill.parent as android.view.View).width
                 val ratio = item.done / item.total.coerceAtLeast(1).toFloat()
-                progressFill.layoutParams = progressFill.layoutParams.apply {
-                    width = (parentW * ratio).toInt().coerceAtLeast(8)
+                val target = (parentW * ratio).toInt().coerceAtLeast(8)
+                ValueAnimator.ofInt(0, target).apply {
+                    duration = 420
+                    interpolator = DecelerateInterpolator()
+                    addUpdateListener {
+                        progressFill.layoutParams = progressFill.layoutParams.apply {
+                            width = it.animatedValue as Int
+                        }
+                        progressFill.requestLayout()
+                    }
+                    start()
                 }
-                progressFill.requestLayout()
             }
         }
     }

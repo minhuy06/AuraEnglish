@@ -11,11 +11,12 @@
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/dash_display"
         android:paddingHorizontal="16dp"
         android:paddingTop="16dp"
         android:text="@string/dash_category_title"
         android:textColor="@color/dash_text"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,9 +54,10 @@
             android:hint="@string/dash_search_courses"
             android:imeOptions="actionSearch"
             android:inputType="text"
+            android:fontFamily="@font/dash_body"
             android:textColor="@color/dash_text"
             android:textColorHint="@color/dash_text_secondary"
-            android:textSize="13sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <HorizontalScrollView
@@ -83,9 +85,10 @@
                 android:gravity="center"
                 android:minWidth="48dp"
                 android:paddingHorizontal="12dp"
+                android:fontFamily="@font/dash_body"
                 android:text="@string/dash_filter_all"
                 android:textColor="@color/white"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -94,12 +97,13 @@
                 android:layout_height="34dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bg_dash_chip_idle"
+                android:fontFamily="@font/dash_body"
                 android:gravity="center"
                 android:minWidth="48dp"
                 android:paddingHorizontal="12dp"
                 android:text="@string/dash_filter_vocab"
                 android:textColor="@color/dash_primary"
-                android:textSize="12sp" />
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/chipGrammar"
@@ -107,12 +111,13 @@
                 android:layout_height="34dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bg_dash_chip_idle"
+                android:fontFamily="@font/dash_body"
                 android:gravity="center"
                 android:minWidth="48dp"
                 android:paddingHorizontal="12dp"
                 android:text="@string/dash_filter_grammar"
                 android:textColor="@color/dash_primary"
-                android:textSize="12sp" />
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/chipExam"
@@ -120,12 +125,13 @@
                 android:layout_height="34dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bg_dash_chip_idle"
+                android:fontFamily="@font/dash_body"
                 android:gravity="center"
                 android:minWidth="48dp"
                 android:paddingHorizontal="12dp"
                 android:text="@string/dash_filter_exam"
                 android:textColor="@color/dash_primary"
-                android:textSize="12sp" />
+                android:textSize="13sp" />
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -141,6 +147,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filterScroll" />
+
+    <LinearLayout
+        android:id="@+id/emptyState"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="28dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavInclude"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterScroll"
+        app:layout_constraintVertical_bias="0.25">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dash_display"
+            android:text="@string/dash_empty_title"
+            android:textColor="@color/dash_text"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvEmptyTip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/dash_body"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.35"
+            android:text="@string/dash_empty_tip"
+            android:textColor="@color/dash_text_secondary"
+            android:textSize="13sp" />
+    </LinearLayout>
 
     <include
         android:id="@+id/bottomNavInclude"

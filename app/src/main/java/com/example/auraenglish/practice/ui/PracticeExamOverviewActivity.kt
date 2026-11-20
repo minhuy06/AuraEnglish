@@ -11,6 +11,7 @@ import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -63,7 +64,10 @@ class PracticeExamOverviewActivity : AppCompatActivity() {
         binding.btnContinue.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_practice_play, 0, 0, 0)
         binding.btnContinue.compoundDrawablePadding = (8 * resources.displayMetrics.density).toInt()
 
-        binding.btnBack.setOnClickListener { finish() }
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() = confirmLeave()
+        })
+        binding.btnBack.setOnClickListener { confirmLeave() }
         binding.btnSearch.setOnClickListener {
             PracticeSearchHelper.show(
                 activity = this,
@@ -100,6 +104,15 @@ class PracticeExamOverviewActivity : AppCompatActivity() {
                         .putExtra(PracticeSampleData.EXTRA_EXAM_ID, exam.id)
                 )
             }
+        }
+    }
+
+    // Đang làm đề → hỏi trước khi thoát
+    private fun confirmLeave() {
+        if (exam.status == ExamStatus.DOING) {
+            PracticeConfirmHelper.showExitExam(this) { finish() }
+        } else {
+            finish()
         }
     }
 

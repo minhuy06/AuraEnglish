@@ -9,6 +9,7 @@ import com.example.auraenglish.practice.data.*
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -57,7 +58,10 @@ class PracticePart5Activity : AppCompatActivity() {
             onWordAdded = { refreshQuestionText() }
         )
 
-        binding.btnClose.setOnClickListener { finish() }
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() = confirmExit()
+        })
+        binding.btnClose.setOnClickListener { confirmExit() }
         binding.btnViewFlagged.setOnClickListener {
             startActivity(
                 Intent(this, PracticeBookmarkedActivity::class.java)
@@ -86,6 +90,10 @@ class PracticePart5Activity : AppCompatActivity() {
             return
         }
         showQuestion(next)
+    }
+
+    private fun confirmExit() {
+        PracticeConfirmHelper.showExitExam(this) { finish() }
     }
 
     private fun confirmSubmit() {

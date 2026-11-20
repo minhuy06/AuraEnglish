@@ -11,7 +11,6 @@ import com.example.auraenglish.databinding.IncludePracticeBottomNavBinding
 import com.example.auraenglish.dashboard.ui.DashboardCategoryActivity
 import com.example.auraenglish.dashboard.ui.DashboardHomeActivity
 import com.example.auraenglish.practice.ui.PracticeDemoTabActivity
-import com.example.auraenglish.practice.ui.PracticeExamListActivity
 import com.example.auraenglish.ranking.ui.RankingActivity
 
 // Tab bottom nav (chung practice + ranking)
@@ -60,19 +59,21 @@ object PracticeNavHelper {
                 )
                 if (activity !is DashboardHomeActivity) activity.finish()
             }
+            // Thư viện để trống (placeholder)
             PracticeTab.LIBRARY -> {
+                activity.startActivity(
+                    Intent(activity, PracticeDemoTabActivity::class.java)
+                        .putExtra(EXTRA_TAB, PracticeTab.LIBRARY.name)
+                )
+                activity.finish()
+            }
+            // Danh mục khóa học nằm ở tab Luyện tập
+            PracticeTab.PRACTICE -> {
                 activity.startActivity(
                     Intent(activity, DashboardCategoryActivity::class.java)
                         .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 )
                 if (activity !is DashboardCategoryActivity) activity.finish()
-            }
-            PracticeTab.PRACTICE -> {
-                activity.startActivity(
-                    Intent(activity, PracticeExamListActivity::class.java)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                )
-                if (activity !is PracticeExamListActivity) activity.finish()
             }
             PracticeTab.RANK -> {
                 activity.startActivity(
@@ -86,6 +87,7 @@ object PracticeNavHelper {
                     Intent(activity, PracticeDemoTabActivity::class.java)
                         .putExtra(EXTRA_TAB, target.name)
                 )
+                activity.finish()
             }
         }
     }

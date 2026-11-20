@@ -14,6 +14,7 @@ data class DashCourse(
     val total: Int,
     val filter: CourseFilter,
     val accentRes: Int,
+    val iconRes: Int,
     val doneLabel: Boolean = false
 )
 
@@ -28,12 +29,12 @@ data class DashStoreItem(
 object DashboardSampleData {
 
     val courses = listOf(
-        DashCourse("Tiếng anh công sở", 6, 24, 12, 24, CourseFilter.VOCAB, R.drawable.bg_dash_skill_vocab),
-        DashCourse("Luyện nghe & Phản xạ", 8, 32, 4, 32, CourseFilter.VOCAB, R.drawable.bg_dash_skill_listen),
-        DashCourse("Ngữ pháp trọng tâm", 0, 40, 38, 40, CourseFilter.GRAMMAR, R.drawable.bg_dash_skill_grammar, doneLabel = true),
-        DashCourse("Từ vựng thông dụng", 15, 60, 10, 48, CourseFilter.VOCAB, R.drawable.bg_dash_skill_vocab),
-        DashCourse("Từ vựng giao tiếp", 12, 48, 12, 48, CourseFilter.VOCAB, R.drawable.bg_dash_skill_vocab),
-        DashCourse("Luyện đề TOEIC", 7, 14, 3, 14, CourseFilter.EXAM, R.drawable.bg_dash_skill_exam)
+        DashCourse("Tiếng anh công sở", 6, 24, 12, 24, CourseFilter.VOCAB, R.drawable.bg_dash_skill_vocab, R.drawable.ic_dash_vocab),
+        DashCourse("Luyện nghe & Phản xạ", 8, 32, 4, 32, CourseFilter.VOCAB, R.drawable.bg_dash_skill_listen, R.drawable.ic_dash_listen),
+        DashCourse("Ngữ pháp trọng tâm", 0, 40, 38, 40, CourseFilter.GRAMMAR, R.drawable.bg_dash_skill_grammar, R.drawable.ic_dash_grammar, doneLabel = true),
+        DashCourse("Từ vựng thông dụng", 15, 60, 10, 48, CourseFilter.VOCAB, R.drawable.bg_dash_skill_vocab, R.drawable.ic_dash_vocab),
+        DashCourse("Từ vựng giao tiếp", 12, 48, 12, 48, CourseFilter.VOCAB, R.drawable.bg_dash_skill_vocab, R.drawable.ic_dash_vocab)
+        // Tab Luyện đề dùng PracticeSampleData.exams — không list course giả
     )
 
     val storeItems = listOf(

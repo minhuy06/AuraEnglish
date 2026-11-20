@@ -10,7 +10,7 @@ import com.example.auraenglish.databinding.ItemPracticeExamBinding
 import com.example.auraenglish.practice.data.ExamStatus
 import com.example.auraenglish.practice.data.PracticeExam
 
-// Adapter danh sách đề
+// Adapter danh sách đề (+ icon status + ETA)
 class PracticeExamAdapter(
     private val onExamClick: (PracticeExam) -> Unit
 ) : ListAdapter<PracticeExam, PracticeExamAdapter.ExamVH>(Diff) {
@@ -49,6 +49,10 @@ class PracticeExamAdapter(
                     tvStatus.text = context.getString(R.string.practice_status_todo)
                     tvStatus.setBackgroundResource(R.drawable.bg_practice_status_todo)
                     tvStatus.setTextColor(context.getColor(R.color.practice_text_secondary))
+                    tvStatus.setCompoundDrawablesWithIntrinsicBounds(
+                        R.drawable.ic_practice_status_todo, 0, 0, 0
+                    )
+                    tvEta.text = context.getString(R.string.practice_eta_full)
                 }
                 ExamStatus.DOING -> {
                     tvStatus.text = context.getString(
@@ -57,14 +61,27 @@ class PracticeExamAdapter(
                     )
                     tvStatus.setBackgroundResource(R.drawable.bg_practice_status_doing)
                     tvStatus.setTextColor(context.getColor(R.color.practice_chip_progress_text))
+                    tvStatus.setCompoundDrawablesWithIntrinsicBounds(
+                        R.drawable.ic_practice_status_doing, 0, 0, 0
+                    )
+                    val left = ((200 - exam.answeredCount).coerceAtLeast(0) * 0.6)
+                        .toInt().coerceAtLeast(1)
+                    tvEta.text = context.getString(R.string.practice_eta_left, left)
                 }
                 ExamStatus.DONE -> {
                     tvStatus.text = context.getString(R.string.practice_status_done, exam.score)
                     tvStatus.setBackgroundResource(R.drawable.bg_practice_status_done)
                     tvStatus.setTextColor(context.getColor(R.color.practice_chip_done_text))
+                    tvStatus.setCompoundDrawablesWithIntrinsicBounds(
+                        R.drawable.ic_practice_status_done, 0, 0, 0
+                    )
+                    tvEta.text = ""
                 }
                 ExamStatus.ALL -> Unit
             }
+            root.alpha = 0f
+            root.translationY = 10f
+            root.animate().alpha(1f).translationY(0f).setDuration(220).start()
             root.setOnClickListener { onExamClick(exam) }
         }
     }

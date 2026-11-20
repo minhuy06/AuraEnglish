@@ -36,6 +36,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/bg_dash_avatar"
+                    android:fontFamily="@font/dash_body"
                     android:gravity="center"
                     android:text="DH"
                     android:textColor="@color/dash_primary"
@@ -48,6 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/dash_display"
                     android:text="@string/dash_greeting_name"
                     android:textColor="@color/dash_text"
                     android:textSize="20sp"
@@ -101,6 +103,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/dash_display"
                         android:gravity="center"
                         android:text="@string/dash_daily_percent"
                         android:textColor="@color/dash_primary"
@@ -118,6 +121,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/dash_display"
                         android:text="@string/dash_daily_goal"
                         android:textColor="@color/dash_text"
                         android:textSize="16sp"
@@ -127,25 +131,56 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
+                        android:fontFamily="@font/dash_body"
                         android:text="@string/dash_daily_progress"
-                        android:textColor="@color/dash_text_secondary"
-                        android:textSize="13sp" />
+                        android:textColor="@color/dash_text_muted"
+                        android:textSize="14sp" />
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="@string/dash_streak"
-                        android:textColor="@color/dash_primary_mid"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_dash_streak" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:fontFamily="@font/dash_body"
+                            android:text="@string/dash_streak"
+                            android:textColor="@color/dash_primary_mid"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
+            <include
+                android:id="@+id/weekStrip"
+                layout="@layout/include_dash_week_strip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp" />
+
+            <include
+                android:id="@+id/heroInclude"
+                layout="@layout/include_dash_hero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/dash_display"
                 android:text="@string/dash_continue_title"
                 android:textColor="@color/dash_text"
                 android:textSize="18sp"
@@ -162,10 +197,18 @@
                 android:orientation="horizontal"
                 android:padding="16dp">
 
-                <View
+                <FrameLayout
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/bg_dash_skill_vocab" />
+                    android:background="@drawable/bg_dash_skill_vocab">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_dash_continue" />
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -177,18 +220,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/dash_body"
                         android:text="@string/dash_continue_course"
                         android:textColor="@color/dash_text"
-                        android:textSize="14sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
+                        android:fontFamily="@font/dash_body"
                         android:text="@string/dash_continue_meta"
-                        android:textColor="@color/dash_text_secondary"
-                        android:textSize="12sp" />
+                        android:textColor="@color/dash_text_muted"
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -196,6 +241,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/dash_display"
                 android:text="@string/dash_skills_title"
                 android:textColor="@color/dash_text"
                 android:textSize="18sp"
@@ -210,17 +256,24 @@
                 <LinearLayout
                     android:id="@+id/skillVocab"
                     android:layout_width="0dp"
-                    android:layout_height="110dp"
+                    android:layout_height="124dp"
                     android:layout_marginEnd="6dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_dash_skill_vocab"
-                    android:gravity="bottom"
                     android:orientation="vertical"
                     android:padding="14dp">
+
+                    <ImageView
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_dash_vocab" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/dash_body"
                         android:text="@string/dash_skill_vocab"
                         android:textColor="@color/dash_text"
                         android:textSize="13sp"
@@ -229,26 +282,47 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/dash_body"
                         android:text="@string/dash_skill_vocab_meta"
-                        android:textColor="@color/dash_text_secondary"
-                        android:textSize="11sp" />
+                        android:textColor="@color/dash_text_muted"
+                        android:textSize="12sp" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_dash_skill_progress_track">
+
+                        <View
+                            android:id="@+id/skillVocabProgress"
+                            android:layout_width="42dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_dash_skill_progress_fill" />
+                    </FrameLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/skillGrammar"
                     android:layout_width="0dp"
-                    android:layout_height="110dp"
+                    android:layout_height="124dp"
                     android:layout_marginStart="6dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_dash_skill_grammar"
-                    android:gravity="bottom"
                     android:orientation="vertical"
                     android:padding="14dp">
+
+                    <ImageView
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_dash_grammar" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/dash_body"
                         android:text="@string/dash_skill_grammar"
                         android:textColor="@color/dash_text"
                         android:textSize="13sp"
@@ -257,10 +331,24 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/dash_body"
                         android:text="@string/dash_skill_grammar_meta"
-                        android:textColor="@color/dash_text_secondary"
-                        android:textSize="11sp" />
+                        android:textColor="@color/dash_text_muted"
+                        android:textSize="12sp" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_dash_skill_progress_track">
+
+                        <View
+                            android:id="@+id/skillGrammarProgress"
+                            android:layout_width="78dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_dash_skill_progress_fill" />
+                    </FrameLayout>
                 </LinearLayout>
             </LinearLayout>
 
@@ -274,17 +362,24 @@
                 <LinearLayout
                     android:id="@+id/skillExam"
                     android:layout_width="0dp"
-                    android:layout_height="110dp"
+                    android:layout_height="124dp"
                     android:layout_marginEnd="6dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_dash_skill_exam"
-                    android:gravity="bottom"
                     android:orientation="vertical"
                     android:padding="14dp">
+
+                    <ImageView
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_dash_exam" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/dash_body"
                         android:text="@string/dash_skill_exam"
                         android:textColor="@color/dash_text"
                         android:textSize="13sp"
@@ -293,26 +388,47 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/dash_body"
                         android:text="@string/dash_skill_exam_meta"
-                        android:textColor="@color/dash_text_secondary"
-                        android:textSize="11sp" />
+                        android:textColor="@color/dash_text_muted"
+                        android:textSize="12sp" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_dash_skill_progress_track">
+
+                        <View
+                            android:id="@+id/skillExamProgress"
+                            android:layout_width="35dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_dash_skill_progress_fill" />
+                    </FrameLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/skillListen"
                     android:layout_width="0dp"
-                    android:layout_height="110dp"
+                    android:layout_height="124dp"
                     android:layout_marginStart="6dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_dash_skill_listen"
-                    android:gravity="bottom"
                     android:orientation="vertical"
                     android:padding="14dp">
+
+                    <ImageView
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_dash_listen" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/dash_body"
                         android:text="@string/dash_skill_listen"
                         android:textColor="@color/dash_text"
                         android:textSize="13sp"
@@ -321,10 +437,24 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/dash_body"
                         android:text="@string/dash_skill_listen_meta"
-                        android:textColor="@color/dash_text_secondary"
-                        android:textSize="11sp" />
+                        android:textColor="@color/dash_text_muted"
+                        android:textSize="12sp" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_dash_skill_progress_track">
+
+                        <View
+                            android:id="@+id/skillListenProgress"
+                            android:layout_width="18dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_dash_skill_progress_fill" />
+                    </FrameLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

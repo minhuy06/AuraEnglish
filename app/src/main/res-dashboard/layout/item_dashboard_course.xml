@@ -15,11 +15,20 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <View
+        <FrameLayout
             android:id="@+id/accent"
             android:layout_width="44dp"
             android:layout_height="44dp"
-            android:background="@drawable/bg_dash_skill_vocab" />
+            android:background="@drawable/bg_dash_skill_vocab">
+
+            <ImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_dash_vocab" />
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -32,8 +41,9 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/dash_body"
                 android:textColor="@color/dash_text"
-                android:textSize="14sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 tools:text="Tiếng anh công sở" />
 
@@ -42,8 +52,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textColor="@color/dash_text_secondary"
-                android:textSize="12sp"
+                android:fontFamily="@font/dash_body"
+                android:textColor="@color/dash_text_muted"
+                android:textSize="13sp"
                 tools:text="6 chủ đề • 24 bài học" />
         </LinearLayout>
     </LinearLayout>
@@ -66,7 +77,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textColor="@color/dash_text_secondary"
-        android:textSize="12sp"
+        android:fontFamily="@font/dash_body"
+        android:textColor="@color/dash_text_muted"
+        android:textSize="13sp"
         tools:text="Đang học 12/24 bài" />
 </LinearLayout>

@@ -1,27 +1,43 @@
 package com.example.auraenglish.dashboard.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.auraenglish.R
 import com.example.auraenglish.dashboard.adapter.DashboardCourseAdapter
+import com.example.auraenglish.dashboard.adapter.DashboardSectionAdapter
 import com.example.auraenglish.dashboard.data.CourseFilter
 import com.example.auraenglish.dashboard.data.DashboardSampleData
 import com.example.auraenglish.databinding.ActivityDashboardCategoryBinding
+import com.example.auraenglish.practice.adapter.PracticeExamAdapter
+import com.example.auraenglish.practice.data.ExamStatus
+import com.example.auraenglish.practice.data.PracticeExam
+import com.example.auraenglish.practice.data.PracticeSampleData
 import com.example.auraenglish.practice.helper.PracticeNavHelper
 import com.example.auraenglish.practice.helper.PracticeTab
+import com.example.auraenglish.practice.ui.PracticeExamOverviewActivity
 
-// Danh mục bài học + 4 filter pills (Figma)
+// Danh mục: khóa học + đề practice (Tất cả / Luyện đề)
 class DashboardCategoryActivity : AppCompatActivity() {
 
+    companion object {
+        const val EXTRA_FILTER = "extra_course_filter"
+    }
+
     private lateinit var binding: ActivityDashboardCategoryBinding
-    private lateinit var adapter: DashboardCourseAdapter
+    private lateinit var courseAdapter: DashboardCourseAdapter
+    private lateinit var examAdapter: PracticeExamAdapter
+    private lateinit var examHeaderAdapter: DashboardSectionAdapter
     private var filter = CourseFilter.ALL
     private var query = ""
 
@@ -37,12 +53,18 @@ class DashboardCategoryActivity : AppCompatActivity() {
             insets
         }
 
-        adapter = DashboardCourseAdapter()
+        filter = runCatching {
+            CourseFilter.valueOf(intent.getStringExtra(EXTRA_FILTER) ?: CourseFilter.ALL.name)
+        }.getOrDefault(CourseFilter.ALL)
+
+        courseAdapter = DashboardCourseAdapter()
+        examHeaderAdapter = DashboardSectionAdapter()
+        examAdapter = PracticeExamAdapter { exam -> openExam(exam) }
+
         binding.courseList.layoutManager = LinearLayoutManager(this)
-        binding.courseList.adapter = adapter
         binding.courseList.setHasFixedSize(true)
 
-        PracticeNavHelper.bind(this, binding.bottomNavInclude, PracticeTab.LIBRARY)
+        PracticeNavHelper.bind(this, binding.bottomNavInclude, PracticeTab.PRACTICE)
 
         val chips = listOf(
             binding.chipAll to CourseFilter.ALL,
@@ -54,21 +76,101 @@ class DashboardCategoryActivity : AppCompatActivity() {
             chip.setOnClickListener {
                 filter = value
                 selectChip(chip, chips.map { it.first })
-                refresh()
+                refresh(animate = true)
             }
         }
 
         binding.etSearch.doAfterTextChanged {
             query = it?.toString().orEmpty().trim()
-            refresh()
+            refresh(animate = true)
         }
 
-        selectChip(binding.chipAll, chips.map { it.first })
-        refresh()
+        val initialChip = chips.first { it.second == filter }.first
+        selectChip(initialChip, chips.map { it.first })
+        refresh(animate = false)
     }
 
-    private fun refresh() {
-        adapter.submitList(DashboardSampleData.filteredCourses(filter, query))
+    override fun onResume() {
+        super.onResume()
+        if (filter == CourseFilter.ALL || filter == CourseFilter.EXAM) refresh(animate = false)
+    }
+
+    private fun openExam(exam: PracticeExam) {
+        PracticeSampleData.currentExamId = exam.id
+        startActivity(
+            Intent(this, PracticeExamOverviewActivity::class.java)
+                .putExtra(PracticeSampleData.EXTRA_EXAM_ID, exam.id)
+        )
+    }
+
+    private fun filteredExams(): List<PracticeExam> {
+        return PracticeSampleData.filteredExams(ExamStatus.ALL).filter { exam ->
+            if (query.isBlank()) true
+            else {
+                val q = query.lowercase()
+                exam.title.lowercase().contains(q) ||
+                    exam.index.lowercase().contains(q) ||
+                    exam.meta.lowercase().contains(q)
+            }
+        }
+    }
+
+    private fun refresh(animate: Boolean) {
+        var itemCount = 0
+        when (filter) {
+            CourseFilter.EXAM -> {
+                binding.etSearch.hint = getString(R.string.practice_search_hint_exam)
+                examHeaderAdapter.setTitle("")
+                val exams = filteredExams()
+                examAdapter.submitList(exams)
+                binding.courseList.adapter = examAdapter
+                itemCount = exams.size
+            }
+            CourseFilter.ALL -> {
+                binding.etSearch.hint = getString(R.string.dash_search_all)
+                val courses = DashboardSampleData.filteredCourses(CourseFilter.ALL, query)
+                val exams = filteredExams()
+                courseAdapter.submitList(courses)
+                examHeaderAdapter.setTitle(
+                    if (exams.isEmpty()) "" else getString(R.string.dash_section_exams)
+                )
+                examAdapter.submitList(exams)
+                binding.courseList.adapter = ConcatAdapter(
+                    courseAdapter,
+                    examHeaderAdapter,
+                    examAdapter
+                )
+                itemCount = courses.size + exams.size
+            }
+            else -> {
+                binding.etSearch.hint = getString(R.string.dash_search_courses)
+                examHeaderAdapter.setTitle("")
+                val courses = DashboardSampleData.filteredCourses(filter, query)
+                courseAdapter.submitList(courses)
+                binding.courseList.adapter = courseAdapter
+                itemCount = courses.size
+            }
+        }
+
+        val empty = itemCount == 0
+        binding.emptyState.isVisible = empty
+        binding.courseList.isVisible = !empty
+        binding.tvEmptyTip.text = when {
+            query.isNotBlank() -> getString(R.string.dash_empty_tip)
+            filter == CourseFilter.EXAM -> getString(R.string.dash_empty_tip)
+            else -> getString(R.string.dash_empty_library_tip)
+        }
+
+        if (animate && !empty) {
+            binding.courseList.alpha = 0f
+            binding.courseList.translationY = 16f
+            binding.courseList.animate()
+                .alpha(1f)
+                .translationY(0f)
+                .setDuration(240)
+                .setInterpolator(DecelerateInterpolator())
+                .start()
+        }
     }
 
     private fun selectChip(selected: TextView, all: List<TextView>) {

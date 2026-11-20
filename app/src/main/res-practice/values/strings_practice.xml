@@ -9,6 +9,12 @@
     <string name="practice_status_todo">Chưa làm</string>
     <string name="practice_status_doing">Đang làm - %1$d/200 câu</string>
     <string name="practice_status_done">Hoàn thành - %1$d điểm</string>
+    <string name="practice_eta_full">~120 phút</string>
+    <string name="practice_eta_left">~%1$d phút còn lại</string>
+    <string name="practice_exit_title">Thoát bài thi?</string>
+    <string name="practice_exit_message">Tiến độ hiện tại sẽ được giữ. Bạn có thể quay lại làm tiếp sau.</string>
+    <string name="practice_exit_cancel">Ở lại làm bài</string>
+    <string name="practice_exit_confirm">Thoát</string>
     <string name="practice_exam_title">ĐỀ THI THỬ %1$s</string>
     <string name="practice_exam_detail_title">Đề thi %1$s</string>
 
@@ -120,7 +126,7 @@
     <string name="practice_library_words_empty">Chưa có từ nào. Vào Part 5, bôi đen từ trong câu hỏi rồi chọn “Thêm từ mới”.</string>
     <string name="practice_library_word_meta">%1$s • Câu %2$d</string>
     <string name="practice_demo_home_desc">Đây là demo tab Trang chủ. Sau này sẽ hiện lộ trình học, streak và gợi ý bài tập.</string>
-    <string name="practice_demo_library_desc">Thư viện từ vựng: các từ bạn bôi đen khi làm bài sẽ hiện bên dưới.</string>
+    <string name="practice_demo_library_desc">Thư viện đang trống.\n\nMẹo: khi làm đề Part 5, bôi đen từ khó trong câu hỏi rồi chọn “Thêm từ mới” để ôn lại sau.</string>
     <string name="practice_demo_rank_desc">Đây là demo tab Xếp hạng. Sau này sẽ hiện bảng xếp hạng điểm TOEIC theo tuần/tháng.</string>
     <string name="practice_demo_settings_desc">Đây là demo tab Cài đặt. Sau này sẽ hiện hồ sơ, thông báo và tùy chọn học tập.</string>
 </resources>
