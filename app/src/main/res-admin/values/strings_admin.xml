@@ -135,4 +135,12 @@
     <string name="admin_student_action_suspend">Tạm khóa</string>
     <string name="admin_student_action_reactivate">Mở khóa</string>
     <string name="admin_student_avatar_description">Ảnh đại diện của %1$s</string>
+    <string name="admin_student_profile_title">Hồ sơ học viên</string>
+    <string name="admin_student_profile_message_fmt">Email: %1$s\nKhóa học: %2$s\nNgày tham gia: %3$s\nTiến độ: %4$d/%5$d bài (%6$d%%)\nChuỗi học: %7$d ngày\nHoạt động gần nhất: %8$s</string>
+    <string name="admin_student_suspend_title">Tạm khóa tài khoản?</string>
+    <string name="admin_student_suspend_message_fmt">Học viên \"%1$s\" sẽ không thể truy cập nội dung học cho đến khi được mở khóa.</string>
+    <string name="admin_student_reactivate_title">Mở khóa tài khoản?</string>
+    <string name="admin_student_reactivate_message_fmt">Khôi phục quyền học tập cho học viên \"%1$s\".</string>
+    <string name="admin_student_toast_suspended_fmt">Đã tạm khóa tài khoản của %1$s</string>
+    <string name="admin_student_toast_reactivated_fmt">Đã mở khóa tài khoản của %1$s</string>
 </resources>
