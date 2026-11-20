@@ -13,14 +13,21 @@
         android:theme="@style/Theme.AuraEnglish">
 
         <activity
-            android:name=".dashboard.ui.DashboardHomeActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
+            android:name=".auth.ui.WelcomeActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".auth.ui.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".dashboard.ui.DashboardHomeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity android:name=".dashboard.ui.DashboardCategoryActivity" android:exported="false" />
         <activity android:name=".dashboard.ui.DashboardStoreActivity" android:exported="false" />

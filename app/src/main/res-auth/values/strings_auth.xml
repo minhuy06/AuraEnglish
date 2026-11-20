@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="auth_welcome_title">Aura English</string>
+    <string name="auth_logo_letter">A</string>
     <string name="auth_welcome_subtitle">Học tiếng Anh theo lộ trình được thiết kế riêng cho bạn</string>
     <string name="auth_skill_vocab">Từ vựng</string>
     <string name="auth_skill_grammar">Ngữ pháp</string>
