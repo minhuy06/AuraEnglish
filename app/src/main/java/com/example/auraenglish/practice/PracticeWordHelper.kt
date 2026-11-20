@@ -131,7 +131,7 @@ object PracticeWordHelper {
                     if (active) R.drawable.bg_practice_chip_active else R.drawable.bg_practice_chip_inactive
                 )
                 chip.setTextColor(
-                    activity.getColor(if (active) R.color.white else R.color.practice_text_secondary)
+                    activity.getColor(if (active) R.color.white else R.color.practice_primary)
                 )
             }
             selectedType = selected.text.toString()

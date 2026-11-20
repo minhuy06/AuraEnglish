@@ -93,7 +93,7 @@ class PracticeBookmarkedActivity : AppCompatActivity() {
             chip.setBackgroundResource(
                 if (active) R.drawable.bg_practice_chip_active else R.drawable.bg_practice_chip_inactive
             )
-            chip.setTextColor(getColor(if (active) R.color.white else R.color.practice_text_secondary))
+            chip.setTextColor(getColor(if (active) R.color.white else R.color.practice_primary))
         }
     }
 

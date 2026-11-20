@@ -137,7 +137,7 @@
             <TextView
                 android:id="@+id/chipNoun"
                 android:layout_width="wrap_content"
-                android:layout_height="34dp"
+                android:layout_height="@dimen/practice_chip_height"
                 android:background="@drawable/bg_practice_chip_active"
                 android:gravity="center"
                 android:paddingHorizontal="14dp"
@@ -148,7 +148,7 @@
             <TextView
                 android:id="@+id/chipVerb"
                 android:layout_width="wrap_content"
-                android:layout_height="34dp"
+                android:layout_height="@dimen/practice_chip_height"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bg_practice_chip_inactive"
                 android:gravity="center"
@@ -160,7 +160,7 @@
             <TextView
                 android:id="@+id/chipAdj"
                 android:layout_width="wrap_content"
-                android:layout_height="34dp"
+                android:layout_height="@dimen/practice_chip_height"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bg_practice_chip_inactive"
                 android:gravity="center"
@@ -172,7 +172,7 @@
             <TextView
                 android:id="@+id/chipAdv"
                 android:layout_width="wrap_content"
-                android:layout_height="34dp"
+                android:layout_height="@dimen/practice_chip_height"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bg_practice_chip_inactive"
                 android:gravity="center"

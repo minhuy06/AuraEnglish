@@ -9,9 +9,9 @@
     android:clickable="true"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
-    android:elevation="2dp"
+    android:elevation="3dp"
     android:orientation="horizontal"
-    android:padding="14dp">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/tvNumber"

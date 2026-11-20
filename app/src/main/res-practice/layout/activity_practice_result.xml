@@ -5,7 +5,7 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/practice_bg"
+    android:background="@drawable/bg_practice_screen"
     tools:context=".practice.PracticeResultActivity">
 
     <LinearLayout
@@ -21,8 +21,8 @@
 
         <ImageButton
             android:id="@+id/btnClose"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/practice_header_icon"
+            android:layout_height="@dimen/practice_header_icon"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/action_close"
             android:src="@drawable/ic_practice_close" />
@@ -39,8 +39,8 @@
 
         <ImageButton
             android:id="@+id/btnShare"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/practice_header_icon"
+            android:layout_height="@dimen/practice_header_icon"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/practice_view_answers"
             android:src="@drawable/ic_practice_share" />

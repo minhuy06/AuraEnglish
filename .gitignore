@@ -14,3 +14,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Local AI skill packs (install via CLI / copy into .cursor/skills)
+ui-ux-pro-max-skill-2.15.0/
+.cursor/

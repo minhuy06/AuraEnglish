@@ -9,7 +9,7 @@
     android:foreground="?attr/selectableItemBackground"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingVertical="10dp">
+    android:paddingVertical="12dp">
 
     <TextView
         android:id="@+id/tvPartIndex"

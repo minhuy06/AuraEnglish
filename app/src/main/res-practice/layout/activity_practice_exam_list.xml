@@ -5,7 +5,7 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/practice_bg"
+    android:background="@drawable/bg_practice_screen"
     tools:context=".practice.PracticeExamListActivity">
 
     <LinearLayout
@@ -21,8 +21,8 @@
 
         <ImageButton
             android:id="@+id/btnBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/practice_header_icon"
+            android:layout_height="@dimen/practice_header_icon"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/action_close"
             android:src="@drawable/ic_practice_back" />
@@ -39,8 +39,8 @@
 
         <ImageButton
             android:id="@+id/btnSearch"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/practice_header_icon"
+            android:layout_height="@dimen/practice_header_icon"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/practice_title"
             android:src="@drawable/ic_practice_search" />
@@ -65,7 +65,7 @@
             <TextView
                 android:id="@+id/chipAll"
                 android:layout_width="wrap_content"
-                android:layout_height="34dp"
+                android:layout_height="@dimen/practice_chip_height"
                 android:background="@drawable/bg_practice_chip_active"
                 android:gravity="center"
                 android:paddingHorizontal="14dp"
@@ -77,38 +77,41 @@
             <TextView
                 android:id="@+id/chipTodo"
                 android:layout_width="wrap_content"
-                android:layout_height="34dp"
+                android:layout_height="@dimen/practice_chip_height"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bg_practice_chip_inactive"
                 android:gravity="center"
                 android:paddingHorizontal="14dp"
                 android:text="@string/practice_filter_todo"
-                android:textColor="@color/practice_text_secondary"
-                android:textSize="13sp" />
+                android:textColor="@color/practice_primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/chipDoing"
                 android:layout_width="wrap_content"
-                android:layout_height="34dp"
+                android:layout_height="@dimen/practice_chip_height"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bg_practice_chip_inactive"
                 android:gravity="center"
                 android:paddingHorizontal="14dp"
                 android:text="@string/practice_filter_doing"
-                android:textColor="@color/practice_text_secondary"
-                android:textSize="13sp" />
+                android:textColor="@color/practice_primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/chipDone"
                 android:layout_width="wrap_content"
-                android:layout_height="34dp"
+                android:layout_height="@dimen/practice_chip_height"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bg_practice_chip_inactive"
                 android:gravity="center"
                 android:paddingHorizontal="14dp"
                 android:text="@string/practice_filter_done"
-                android:textColor="@color/practice_text_secondary"
-                android:textSize="13sp" />
+                android:textColor="@color/practice_primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </HorizontalScrollView>
 

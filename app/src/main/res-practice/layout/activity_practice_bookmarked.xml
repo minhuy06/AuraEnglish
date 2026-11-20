@@ -5,7 +5,7 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/practice_bg"
+    android:background="@drawable/bg_practice_screen"
     tools:context=".practice.PracticeBookmarkedActivity">
 
     <LinearLayout
@@ -21,8 +21,8 @@
 
         <ImageButton
             android:id="@+id/btnBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/practice_header_icon"
+            android:layout_height="@dimen/practice_header_icon"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/action_close"
             android:src="@drawable/ic_practice_back" />
@@ -39,8 +39,8 @@
 
         <ImageButton
             android:id="@+id/btnSearch"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/practice_header_icon"
+            android:layout_height="@dimen/practice_header_icon"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/practice_title"
             android:src="@drawable/ic_practice_search" />
@@ -59,7 +59,7 @@
         <TextView
             android:id="@+id/chipAll"
             android:layout_width="wrap_content"
-            android:layout_height="34dp"
+            android:layout_height="@dimen/practice_chip_height"
             android:background="@drawable/bg_practice_chip_active"
             android:gravity="center"
             android:paddingHorizontal="14dp"
@@ -71,25 +71,27 @@
         <TextView
             android:id="@+id/chipTodo"
             android:layout_width="wrap_content"
-            android:layout_height="34dp"
+            android:layout_height="@dimen/practice_chip_height"
             android:layout_marginStart="8dp"
             android:background="@drawable/bg_practice_chip_inactive"
             android:gravity="center"
             android:paddingHorizontal="14dp"
-            android:textColor="@color/practice_text_secondary"
+            android:textColor="@color/practice_primary"
             android:textSize="13sp"
+            android:textStyle="bold"
             tools:text="Chưa làm 1" />
 
         <TextView
             android:id="@+id/chipDone"
             android:layout_width="wrap_content"
-            android:layout_height="34dp"
+            android:layout_height="@dimen/practice_chip_height"
             android:layout_marginStart="8dp"
             android:background="@drawable/bg_practice_chip_inactive"
             android:gravity="center"
             android:paddingHorizontal="14dp"
-            android:textColor="@color/practice_text_secondary"
+            android:textColor="@color/practice_primary"
             android:textSize="13sp"
+            android:textStyle="bold"
             tools:text="Đã làm 2" />
     </LinearLayout>
 

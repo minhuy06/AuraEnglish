@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/btnCopy"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="44dp"
         android:gravity="center_vertical"
         android:paddingHorizontal="14dp"
         android:text="@string/practice_copy"
@@ -20,7 +20,7 @@
     <TextView
         android:id="@+id/btnAddWord"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="44dp"
         android:gravity="center_vertical"
         android:paddingHorizontal="14dp"
         android:text="@string/practice_add_word"
