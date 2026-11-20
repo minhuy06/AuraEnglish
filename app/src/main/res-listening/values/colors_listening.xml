@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Đồng bộ palette xanh Practice / Dashboard -->
+    <color name="listen_bg">#FFF0F4FF</color>
+    <color name="listen_surface">#FFFFFFFF</color>
+    <color name="listen_primary">#FF173B8F</color>
+    <color name="listen_primary_dark">#FF0F2F6E</color>
+    <color name="listen_primary_soft">#FFDBEAFE</color>
+    <color name="listen_text">#FF0F172A</color>
+    <color name="listen_text_secondary">#FF475569</color>
+    <color name="listen_blank">#FF64748B</color>
+    <color name="listen_correct">#FF16A34A</color>
+    <color name="listen_wrong">#FFDC2626</color>
+    <color name="listen_seek">#FF3B6FD9</color>
+</resources>

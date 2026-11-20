@@ -20,6 +20,9 @@ import com.example.auraenglish.dashboard.data.CourseFilter
 import com.example.auraenglish.dashboard.data.DashboardSampleData
 import com.example.auraenglish.databinding.ActivityDashboardCategoryBinding
 import com.example.auraenglish.grammar.ui.GrammarQuizActivity
+import com.example.auraenglish.listening.adapter.ListeningExamAdapter
+import com.example.auraenglish.listening.data.ListeningSampleData
+import com.example.auraenglish.listening.ui.ListeningQuestionActivity
 import com.example.auraenglish.practice.adapter.PracticeExamAdapter
 import com.example.auraenglish.practice.data.ExamStatus
 import com.example.auraenglish.practice.data.PracticeExam
@@ -28,7 +31,7 @@ import com.example.auraenglish.practice.helper.PracticeNavHelper
 import com.example.auraenglish.practice.helper.PracticeTab
 import com.example.auraenglish.practice.ui.PracticeExamOverviewActivity
 
-// Danh mục: khóa học + đề practice (Tất cả / Luyện đề)
+// Danh mục: khóa học + đề practice + luyện nghe
 class DashboardCategoryActivity : AppCompatActivity() {
 
     companion object {
@@ -38,6 +41,7 @@ class DashboardCategoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardCategoryBinding
     private lateinit var courseAdapter: DashboardCourseAdapter
     private lateinit var examAdapter: PracticeExamAdapter
+    private lateinit var listenAdapter: ListeningExamAdapter
     private lateinit var examHeaderAdapter: DashboardSectionAdapter
     private var filter = CourseFilter.ALL
     private var query = ""
@@ -65,6 +69,12 @@ class DashboardCategoryActivity : AppCompatActivity() {
         }
         examHeaderAdapter = DashboardSectionAdapter()
         examAdapter = PracticeExamAdapter { exam -> openExam(exam) }
+        listenAdapter = ListeningExamAdapter { exam ->
+            startActivity(
+                Intent(this, ListeningQuestionActivity::class.java)
+                    .putExtra(ListeningSampleData.EXTRA_EXAM_ID, exam.id)
+            )
+        }
 
         binding.courseList.layoutManager = LinearLayoutManager(this)
         binding.courseList.setHasFixedSize(true)
@@ -75,7 +85,8 @@ class DashboardCategoryActivity : AppCompatActivity() {
             binding.chipAll to CourseFilter.ALL,
             binding.chipVocab to CourseFilter.VOCAB,
             binding.chipGrammar to CourseFilter.GRAMMAR,
-            binding.chipExam to CourseFilter.EXAM
+            binding.chipExam to CourseFilter.EXAM,
+            binding.chipListen to CourseFilter.LISTEN
         )
         chips.forEach { (chip, value) ->
             chip.setOnClickListener {
@@ -90,14 +101,16 @@ class DashboardCategoryActivity : AppCompatActivity() {
             refresh(animate = true)
         }
 
-        val initialChip = chips.first { it.second == filter }.first
+        val initialChip = chips.firstOrNull { it.second == filter }?.first ?: binding.chipAll
         selectChip(initialChip, chips.map { it.first })
         refresh(animate = false)
     }
 
     override fun onResume() {
         super.onResume()
-        if (filter == CourseFilter.ALL || filter == CourseFilter.EXAM) refresh(animate = false)
+        if (filter == CourseFilter.ALL || filter == CourseFilter.EXAM || filter == CourseFilter.LISTEN) {
+            refresh(animate = false)
+        }
     }
 
     private fun openExam(exam: PracticeExam) {
@@ -120,6 +133,14 @@ class DashboardCategoryActivity : AppCompatActivity() {
         }
     }
 
+    private fun filteredListen() = ListeningSampleData.exams.filter { exam ->
+        if (query.isBlank()) true
+        else {
+            val q = query.lowercase()
+            exam.title.lowercase().contains(q) || exam.index.lowercase().contains(q)
+        }
+    }
+
     private fun refresh(animate: Boolean) {
         var itemCount = 0
         when (filter) {
@@ -130,6 +151,14 @@ class DashboardCategoryActivity : AppCompatActivity() {
                 examAdapter.submitList(exams)
                 binding.courseList.adapter = examAdapter
                 itemCount = exams.size
+            }
+            CourseFilter.LISTEN -> {
+                binding.etSearch.hint = getString(R.string.listen_title)
+                ListeningSampleData.exams.forEach { ListeningSampleData.refreshProgress(it) }
+                val items = filteredListen()
+                listenAdapter.submitList(items.toList())
+                binding.courseList.adapter = listenAdapter
+                itemCount = items.size
             }
             CourseFilter.ALL -> {
                 binding.etSearch.hint = getString(R.string.dash_search_all)
@@ -162,7 +191,8 @@ class DashboardCategoryActivity : AppCompatActivity() {
         binding.courseList.isVisible = !empty
         binding.tvEmptyTip.text = when {
             query.isNotBlank() -> getString(R.string.dash_empty_tip)
-            filter == CourseFilter.EXAM -> getString(R.string.dash_empty_tip)
+            filter == CourseFilter.EXAM || filter == CourseFilter.LISTEN ->
+                getString(R.string.dash_empty_tip)
             else -> getString(R.string.dash_empty_library_tip)
         }
 

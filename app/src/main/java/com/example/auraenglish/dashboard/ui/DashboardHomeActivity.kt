@@ -48,7 +48,11 @@ class DashboardHomeActivity : AppCompatActivity() {
         binding.skillVocab.setOnClickDebounced { openCategory(CourseFilter.VOCAB) }
         binding.skillGrammar.setOnClickDebounced { openCategory(CourseFilter.GRAMMAR) }
         binding.skillExam.setOnClickDebounced { openCategory(CourseFilter.EXAM) }
-        binding.skillListen.setOnClickDebounced { openCategory() }
+        binding.skillListen.setOnClickDebounced {
+            startActivity(
+                Intent(this, com.example.auraenglish.listening.ui.ListeningExamListActivity::class.java)
+            )
+        }
     }
 
     private fun bindHeroSuggestion() {

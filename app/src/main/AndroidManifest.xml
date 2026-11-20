@@ -72,6 +72,15 @@
             android:exported="false" />
 
         <activity
+            android:name=".listening.ui.ListeningExamListActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".listening.ui.ListeningQuestionActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
             android:name=".admin.ui.AdminExamShopActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />

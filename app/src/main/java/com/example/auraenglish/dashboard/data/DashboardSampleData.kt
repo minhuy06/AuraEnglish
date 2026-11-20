@@ -2,7 +2,7 @@ package com.example.auraenglish.dashboard.data
 
 import com.example.auraenglish.R
 
-enum class CourseFilter { ALL, VOCAB, GRAMMAR, EXAM }
+enum class CourseFilter { ALL, VOCAB, GRAMMAR, EXAM, LISTEN }
 
 enum class StoreFilter { ALL, OWNED, NOT_OWNED }
 

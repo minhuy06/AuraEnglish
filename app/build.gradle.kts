@@ -42,6 +42,7 @@ android {
                 "src/main/res-profile",
                 "src/main/res-vocab",
                 "src/main/res-grammar",
+                "src/main/res-listening",
             )
         }
     }
