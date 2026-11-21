@@ -70,6 +70,10 @@
     <string name="auth_error_terms_required">Bạn cần đồng ý với điều khoản để tiếp tục</string>
     <string name="auth_error_code_incomplete">Vui lòng nhập đủ mã xác nhận 6 số</string>
     <string name="auth_google_demo">Đăng nhập Google sẽ được kết nối ở bước backend</string>
+    <string name="auth_admin_hint_text">Admin: admin@auraenglish.com • Admin@123</string>
+    <string name="auth_admin_fill_action">Điền nhanh</string>
+    <string name="auth_admin_login_success">Đăng nhập thành công với quyền Quản trị viên</string>
+    <string name="auth_admin_wrong_password">Mật khẩu Admin không đúng (gợi ý: Admin@123)</string>
     <string name="auth_code_resent">Đã gửi lại mã xác nhận</string>
     <string name="auth_back_description">Quay lại</string>
     <string name="auth_success_icon_description">Đặt lại mật khẩu thành công</string>
