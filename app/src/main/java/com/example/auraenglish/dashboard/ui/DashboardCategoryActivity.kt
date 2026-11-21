@@ -22,6 +22,7 @@ import com.example.auraenglish.databinding.ActivityDashboardCategoryBinding
 import com.example.auraenglish.grammar.ui.GrammarQuizActivity
 import com.example.auraenglish.listening.adapter.ListeningExamAdapter
 import com.example.auraenglish.listening.data.ListeningSampleData
+import com.example.auraenglish.listening.ui.ListeningExamListActivity
 import com.example.auraenglish.listening.ui.ListeningQuestionActivity
 import com.example.auraenglish.practice.adapter.PracticeExamAdapter
 import com.example.auraenglish.practice.data.ExamStatus
@@ -30,6 +31,7 @@ import com.example.auraenglish.practice.data.PracticeSampleData
 import com.example.auraenglish.practice.helper.PracticeNavHelper
 import com.example.auraenglish.practice.helper.PracticeTab
 import com.example.auraenglish.practice.ui.PracticeExamOverviewActivity
+import com.example.auraenglish.vocab.ui.FlashcardStudyActivity
 
 // Danh mục: khóa học + đề practice + luyện nghe
 class DashboardCategoryActivity : AppCompatActivity() {
@@ -63,8 +65,25 @@ class DashboardCategoryActivity : AppCompatActivity() {
         }.getOrDefault(CourseFilter.ALL)
 
         courseAdapter = DashboardCourseAdapter { course ->
-            if (course.filter == CourseFilter.GRAMMAR) {
-                startActivity(Intent(this, GrammarQuizActivity::class.java))
+            when {
+                course.filter == CourseFilter.GRAMMAR -> {
+                    startActivity(Intent(this, GrammarQuizActivity::class.java))
+                }
+                course.iconRes == R.drawable.ic_dash_listen -> {
+                    startActivity(Intent(this, ListeningExamListActivity::class.java))
+                }
+                course.filter == CourseFilter.VOCAB -> {
+                    val topicId = if (course.title.contains("giao tiếp", ignoreCase = true)) {
+                        "t_comm"
+                    } else {
+                        "t_office"
+                    }
+                    startActivity(
+                        Intent(this, FlashcardStudyActivity::class.java)
+                            .putExtra(FlashcardStudyActivity.EXTRA_TOPIC_ID, topicId)
+                            .putExtra(FlashcardStudyActivity.EXTRA_TITLE, course.title)
+                    )
+                }
             }
         }
         examHeaderAdapter = DashboardSectionAdapter()

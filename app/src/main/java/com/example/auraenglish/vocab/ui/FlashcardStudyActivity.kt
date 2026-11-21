@@ -55,7 +55,9 @@ class FlashcardStudyActivity : AppCompatActivity() {
             v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
             insets
         }
-        tvFlashcardTopicTitle.text = VocabSessionStore.getTopicById(topicId)?.name.orEmpty()
+        tvFlashcardTopicTitle.text = intent.getStringExtra(EXTRA_TITLE)
+            ?.takeIf { it.isNotBlank() }
+            ?: VocabSessionStore.getTopicById(topicId)?.name.orEmpty()
     }
 
     private fun bindCurrentCard() = with(binding) {
@@ -136,6 +138,7 @@ class FlashcardStudyActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_TOPIC_ID = "extra_flashcard_topic_id"
+        const val EXTRA_TITLE = "extra_flashcard_title"
         private const val KEY_INDEX = "key_flashcard_index"
         private const val KEY_FLIPPED = "key_flashcard_flipped"
     }

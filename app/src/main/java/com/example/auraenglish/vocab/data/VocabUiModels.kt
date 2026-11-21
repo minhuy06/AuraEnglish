@@ -51,7 +51,9 @@ object VocabSessionStore {
         VocabWordUiModel("w7", "t_it", "Algorithm", "/ˈæl.ɡə.rɪ.ðəm/", "(n) Danh từ", "Thuật toán", "This search algorithm runs in O(log n).", "💻", true),
         VocabWordUiModel("w8", "t_it", "Deploy", "/dɪˈplɔɪ/", "(v) Động từ", "Triển khai hệ thống", "We will deploy the new release tonight.", "☁️", false),
         VocabWordUiModel("w9", "t_interview", "Strength", "/streŋθ/", "(n) Danh từ", "Điểm mạnh", "Problem-solving is my biggest strength.", "⭐", true),
-        VocabWordUiModel("w10", "t_comm", "Sorry", "/ˈsɒr.i/", "(adj) Tính từ", "Xin lỗi, lấy làm tiếc", "I am sorry for the late reply.", "🙏", true)
+        VocabWordUiModel("w10", "t_comm", "Sorry", "/ˈsɒr.i/", "(adj) Tính từ", "Xin lỗi, lấy làm tiếc", "I am sorry for the late reply.", "🙏", true),
+        VocabWordUiModel("w11", "t_comm", "Appreciate", "/əˈpriː.ʃi.eɪt/", "(v) Động từ", "Trân trọng, cảm kích", "I really appreciate your help today.", "💐", false),
+        VocabWordUiModel("w12", "t_comm", "Recommend", "/ˌrek.əˈmend/", "(v) Động từ", "Gợi ý, giới thiệu", "Can you recommend a good restaurant nearby?", "👍", false)
     )
 
     fun getTopics(): List<CustomTopicUiModel> = topicMetas.map { meta ->
