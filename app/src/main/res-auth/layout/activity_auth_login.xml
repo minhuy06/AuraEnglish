@@ -183,7 +183,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/auth_button_height"
                     android:layout_marginTop="12dp"
-                    android:text="@string/auth_google_button" />
+                    android:text="@string/auth_google_button"
+                    app:icon="@drawable/ic_auth_google"
+                    app:iconGravity="textStart"
+                    app:iconPadding="10dp"
+                    app:iconSize="20dp"
+                    app:iconTint="@null" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

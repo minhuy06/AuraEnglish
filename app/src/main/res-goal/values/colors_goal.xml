@@ -17,7 +17,7 @@
     <color name="goal_option_green">#FF22C55E</color>
     <color name="goal_option_orange">#FFFFA726</color>
     <color name="goal_option_pink">#FFEF5350</color>
-    <color name="goal_option_selected_bg">#1A2F67D5</color>
+    <color name="goal_option_selected_bg">#FFEEF4FF</color>
     <color name="goal_option_default_bg">#0D1B2559</color>
     <color name="goal_quiz_selected_bg">#FFFFC928</color>
     <color name="goal_quiz_option_bg">#FFF1F3F9</color>

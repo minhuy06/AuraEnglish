@@ -9,8 +9,8 @@ import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.auraenglish.R
+import com.example.auraenglish.auth.ui.WelcomeActivity
 import com.example.auraenglish.dashboard.ui.DashboardCategoryActivity
-import com.example.auraenglish.dashboard.ui.DashboardHomeActivity
 import com.example.auraenglish.dashboard.ui.DashboardStoreActivity
 import com.example.auraenglish.databinding.ActivityProfileSettingsBinding
 import com.example.auraenglish.practice.helper.PracticeNavHelper
@@ -126,8 +126,8 @@ class ProfileSettingsActivity : AppCompatActivity() {
             ProfileLogoutDialogHelper.showLogoutConfirmDialog(this@ProfileSettingsActivity) {
                 showToast(R.string.profile_toast_logged_out)
                 startActivity(
-                    Intent(this@ProfileSettingsActivity, DashboardHomeActivity::class.java)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    Intent(this@ProfileSettingsActivity, WelcomeActivity::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 )
                 finish()
             }

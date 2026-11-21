@@ -84,25 +84,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:baselineAligned="false"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDialogSubmitContinue"
             style="@style/Widget.AuraEnglish.AuthOutlinedButton"
             android:layout_width="0dp"
-            android:layout_height="@dimen/goal_button_height"
+            android:layout_height="48dp"
             android:layout_marginEnd="6dp"
             android:layout_weight="1"
-            android:text="@string/goal_submit_continue" />
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingHorizontal="8dp"
+            android:text="@string/goal_submit_continue"
+            android:textSize="13sp"
+            app:strokeWidth="1.5dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDialogSubmitConfirm"
             style="@style/Widget.AuraEnglish.AuthPrimaryButton"
             android:layout_width="0dp"
-            android:layout_height="@dimen/goal_button_height"
+            android:layout_height="48dp"
             android:layout_marginStart="6dp"
             android:layout_weight="1"
-            android:text="@string/goal_submit_confirm" />
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingHorizontal="8dp"
+            android:text="@string/goal_submit_confirm"
+            android:textSize="13sp" />
     </LinearLayout>
 
     <!-- Footnote -->

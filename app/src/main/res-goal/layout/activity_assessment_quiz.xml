@@ -22,11 +22,11 @@
 
         <ImageView
             android:id="@+id/btnQuizBack"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/goal_back_description"
-            android:padding="6dp"
+            android:padding="10dp"
             android:src="@drawable/ic_goal_arrow_back_dark" />
 
         <TextView
