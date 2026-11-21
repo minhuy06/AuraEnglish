@@ -2,6 +2,7 @@ package com.example.auraenglish.auth.ui
 
 import android.content.Intent
 import com.example.auraenglish.R
+import com.example.auraenglish.goal.ui.GoalSelectionActivity
 
 class VerifyEmailActivity : BaseOtpActivity() {
     override val logo = "M"
@@ -13,8 +14,8 @@ class VerifyEmailActivity : BaseOtpActivity() {
 
     override fun onCodeAccepted(email: String) {
         startActivity(
-            Intent(this, com.example.auraenglish.goal.ui.GoalSelectionActivity::class.java)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            Intent(this, GoalSelectionActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         )
         finish()
     }
