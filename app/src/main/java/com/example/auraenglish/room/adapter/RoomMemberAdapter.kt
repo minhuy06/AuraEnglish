@@ -13,6 +13,7 @@ import com.example.auraenglish.practice.utils.setOnClickDebounced
 import com.example.auraenglish.practice.utils.visible
 import com.example.auraenglish.practice.utils.visibleIf
 import com.example.auraenglish.room.data.RoomMemberUiModel
+import com.example.auraenglish.room.data.RoomSessionStore
 import com.example.auraenglish.room.data.RoomSlotItem
 
 class RoomMemberAdapter(
@@ -73,17 +74,27 @@ class RoomMemberAdapter(
                 member.name
             }
 
-            if (member.isHost) {
-                tvMemberRoleBadge.text = context.getString(R.string.room_lobby_host_badge)
-                tvMemberRoleBadge.setBackgroundResource(R.drawable.bg_room_badge_host)
-                tvMemberRoleBadge.setTextColor(ContextCompat.getColor(context, R.color.room_gold_text))
-            } else {
-                tvMemberRoleBadge.text = context.getString(R.string.room_lobby_ready_badge)
-                tvMemberRoleBadge.setBackgroundResource(R.drawable.bg_room_badge_ready)
-                tvMemberRoleBadge.setTextColor(ContextCompat.getColor(context, R.color.room_success_text))
+            val isViewerHost = RoomSessionStore.isCurrentUserHost()
+
+            when {
+                member.isHost -> {
+                    tvMemberRoleBadge.text = context.getString(R.string.room_lobby_host_badge)
+                    tvMemberRoleBadge.setBackgroundResource(R.drawable.bg_room_badge_host)
+                    tvMemberRoleBadge.setTextColor(ContextCompat.getColor(context, R.color.room_gold_text))
+                }
+                member.isReady -> {
+                    tvMemberRoleBadge.text = context.getString(R.string.room_lobby_ready_badge)
+                    tvMemberRoleBadge.setBackgroundResource(R.drawable.bg_room_badge_ready)
+                    tvMemberRoleBadge.setTextColor(ContextCompat.getColor(context, R.color.room_success_text))
+                }
+                else -> {
+                    tvMemberRoleBadge.text = context.getString(R.string.room_lobby_not_ready_badge)
+                    tvMemberRoleBadge.setBackgroundResource(R.drawable.bg_room_chip_inactive)
+                    tvMemberRoleBadge.setTextColor(ContextCompat.getColor(context, R.color.room_text_secondary))
+                }
             }
 
-            val canKick = !member.isHost && !member.isCurrentUser
+            val canKick = isViewerHost && !member.isHost && !member.isCurrentUser
             btnKickMember.visibleIf(canKick)
             if (canKick) {
                 btnKickMember.setOnClickDebounced { onKickClick(member) }
@@ -93,10 +104,19 @@ class RoomMemberAdapter(
         }
 
         private fun bindEmpty() = with(binding) {
+            val isViewerHost = RoomSessionStore.isCurrentUserHost()
             cardMemberFilled.gone()
             btnKickMember.setOnClickListener(null)
             tvEmptyMemberSlot.visible()
-            tvEmptyMemberSlot.setOnClickDebounced { onEmptySlotClick() }
+            tvEmptyMemberSlot.setText(
+                if (isViewerHost) R.string.room_lobby_empty_slot
+                else R.string.room_lobby_empty_slot_guest
+            )
+            if (isViewerHost) {
+                tvEmptyMemberSlot.setOnClickDebounced { onEmptySlotClick() }
+            } else {
+                tvEmptyMemberSlot.setOnClickListener(null)
+            }
         }
     }
 }
