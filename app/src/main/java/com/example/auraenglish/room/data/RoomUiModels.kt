@@ -81,14 +81,6 @@ object RoomSessionStore {
 
     private var memberIdCounter = 1
 
-    val friendSuggestions: List<String> = listOf(
-        "Minh Anh",
-        "Gia Bảo",
-        "Thanh Trúc",
-        "Quốc Khánh",
-        "Hoàng Nam"
-    )
-
     var currentRoom: RoomSessionConfig = RoomSessionConfig(
         code = DEFAULT_ROOM_CODE,
         roomName = DEFAULT_ROOM_NAME,

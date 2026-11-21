@@ -2,7 +2,7 @@
 <resources>
     <!-- Chung & Lối vào -->
     <string name="room_feature_title">Thi theo phòng</string>
-    <string name="room_feature_subtitle">Tạo phòng tối đa 4 người, thi Từ vựng hoặc Ngữ pháp cùng bạn bè</string>
+    <string name="room_feature_subtitle">Tạo phòng tối đa 4 người, thi Từ vựng hoặc Ngữ pháp cùng người khác</string>
     <string name="room_back_desc">Quay lại</string>
     <string name="room_topic_vocab">Từ vựng</string>
     <string name="room_topic_grammar">Ngữ pháp</string>
@@ -34,7 +34,7 @@
     <string name="room_lobby_ready_badge">Sẵn sàng ✓</string>
     <string name="room_lobby_not_ready_badge">Chưa sẵn sàng</string>
     <string name="room_lobby_you_suffix">(Bạn)</string>
-    <string name="room_lobby_empty_slot">Vị trí trống — Nhấn Mời bạn bè để thêm</string>
+    <string name="room_lobby_empty_slot">Vị trí trống — Nhấn Mời người khác để thêm</string>
     <string name="room_lobby_empty_slot_guest">Vị trí trống — Đang chờ thành viên</string>
     <string name="room_lobby_btn_invite">+ Mời người khác</string>
     <string name="room_lobby_room_full">Phòng đã đủ tối đa 4/4 người</string>
@@ -61,7 +61,6 @@
     <string name="room_invite_subtitle_fmt">Phòng %1$s • Còn %2$d chỗ trống</string>
     <string name="room_invite_label">Tên người dùng (Username) *</string>
     <string name="room_invite_hint">Nhập tên user cần mời (VD: Minh Anh)</string>
-    <string name="room_invite_suggestions_label">Gợi ý bạn bè đang online:</string>
     <string name="room_invite_btn_confirm">Gửi lời mời &amp; Thêm vào phòng</string>
     <string name="room_invite_btn_cancel">Hủy</string>
     <string name="room_err_invite_empty">Vui lòng nhập tên người dùng cần mời</string>

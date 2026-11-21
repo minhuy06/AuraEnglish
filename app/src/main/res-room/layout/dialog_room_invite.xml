@@ -72,29 +72,6 @@
         android:textSize="12sp"
         android:visibility="gone" />
 
-    <!-- Gợi ý bạn bè online (bấm 1 chạm để điền nhanh) -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/be_vietnam_pro_semibold"
-        android:text="@string/room_invite_suggestions_label"
-        android:textColor="@color/room_text_secondary"
-        android:textSize="12sp" />
-
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:scrollbars="none">
-
-        <LinearLayout
-            android:id="@+id/layoutFriendSuggestions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-    </HorizontalScrollView>
-
     <TextView
         android:id="@+id/btnConfirmInvite"
         android:layout_width="match_parent"

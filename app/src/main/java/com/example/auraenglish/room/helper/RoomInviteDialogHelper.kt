@@ -3,12 +3,7 @@ package com.example.auraenglish.room.helper
 import android.app.Activity
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.util.TypedValue
 import android.view.LayoutInflater
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import com.example.auraenglish.R
@@ -19,9 +14,7 @@ import com.example.auraenglish.practice.utils.visible
 import com.example.auraenglish.room.data.InviteError
 import com.example.auraenglish.room.data.InviteResult
 import com.example.auraenglish.room.data.RoomMemberUiModel
-import com.example.auraenglish.room.data.RoomSessionStore
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import java.util.Locale
 
 object RoomInviteDialogHelper {
 
@@ -29,7 +22,6 @@ object RoomInviteDialogHelper {
         activity: Activity,
         roomCode: String,
         remainingSlots: Int,
-        existingNames: Set<String>,
         onInviteSubmit: (String) -> InviteResult,
         onInvitedSuccess: (RoomMemberUiModel) -> Unit
     ) {
@@ -45,8 +37,6 @@ object RoomInviteDialogHelper {
             roomCode,
             remainingSlots
         )
-
-        populateFriendSuggestions(activity, binding, existingNames)
 
         binding.edtInviteUsername.doAfterTextChanged {
             if (binding.tvInviteError.isVisible) {
@@ -79,50 +69,4 @@ object RoomInviteDialogHelper {
 
         dialog.show()
     }
-
-    private fun populateFriendSuggestions(
-        activity: Activity,
-        binding: DialogRoomInviteBinding,
-        existingNames: Set<String>
-    ) {
-        val normalizedExisting = existingNames.mapTo(HashSet()) { it.trim().lowercase(Locale.ROOT) }
-        val availableSuggestions = RoomSessionStore.friendSuggestions.filter { suggestion ->
-            suggestion.trim().lowercase(Locale.ROOT) !in normalizedExisting
-        }
-
-        val horizontalPadding = dpToPx(activity, 12)
-        val verticalPadding = dpToPx(activity, 6)
-        val chipMarginEnd = dpToPx(activity, 8)
-        val chipTypeface = ResourcesCompat.getFont(activity, R.font.be_vietnam_pro_semibold)
-        val chipTextColor = ContextCompat.getColor(activity, R.color.room_primary)
-
-        binding.layoutFriendSuggestions.removeAllViews()
-        availableSuggestions.forEach { suggestion ->
-            val chip = TextView(activity).apply {
-                text = suggestion
-                setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
-                setTextColor(chipTextColor)
-                typeface = chipTypeface
-                setBackgroundResource(R.drawable.bg_room_chip_inactive)
-                setPadding(horizontalPadding, verticalPadding, horizontalPadding, verticalPadding)
-                isClickable = true
-                isFocusable = true
-                layoutParams = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                ).apply {
-                    marginEnd = chipMarginEnd
-                }
-                setOnClickListener {
-                    binding.edtInviteUsername.setText(suggestion)
-                    binding.edtInviteUsername.setSelection(suggestion.length)
-                    binding.tvInviteError.gone()
-                }
-            }
-            binding.layoutFriendSuggestions.addView(chip)
-        }
-    }
-
-    private fun dpToPx(activity: Activity, dp: Int): Int =
-        (dp * activity.resources.displayMetrics.density).toInt()
 }

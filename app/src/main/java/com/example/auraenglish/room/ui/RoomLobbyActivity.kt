@@ -205,12 +205,10 @@ class RoomLobbyActivity : AppCompatActivity() {
             showToast(R.string.room_lobby_room_full)
             return
         }
-        val existingNames = RoomSessionStore.members.mapTo(HashSet()) { it.name }
         RoomInviteDialogHelper.showInviteDialog(
             activity = this,
             roomCode = RoomSessionStore.currentRoom.code,
             remainingSlots = remainingSlots,
-            existingNames = existingNames,
             onInviteSubmit = { rawName -> viewModel.inviteMember(rawName) },
             onInvitedSuccess = { member ->
                 showToast(getString(R.string.room_toast_invited_fmt, member.name))
