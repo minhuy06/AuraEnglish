@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">AuraEnglish</string>
-    <string name="action_cancel">Hủy</string>
-    <string name="action_save">Lưu</string>
-    <string name="action_close">Đóng</string>
-</resources>

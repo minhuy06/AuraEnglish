@@ -3,10 +3,9 @@ package com.example.auraenglish.goal.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.auraenglish.R
 import com.example.auraenglish.auth.utils.applyAuthInsets
 import com.example.auraenglish.databinding.ActivityGoalSelectionBinding
@@ -50,20 +49,24 @@ class GoalSelectionActivity : AppCompatActivity() {
     }
 
     private fun updateSelectionUi() = with(binding) {
+        val selectedTitleColor = ContextCompat.getColor(this@GoalSelectionActivity, R.color.goal_primary_dark)
+        val defaultTitleColor = ContextCompat.getColor(this@GoalSelectionActivity, R.color.goal_text_primary)
+
         val options = listOf(
-            Triple("daily", cardGoalDaily, ivCheckDaily),
-            Triple("toeic", cardGoalToeic, ivCheckToeic),
-            Triple("ielts", cardGoalIelts, ivCheckIelts),
-            Triple("school", cardGoalSchool, ivCheckSchool)
+            GoalOptionViews("daily", cardGoalDaily, tvTitleDaily, ivCheckDaily),
+            GoalOptionViews("toeic", cardGoalToeic, tvTitleToeic, ivCheckToeic),
+            GoalOptionViews("ielts", cardGoalIelts, tvTitleIelts, ivCheckIelts),
+            GoalOptionViews("school", cardGoalSchool, tvTitleSchool, ivCheckSchool)
         )
 
-        options.forEach { (id, card, check) ->
-            val isSelected = (id == selectedGoalId)
-            card.setBackgroundResource(
+        options.forEach { option ->
+            val isSelected = option.id == selectedGoalId
+            option.card.setBackgroundResource(
                 if (isSelected) R.drawable.bg_goal_option_selected
                 else R.drawable.bg_goal_card
             )
-            check.visibility = if (isSelected) View.VISIBLE else View.GONE
+            option.title.setTextColor(if (isSelected) selectedTitleColor else defaultTitleColor)
+            option.check.visibility = if (isSelected) View.VISIBLE else View.GONE
         }
     }
 
@@ -77,4 +80,11 @@ class GoalSelectionActivity : AppCompatActivity() {
             startActivity(Intent(this@GoalSelectionActivity, AssessmentIntroActivity::class.java))
         }
     }
+
+    private data class GoalOptionViews(
+        val id: String,
+        val card: View,
+        val title: android.widget.TextView,
+        val check: View
+    )
 }

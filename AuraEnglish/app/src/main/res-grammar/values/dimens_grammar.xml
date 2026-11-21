@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="grammar_screen_padding">16dp</dimen>
-    <dimen name="grammar_card_radius">16dp</dimen>
-    <dimen name="grammar_option_radius">14dp</dimen>
-    <dimen name="grammar_pill_radius">24dp</dimen>
-    <dimen name="grammar_btn_height">48dp</dimen>
-</resources>

@@ -64,7 +64,7 @@
 
     <!-- Dialogs -->
     <string name="goal_exit_title">Thoát bài đánh giá?</string>
-    <string name="goal_exit_message">Tiến trình làm bài sẽ bị mất.\nBạn có chắc muốn thoát không?</string>
+    <string name="goal_exit_message">Tiến trình làm bài hiện tại có thể bị mất.\nBạn có chắc muốn thoát không?</string>
     <string name="goal_exit_continue">Tiếp tục làm</string>
     <string name="goal_exit_confirm">Thoát bài</string>
     <string name="goal_submit_title">Xác nhận nộp bài</string>

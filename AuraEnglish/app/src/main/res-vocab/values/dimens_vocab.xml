@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="vocab_screen_padding">16dp</dimen>
-    <dimen name="vocab_card_radius">16dp</dimen>
-    <dimen name="vocab_flashcard_radius">24dp</dimen>
-    <dimen name="vocab_pill_radius">24dp</dimen>
-    <dimen name="vocab_chip_radius">20dp</dimen>
-    <dimen name="vocab_btn_height">48dp</dimen>
-</resources>

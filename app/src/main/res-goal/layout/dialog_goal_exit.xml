@@ -20,8 +20,8 @@
 
     <!-- Warning Icon -->
     <ImageView
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/goal_icon_circle_size"
+        android:layout_height="@dimen/goal_icon_circle_size"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
         android:contentDescription="@string/goal_icon_description"
@@ -57,7 +57,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/goal_button_height"
         android:layout_marginTop="20dp"
-        android:text="@string/goal_exit_continue" />
+        android:text="@string/goal_exit_continue"
+        app:strokeWidth="1.5dp" />
 
     <!-- Exit Button (Primary Blue) -->
     <com.google.android.material.button.MaterialButton

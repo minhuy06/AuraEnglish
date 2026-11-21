@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="room_screen_padding">16dp</dimen>
-    <dimen name="room_card_radius">16dp</dimen>
-    <dimen name="room_pill_radius">24dp</dimen>
-    <dimen name="room_btn_height">48dp</dimen>
-</resources>

@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import com.example.auraenglish.R
 import com.example.auraenglish.auth.utils.applyAuthInsets
 import com.example.auraenglish.databinding.ActivityAssessmentQuizBinding
@@ -33,6 +35,22 @@ class AssessmentQuizActivity : AppCompatActivity() {
 
         observeViewModel()
         setupListeners()
+        setupBackHandler()
+    }
+
+    private fun setupBackHandler() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                showExitAssessmentDialog()
+            }
+        })
+    }
+
+    private fun showExitAssessmentDialog() {
+        GoalDialogHelper.showExitAssessment(this) {
+            AssessmentSessionStore.resetSession()
+            finish()
+        }
     }
 
     private fun observeViewModel() {
@@ -123,13 +141,15 @@ class AssessmentQuizActivity : AppCompatActivity() {
                 if (isSelected) R.color.goal_primary_dark else R.color.goal_text_primary
             )
         )
+        textView.typeface = ResourcesCompat.getFont(
+            this,
+            if (isSelected) R.font.be_vietnam_pro_bold else R.font.be_vietnam_pro_medium
+        )
     }
 
     private fun setupListeners() = with(binding) {
         btnQuizBack.setOnClickListener {
-            GoalDialogHelper.showExitAssessment(this@AssessmentQuizActivity) {
-                finish()
-            }
+            showExitAssessmentDialog()
         }
 
         optionA.setOnClickListener { viewModel.selectOption(0) }
