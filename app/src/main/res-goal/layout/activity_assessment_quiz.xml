@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootAssessmentQuiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/goal_bg_light">
+
+    <!-- Top Action Bar -->
+    <LinearLayout
+        android:id="@+id/topBarQuiz"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnQuizBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/goal_back_description"
+            android:padding="6dp"
+            android:src="@drawable/ic_goal_arrow_back_dark" />
+
+        <TextView
+            android:id="@+id/tvQuizHeaderTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:text="@string/goal_quiz_header"
+            android:textColor="@color/goal_text_primary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvQuizTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_goal_timer"
+            android:fontFamily="@font/be_vietnam_pro_bold"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:text="15:00"
+            android:textColor="@color/goal_text_primary"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Progress Indicator -->
+    <TextView
+        android:id="@+id/tvQuizProgressNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/goal_screen_padding"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/be_vietnam_pro_medium"
+        android:text="Câu 1/20"
+        android:textColor="@color/goal_text_secondary"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topBarQuiz" />
+
+    <ProgressBar
+        android:id="@+id/pbQuizProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:layout_marginHorizontal="@dimen/goal_screen_padding"
+        android:layout_marginTop="6dp"
+        android:max="20"
+        android:progress="1"
+        android:progressDrawable="@drawable/progress_goal_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvQuizProgressNumber" />
+
+    <!-- Scrollable Question & Options -->
+    <ScrollView
+        android:id="@+id/scrollQuizContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="12dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingHorizontal="@dimen/goal_screen_padding"
+        app:layout_constraintBottom_toTopOf="@id/btnQuizNextOrSubmit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pbQuizProgress">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Question Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/goal_card_radius"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- Category Tag -->
+                    <TextView
+                        android:id="@+id/tvQuizCategoryTag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_goal_pill"
+                        android:fontFamily="@font/be_vietnam_pro_bold"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="4dp"
+                        android:text="Ngữ pháp"
+                        android:textColor="@color/goal_primary"
+                        android:textSize="11sp" />
+
+                    <!-- Reading Passage Container (Only visible for reading questions) -->
+                    <LinearLayout
+                        android:id="@+id/layoutReadingPassage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_goal_reading_box"
+                        android:padding="14dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tvReadingPassage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/be_vietnam_pro_regular"
+                            android:lineSpacingExtra="3dp"
+                            android:textColor="@color/goal_text_primary"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <!-- Question Prompt -->
+                    <TextView
+                        android:id="@+id/tvQuizQuestionPrompt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:fontFamily="@font/be_vietnam_pro_bold"
+                        android:lineSpacingExtra="3dp"
+                        android:text="She __ to work by bus every day."
+                        android:textColor="@color/goal_text_primary"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Option A -->
+            <LinearLayout
+                android:id="@+id/optionA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_goal_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvOptionALetter"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_auth_logo_white"
+                    android:backgroundTint="#F1F5F9"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:text="A"
+                    android:textColor="@color/goal_text_primary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvOptionAText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:textColor="@color/goal_text_primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Option B -->
+            <LinearLayout
+                android:id="@+id/optionB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_goal_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvOptionBLetter"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_auth_logo_white"
+                    android:backgroundTint="#F1F5F9"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:text="B"
+                    android:textColor="@color/goal_text_primary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvOptionBText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:textColor="@color/goal_text_primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Option C -->
+            <LinearLayout
+                android:id="@+id/optionC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_goal_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvOptionCLetter"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_auth_logo_white"
+                    android:backgroundTint="#F1F5F9"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:text="C"
+                    android:textColor="@color/goal_text_primary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvOptionCText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:textColor="@color/goal_text_primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Option D -->
+            <LinearLayout
+                android:id="@+id/optionD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_goal_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvOptionDLetter"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_auth_logo_white"
+                    android:backgroundTint="#F1F5F9"
+                    android:fontFamily="@font/be_vietnam_pro_bold"
+                    android:gravity="center"
+                    android:text="D"
+                    android:textColor="@color/goal_text_primary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvOptionDText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/be_vietnam_pro_medium"
+                    android:textColor="@color/goal_text_primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Actions -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnQuizNextOrSubmit"
+        style="@style/Widget.AuraEnglish.AuthPrimaryButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/goal_button_height"
+        android:layout_marginHorizontal="@dimen/goal_screen_padding"
+        android:layout_marginBottom="8dp"
+        android:text="@string/goal_btn_next_question"
+        app:layout_constraintBottom_toTopOf="@id/tvQuizPrevQuestion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvQuizPrevQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/be_vietnam_pro_medium"
+        android:padding="8dp"
+        android:text="@string/goal_btn_prev_question"
+        android:textColor="@color/goal_text_secondary"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

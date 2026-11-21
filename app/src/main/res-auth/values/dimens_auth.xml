@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="auth_screen_padding">24dp</dimen>
+    <dimen name="auth_header_height">232dp</dimen>
+    <dimen name="auth_card_radius">18dp</dimen>
+    <dimen name="auth_input_radius">12dp</dimen>
+    <dimen name="auth_button_radius">11dp</dimen>
+    <dimen name="auth_button_height">52dp</dimen>
+    <dimen name="auth_field_gap">10dp</dimen>
+</resources>
