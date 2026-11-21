@@ -148,10 +148,27 @@ object RoomSessionStore {
                 isReady = true
             )
         )
-        members.add(createCurrentUserMember(isHost = false))
+        members.add(createCurrentUserMember(isHost = false, isReady = false))
         userAnswers.clear()
         lastRankingResults = emptyList()
         return config
+    }
+
+    fun isCurrentUserHost(): Boolean =
+        members.any { it.isCurrentUser && it.isHost }
+
+    fun isCurrentUserReady(): Boolean =
+        members.firstOrNull { it.isCurrentUser }?.isReady == true
+
+    fun areAllNonHostMembersReady(): Boolean =
+        members.filterNot { it.isHost }.all { it.isReady }
+
+    fun toggleCurrentUserReady(): Boolean {
+        val index = members.indexOfFirst { it.isCurrentUser && !it.isHost }
+        if (index < 0) return true
+        val updated = members[index].copy(isReady = !members[index].isReady)
+        members[index] = updated
+        return updated.isReady
     }
 
     fun inviteMember(rawUsername: String): InviteResult {
@@ -178,6 +195,7 @@ object RoomSessionStore {
     }
 
     fun removeMember(memberId: String) {
+        if (!isCurrentUserHost()) return
         members.removeAll { it.id == memberId && !it.isHost && !it.isCurrentUser }
     }
 
@@ -252,14 +270,14 @@ object RoomSessionStore {
         return ranked
     }
 
-    private fun createCurrentUserMember(isHost: Boolean): RoomMemberUiModel =
+    private fun createCurrentUserMember(isHost: Boolean, isReady: Boolean = true): RoomMemberUiModel =
         RoomMemberUiModel(
             id = CURRENT_USER_ID,
             name = CURRENT_USER_NAME,
             initials = CURRENT_USER_INITIALS,
             isHost = isHost,
             isCurrentUser = true,
-            isReady = true
+            isReady = isReady
         )
 
     private fun generateRoomCode(): String =

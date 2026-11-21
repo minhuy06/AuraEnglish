@@ -29,6 +29,12 @@ class RoomViewModel : ViewModel() {
     private val _isRoomFull = MutableLiveData<Boolean>()
     val isRoomFull: LiveData<Boolean> = _isRoomFull
 
+    private val _isCurrentUserHost = MutableLiveData<Boolean>()
+    val isCurrentUserHost: LiveData<Boolean> = _isCurrentUserHost
+
+    private val _isCurrentUserReady = MutableLiveData<Boolean>()
+    val isCurrentUserReady: LiveData<Boolean> = _isCurrentUserReady
+
     private val _examState = MutableLiveData<RoomExamUiState>()
     val examState: LiveData<RoomExamUiState> = _examState
 
@@ -44,7 +50,18 @@ class RoomViewModel : ViewModel() {
         val count = RoomSessionStore.members.size
         _memberCount.value = count
         _isRoomFull.value = count >= RoomSessionStore.MAX_MEMBERS
+        _isCurrentUserHost.value = RoomSessionStore.isCurrentUserHost()
+        _isCurrentUserReady.value = RoomSessionStore.isCurrentUserReady()
     }
+
+    fun toggleCurrentUserReady(): Boolean {
+        val newReady = RoomSessionStore.toggleCurrentUserReady()
+        refreshLobby()
+        return newReady
+    }
+
+    fun canHostStartExam(): Boolean =
+        RoomSessionStore.isCurrentUserHost() && RoomSessionStore.areAllNonHostMembersReady()
 
     fun inviteMember(rawName: String): InviteResult {
         val result = RoomSessionStore.inviteMember(rawName)
