@@ -12,9 +12,14 @@ import com.example.auraenglish.databinding.IncludeAuthHeaderBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
-fun AppCompatActivity.applyAuthInsets(root: View) {
+fun AppCompatActivity.applyAuthInsets(root: View, includeIme: Boolean = false) {
     ViewCompat.setOnApplyWindowInsetsListener(root) { view, insets ->
-        val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+        val mask = if (includeIme) {
+            WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.ime()
+        } else {
+            WindowInsetsCompat.Type.systemBars()
+        }
+        val bars = insets.getInsets(mask)
         view.setPadding(bars.left, bars.top, bars.right, bars.bottom)
         insets
     }
